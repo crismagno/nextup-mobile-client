@@ -4,13 +4,14 @@ import {
   StyleSheet,
 } from 'react-native'
 import { NavigationContainer } from "@react-navigation/native";
+import NavigationAppIndex from "./../navigation/NavigationDrawer";
 
-const App = () => {
+const AppIndex = () => {
   return (
       <SafeAreaView style={{ flex: 1 }}>
-        <NavigationContainer>
-          
-        </NavigationContainer>
+        {/* <NavigationContainer independent={true}> */}
+            <NavigationAppIndex />
+        {/* </NavigationContainer> */}
       </SafeAreaView>
   );
 };
@@ -19,4 +20,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default App;
+export default AppIndex;

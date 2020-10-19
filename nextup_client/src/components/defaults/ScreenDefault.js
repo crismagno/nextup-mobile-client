@@ -1,25 +1,27 @@
 import React from 'react'
 import {
-	SafeAreaView,
 	StyleSheet,
-	ScrollView,
 	View,
 	Text,
-	StatusBar,
 	Dimensions,
-	TouchableOpacity
+	Image
 } from 'react-native'
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 const ScreenDefault = props => {
 	return (
     <>
-		<View style={styles.viewDefault}>
+		<View style={[styles.viewDefault, props.stylePass]}>
 			<View style={styles.viewTop}>
-				<View style={styles.viewCircleTop}>
-					<Text style={styles.textFont}>NextUp</Text>
-				</View>
+				{
+					props.showCircle && 
+					<View style={styles.viewCircleTop}>
+						<Image style={{ width: 90, height: 90 }} source={require('./../../assets/images/img_queue.png')}/>
+						<Text style={styles.textFont}>NextUp</Text>
+					</View>
+				}
 			</View>
 			<View style={styles.viewBottom}>
 				{props.children}

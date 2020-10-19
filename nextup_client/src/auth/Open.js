@@ -6,19 +6,22 @@ import {
   TouchableOpacity,
   Dimensions
 } from 'react-native';
-import ScreenDefault from './../components/ScreenDefault'
+import ScreenDefault from './../components/defaults/ScreenDefault'
+import { useLinkProps } from '@react-navigation/native';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
-const Open = () => {
+export default props => {
   return (
     <>
-      <ScreenDefault>
-          <TouchableOpacity style={styles.btnDefault('#8A56AC')}>
+      <ScreenDefault showCircle>
+          <TouchableOpacity style={styles.btnDefault('#8A56AC')}
+            onPress={() => props.navigation.navigate("SignIn")}>
               <Text style={styles.textBtn}>LOG IN</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.btnDefault('#241332')}>
-              <Text style={styles.textBtn}>SIGN UfP</Text>
+          <TouchableOpacity style={styles.btnDefault('#241332')}
+            onPress={() => props.navigation.navigate("SignUp")}>
+              <Text style={styles.textBtn}>SIGN UP</Text>
           </TouchableOpacity>
       </ScreenDefault>
     </>
@@ -44,5 +47,3 @@ const styles = StyleSheet.create({
         color: '#FFF'
     }
 });
-
-export default Open;
