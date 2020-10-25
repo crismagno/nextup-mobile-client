@@ -103,7 +103,8 @@ export default props => {
     const [listCategories, setListCategories] = useState(listCategoriesTest)
 
     const renderCategory = category => {
-        return <View key={category.id}
+        return <TouchableOpacity key={category.id}
+            onPress={() => props.navigation.navigate('Trending')}
             style={styles.boxCategory}>
             <Image style={styles.imgCategory}
                 imageStyle={{ borderTopRightRadius: 10, borderTopLeftRadius: 30, }}
@@ -111,7 +112,7 @@ export default props => {
             <View style={styles.boxCategoryBottom}>
                 <Text style={styles.textFont(12.5, "#fff")}>{category.category}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     }
 
     const renderListCategories = item => {
