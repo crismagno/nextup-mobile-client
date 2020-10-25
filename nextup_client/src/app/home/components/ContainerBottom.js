@@ -31,7 +31,7 @@ const listLineTest = [
         title: 'Thai2 Thai2',
         subtitle: 'rua station red',
         date: {
-            hours: moment().format('dd/mm/yy'),
+            hours: moment(),
             time: moment()
         },
         stars: 4.6,
@@ -55,12 +55,18 @@ export default props => {
 
     const [listLine, setListLine] = useState(listLineTest)
 
+    const timeCalc = time => {
+        let timeSub = moment().diff(time, 'seconds')
+        return timeSub+""
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.containerTop}>
                 <Text style={{ color: '#000', fontSize: 12}}>YOUR LINE</Text>
                 <Text style={{ color: '#000', fontSize: 12}}>TIMES</Text>
             </View>
+            
             <View style={styles.containerCenter}>
                 <FlatList
                     showsVerticalScrollIndicator={false}
@@ -77,8 +83,8 @@ export default props => {
                                 <Text style={styles.textFont(10, '#0007')}>{item.subtitle}</Text>
                             </View>
                             <View style={styles.postEnd}>
-                                <Text style={styles.textFont(16, 'red', true)}>{'15 min'}</Text>
-                                <Text style={styles.textFont(8.2, '#0007')}>{'- 12.15 PM'}</Text>
+                                <Text style={styles.textFont(16, 'red', true)}>{timeCalc(item.date.hours)}</Text>
+                                <Text style={styles.textFont(8.2, '#0007')}>{timeCalc(item.date.hours)}</Text>
                             </View>
                         </TouchableOpacity>
                     }

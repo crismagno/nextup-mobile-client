@@ -6,18 +6,12 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import NavigationAuth from "./NavigationAuth";
 
-const App = () => {
+export default () => {
   return (
       <SafeAreaView style={{ flex: 1 }}>
         <NavigationContainer>
             <NavigationAuth />
         </NavigationContainer>
       </SafeAreaView>
-  );
-};
-
-const styles = StyleSheet.create({
-
-});
-
-export default App;
+  )
+}

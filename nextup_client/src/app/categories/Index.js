@@ -11,8 +11,6 @@ import {
 
 import ContainerTop from './components/ContainerTop'
 import ContainerCenter from './components/ContainerCenter'
-import ContainerBottom from './components/ContainerBottom'
-
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
@@ -23,11 +21,8 @@ export default props => {
 			<View style={styles.containerTop}>
 				<ContainerTop {...props}/>
 			</View>
-			<View style={styles.containerCenter}>
+            <View style={styles.containerCenter}>
 				<ContainerCenter {...props}/>
-			</View>
-			<View style={styles.containerBottom}>
-				<ContainerBottom {...props}/>
 			</View>
 		</View>
 	)
@@ -46,12 +41,7 @@ const styles = StyleSheet.create({
 	},
 
 	containerCenter: {
-		flex: 2,
-	},
-
-	containerBottom: {
-		flex: 3,
-		backgroundColor: '#FFF',
-	},
+		height: HEIGHT/1.35
+	}
 
 })

@@ -13,10 +13,6 @@ const App = () => {
         </NavigationContainer>
       </SafeAreaView>
   );
-};
-
-const styles = StyleSheet.create({
-
-});
+}
 
 export default App;

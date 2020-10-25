@@ -17,23 +17,14 @@ export default props => {
     return (
         <View style={styles.container}>
             <View style={styles.containerTop}>
+                <TouchableOpacity onPress={() => props.navigation.goBack()}>
+                    <MaterialCommunityIcons style={{marginTop: 20}} name="arrow-left" color="#000" size={23} />      
+                </TouchableOpacity>      
                 <MaterialCommunityIcons style={{marginTop: 20}} name="cog-outline" color="#000" size={23} />
             </View>
             <View style={styles.containerCenter}>
-                <Text style={styles.textFormat()} >My NextUp!</Text>
-            </View>
-            <View style={styles.containerBottom}>
-                <TouchableOpacity style={[styles.btnDefault, styles.btnHome]}>
-                    <Text style={styles.textFont(13, "#FFF")}>HOME</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.btnDefault}
-                    onPress={() => props.navigation.navigate("Category")}>
-                    <Text style={styles.textFont(13, "#0007")}>SEARCH</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.btnDefault}
-                    onPress={() => props.navigation.navigate("Category")}>
-                    <Text style={styles.textFont(13, "#0007")}>CATEGORIES</Text>
-                </TouchableOpacity>
+                <Text style={styles.textFormat()} >Categories</Text>
+                <Text style={[styles.textFont(12, '#0008'), {marginTop: 2}]}>Book your spot</Text>
             </View>
         </View>
     )
@@ -47,14 +38,14 @@ const styles = StyleSheet.create({
     containerTop: {
         flex: 1,
 		flexDirection: 'row',
-		alignItems: 'center',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-		paddingHorizontal: 20
+        justifyContent: 'space-between',
+        paddingHorizontal: 20,
+        paddingTop: 5
+        // borderWidth: 1
     },
 
     containerCenter: {
-        flex: 1,
+        flex: 1.7,
         paddingHorizontal: 50
     },
 

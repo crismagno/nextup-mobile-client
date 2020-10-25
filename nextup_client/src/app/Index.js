@@ -13,11 +13,7 @@ const AppIndex = () => {
             <NavigationAppIndex />
         {/* </NavigationContainer> */}
       </SafeAreaView>
-  );
-};
-
-const styles = StyleSheet.create({
-
-});
+  )
+}
 
 export default AppIndex;

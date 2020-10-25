@@ -13,21 +13,21 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 const listRecomendedTest = [
     {
-        id: 0,
+        id: Math.random(),
         title: 'Thai Thai',
         stars: 4.6,
         category: 'Restaurants',
         img: 'url-img'
     },
     {
-        id: 1,
+        id: Math.random(),
         title: 'Thai2 Thai2',
         stars: 4.6,
         category: 'Restaurants',
         img: 'url-img'
     },
     {
-        id: 2,
+        id: Math.random(),
         title: 'Thai3 Thai4',
         stars: 4.6,
         category: 'Restaurants',
