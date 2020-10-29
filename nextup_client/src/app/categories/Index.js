@@ -30,18 +30,24 @@ export default props => {
 
 const styles = StyleSheet.create({
 	container: {
+		position: 'relative',
 		flex: 1,
 		backgroundColor: '#241332',
 	},
 
 	containerTop: {
-		flex: 1.4,
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		height: HEIGHT/4.5,
+		width: WIDTH,
 		backgroundColor: '#FFF',
 		borderBottomLeftRadius: 85,
+		zIndex: 1000
 	},
 
 	containerCenter: {
-		height: HEIGHT/1.35
+		height: HEIGHT
 	}
 
 })

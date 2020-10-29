@@ -164,11 +164,12 @@ const styles = StyleSheet.create({
     },
     
     keyboardCode: {
+        flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap', 
         justifyContent: 'space-around',
 		alignItems: 'stretch',
-		height: 310,
+		// height: 310,
 		width: WIDTH,
 		backgroundColor: '#FFF',
         borderTopLeftRadius: 85,

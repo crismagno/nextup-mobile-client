@@ -19,7 +19,7 @@ export default props => {
         <View style={styles.container}>
             <View style={styles.containerTop}>
                 <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                    <MaterialCommunityIcons style={{marginTop: 20}} name="arrow-left" color="#000" size={25} />      
+                    <MaterialCommunityIcons style={{marginTop: 20, }} name="arrow-left" color="#000" size={25} />      
                 </TouchableOpacity>      
             </View>
             <View style={styles.containerCenter}>
@@ -30,7 +30,7 @@ export default props => {
                     <Text style={styles.textFormat(11, '#0004')}>FAVOURITE</Text>
                 </View>
                 <View style={styles.viewBtn}>
-                    <TouchableOpacity style={[styles.btnDefault, { borderColor: '#D47FA9'}]}>
+                    <TouchableOpacity style={[styles.btnDefault, { borderColor: '#D47FA9', borderWidth: 2}]}>
                         <MaterialCommunityIcons name="trending-up" color="#000" size={25} />
                     </TouchableOpacity>
                     <Text style={styles.textFormat(11, '#000')}>TRENDING</Text>

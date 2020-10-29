@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         return {
             justifyContent: 'center',
             alignItems: 'center',
-            borderWidth: 1,
+            // borderWidth: 1,
             marginVertical: 12,
             paddingVertical: 14,
             width: WIDTH / 1.8,

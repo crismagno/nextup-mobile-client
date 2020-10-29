@@ -32,6 +32,13 @@ const listRecomendedTest = [
         stars: 4.6,
         category: 'Restaurants',
         img: 'url-img'
+    },
+    {
+        id: Math.random(),
+        title: 'Thai3 Thai4',
+        stars: 4.6,
+        category: 'Restaurants',
+        img: 'url-img'
     }
 ]
 export default props => {
@@ -85,7 +92,7 @@ const styles = StyleSheet.create({
 
     containerCenter: {
         flex: 1,
-        paddingHorizontal: 20,
+        // paddingHorizontal: 20,
         paddingVertical: 5
     },
 
@@ -108,7 +115,7 @@ const styles = StyleSheet.create({
     postContainer: {
         // borderWidth: 1,
         // borderColor: '#FFF',
-        marginRight: 20,
+        marginLeft: 15,
         borderRadius: 40,
         width: 120
     },

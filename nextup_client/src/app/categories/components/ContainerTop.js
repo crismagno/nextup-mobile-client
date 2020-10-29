@@ -32,31 +32,19 @@ export default props => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        borderBottomLeftRadius: 85,
     },
 
     containerTop: {
-        flex: 1,
 		flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
         paddingTop: 5
-        // borderWidth: 1
     },
 
     containerCenter: {
-        flex: 1.7,
-        paddingHorizontal: 50
-    },
-
-    containerBottom: {
-        flex: 1.5,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-		borderBottomLeftRadius: 85,
-		paddingVertical: 10,
-		paddingHorizontal: 20
+        paddingHorizontal: 55,
+        borderBottomLeftRadius: 85
     },
 
     textFormat() {
@@ -67,18 +55,6 @@ const styles = StyleSheet.create({
             marginTop: 10
 
         }
-    },
-
-    btnDefault: {
-        // borderWidth: 1,
-        paddingVertical: 7,
-        paddingHorizontal: 20,
-        borderRadius: 50
-    },
-
-    btnHome: {
-		backgroundColor: '#8A56AC',
-		marginRight: 20
     },
 
     //text------------

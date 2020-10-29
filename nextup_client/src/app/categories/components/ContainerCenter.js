@@ -131,7 +131,6 @@ export default props => {
     }
 
     return (
-        <View style={styles.container}>
             <ScrollView 
                 contentContainerStyle={styles.styleScrollView1}
                 horizontal={false}
@@ -139,14 +138,12 @@ export default props => {
             >
                 {listCategories.map(item => renderListCategories(item))}
             </ScrollView>
-        </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        paddingVertical: 5
+        flex: 1
     },
 
     containerTop: {
@@ -172,8 +169,6 @@ const styles = StyleSheet.create({
 
     // parts posts
     postContainer: {
-        // borderWidth: 1,
-        // borderColor: '#FFF',
         marginRight: 20,
         borderRadius: 40,
         width: 120
@@ -189,37 +184,28 @@ const styles = StyleSheet.create({
     },
 
     postContent: {
-        // borderWidth: 1,
-        // borderColor: '#FFF',
         height: 35,
         paddingHorizontal: 10
     },
     
     styleScrollView1: {
-        // flex: 1,
-        // borderWidth: 1,
-        // borderColor: '#FFF'
+        paddingTop: 150,
+        paddingBottom: 50
     },
 
     styleScrollView2: {
-        // flex: 1,
         alignItems: 'flex-end',
-        // borderWidth: 1,
-        // borderColor: 'red',
         paddingHorizontal: 20
     },
 
     boxScrollCategory: {
         justifyContent:  'flex-end',
-        // borderWidth: 1,
-        // borderColor: '#FFF',
         height: HEIGHT / 3,
     },
     boxCategory: {
         width: 170,
         borderWidth: 1,
         borderColor: '#241332',
-        // height: HEIGHT / 3,
         borderRadius: 10,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 20,
@@ -227,7 +213,6 @@ const styles = StyleSheet.create({
     imgCategory: {
         flex: 2,
         width: 190,
-        // height: 50,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 10,
     },

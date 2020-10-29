@@ -56,7 +56,7 @@ export default props => {
                             <FontAwesome style={{marginHorizontal: 10}}
                                 name={ step == 3 ? 'circle' : 'circle-o' } color="#0008" size={9} />
                         </View>
-                        <Feather name="arrow-right" color="#0006" size={22}/>
+                        {step === 3 ? <Feather name="arrow-right" color="#0006" size={22}/> : <View />}
                     </View>
                 </TouchableOpacity>
           </View>

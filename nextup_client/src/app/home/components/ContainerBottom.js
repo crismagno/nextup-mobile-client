@@ -49,6 +49,18 @@ const listLineTest = [
         stars: 4.6,
         category: 'Restaurants',
         img: 'url-img'
+    },
+    {
+        id: Math.random(),
+        title: 'Thai3 Thai4',
+        subtitle: 'rua station red',
+        date: {
+            hours: moment(),
+            time: moment()
+        },
+        stars: 4.6,
+        category: 'Restaurants',
+        img: 'url-img'
     }
 ]
 export default props => {
