@@ -39,7 +39,13 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
-        paddingTop: 5
+        paddingTop: 5,
+
+        shadowColor: '#000',
+        shadowOffset: { width: 10, height: 2 },
+        shadowOpacity: 1,
+        shadowRadius: 2,
+        elevation: 5
     },
 
     containerCenter: {

@@ -43,7 +43,13 @@ const styles = StyleSheet.create({
 		width: WIDTH,
 		backgroundColor: '#FFF',
 		borderBottomLeftRadius: 85,
-		zIndex: 1000
+		zIndex: 1000,
+
+		shadowColor: '#000',
+        shadowOffset: { width: 10, height: 2 },
+        shadowOpacity: 1,
+        shadowRadius: 2,
+        elevation: 5
 	},
 
 	containerCenter: {

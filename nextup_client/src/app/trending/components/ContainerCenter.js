@@ -47,6 +47,42 @@ const listTrendingTest = [
         },
         img: '',
         background: '#8A56AC'
+    },
+    {
+        id: Math.random()+"", 
+        miles: '0.2',
+        title: 'THAI THAI',
+        subtitle: 'Thai',
+        address: {
+            district: 'test district',
+            street: 'test street FR, 0003'
+        },
+        img: '',
+        background: '#D47FA6'
+    },
+    {
+        id: Math.random()+"", 
+        miles: '0.2',
+        title: 'THAI THAI',
+        subtitle: 'Thai',
+        address: {
+            district: 'test district',
+            street: 'test street FR, 0003'
+        },
+        img: '',
+        background: '#241332'
+    },
+    {
+        id: Math.random()+"", 
+        miles: '0.2',
+        title: 'THAI THAI',
+        subtitle: 'Thai',
+        address: {
+            district: 'test district',
+            street: 'test street FR, 0003'
+        },
+        img: '',
+        background: '#8A56AC'
     }
 ]
 export default props => {
@@ -77,8 +113,8 @@ export default props => {
             {/* bottom */}
             <View style={styles.boxBottom}>
                 <TouchableOpacity style={styles.btnGo}>
-                    <Text style={[styles.textFont(12, '#FFF'), { marginRight: 5}]}>GO</Text>
-                    <MaterialCommunityIcons name="arrow-right" color="#FFF" size={20} />     
+                    <Text style={[styles.textFont(13, '#FFF'), { marginRight: 5}]}>GO</Text>
+                    <MaterialCommunityIcons name="arrow-right" color="#FFF" size={17} />     
                 </TouchableOpacity>
             </View>
         </View>
@@ -103,14 +139,20 @@ const styles = StyleSheet.create({
     },
 
     boxTrending: {
-        borderWidth: 0.5,
-        borderColor: '#FFF',
-        height: 270,
+        // borderWidth: 0.5,
+        // borderColor: '#FFF',
+        height: HEIGHT/2.5,
         width: WIDTH,
-        paddingTop: 100,
+        paddingTop: 110,
         paddingHorizontal: 30,
         borderBottomLeftRadius: 85,
         marginTop: -80,
+
+        shadowColor: '#000',
+        shadowOffset: { width: 10, height: 2 },
+        shadowOpacity: 1,
+        shadowRadius: 2,
+        elevation: 5
     },
 
     textFont(fts, color, fontWeight) {
@@ -122,7 +164,7 @@ const styles = StyleSheet.create({
     },
     
     styleScrollView1: {
-        paddingTop: 160
+        paddingTop: 150
     },
 
     imgTrending: {
@@ -154,12 +196,18 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        borderWidth: 0.2,
-        borderColor: '#FFF',
+        // borderWidth: 0.2,
+        // borderColor: '#FFF',
         paddingHorizontal: 25,
         paddingVertical: 12,
         backgroundColor: '#817889',
-        borderRadius: 50
+        borderRadius: 50,
+
+        shadowColor: '#000',
+        shadowOffset: { width: 1, height: 2 },
+        shadowOpacity: 1,
+        shadowRadius: 5,
+        elevation: 5
     }
 
 })
