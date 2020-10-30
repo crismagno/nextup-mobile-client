@@ -8,7 +8,7 @@ import Trending from './../app/trending/Index'
 
 const Drawer = createDrawerNavigator()
 export default props => (
-    <Drawer.Navigator initialRouteName="Home">
+    <Drawer.Navigator initialRouteName="Category">
         <Drawer.Screen {...props} name="Home" component={Home} />
         <Drawer.Screen {...props} name="Category" component={Category} />
         <Drawer.Screen {...props} name="Trending" component={Trending} />

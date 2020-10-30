@@ -24,15 +24,15 @@ export default props => {
             </View>
             <View style={styles.containerBottom}>
                 <TouchableOpacity style={[styles.btnDefault, styles.btnHome]}>
-                    <Text style={styles.textFont(13, "#FFF")}>HOME</Text>
+                    <Text style={styles.textFont(11, "#FFF")}>HOME</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btnDefault}
                     onPress={() => props.navigation.navigate("Category")}>
-                    <Text style={styles.textFont(13, "#0007")}>SEARCH</Text>
+                    <Text style={styles.textFont(11, "#0007")}>SEARCH</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btnDefault}
                     onPress={() => props.navigation.navigate("Category")}>
-                    <Text style={styles.textFont(13, "#0007")}>CATEGORIES</Text>
+                    <Text style={styles.textFont(11, "#0007")}>CATEGORIES</Text>
                 </TouchableOpacity>
             </View>
         </View>

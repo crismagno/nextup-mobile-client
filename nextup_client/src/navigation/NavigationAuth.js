@@ -10,7 +10,7 @@ import AppIndex from '../app/Index'
 
 const Stack = createStackNavigator()
 export default props => (
-    <Stack.Navigator initialRouteName="Open" 
+    <Stack.Navigator initialRouteName="AppIndex" 
         screenOptions={{ headerShown: false}}>
         <Stack.Screen name="Open" component={Open} />
         <Stack.Screen name="SignIn" component={SignIn} />

@@ -17,21 +17,21 @@ const listCategoriesTest = [
         title: 'Thai Thai',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended3.jpeg')
     },
     {
         id: Math.random(),
         title: 'Thai2 Thai2',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended4.jpeg')
     },
     {
         id: Math.random(),
         title: 'Thai3 Thai4',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended3.jpeg')
     }],
     [{
 
@@ -39,63 +39,63 @@ const listCategoriesTest = [
         title: 'Thai Thai',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended1.png')
     },
     {
         id: Math.random(),
         title: 'Thai2 Thai2',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended4.jpeg')
     },
     {
         id: Math.random(),
         title: 'Thai3 Thai4',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended4.jpeg')
     }],
     [{
         id: Math.random(),
         title: 'Thai Thai',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended2.png')
     },
     {
         id: Math.random(),
         title: 'Thai2 Thai2',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended4.jpeg')
     },
     {
         id: Math.random(),
         title: 'Thai3 Thai4',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended3.jpeg')
     }],
     [{
         id: Math.random(),
         title: 'Thai Thai',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended4.jpeg')
     },
     {
         id: Math.random(),
         title: 'Thai2 Thai2',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended3.jpeg')
     },
     {
         id: Math.random(),
         title: 'Thai3 Thai4',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended4.jpeg')
     }]
 ]
 export default props => {
@@ -107,8 +107,7 @@ export default props => {
             onPress={() => props.navigation.navigate('Trending')}
             style={styles.boxCategory}>
             <Image style={styles.imgCategory}
-                imageStyle={{ borderTopRightRadius: 10, borderTopLeftRadius: 30, }}
-                source={require('./../../../assets/images/recomended1.png')} />
+                source={category.img} />
             <View style={styles.boxCategoryBottom}>
                 <Text style={styles.textFont(12.5, "#fff")}>{category.category}</Text>
             </View>
@@ -204,16 +203,22 @@ const styles = StyleSheet.create({
     },
     boxCategory: {
         width: 170,
-        borderWidth: 1,
+        borderWidth: 1.5,
         borderColor: '#241332',
         borderRadius: 10,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 20,
+
+        shadowColor: '#000',
+        shadowOffset: { width: 10, height: 2 },
+        shadowOpacity: 1,
+        shadowRadius: 2,
+        elevation: 5
     },
     imgCategory: {
         flex: 2,
         width: 190,
-        borderTopLeftRadius: 30,
+        borderTopLeftRadius: 29,
         borderTopRightRadius: 10,
     },
     boxCategoryBottom: {

@@ -70,21 +70,21 @@ export default props => {
             if (btn == 'empty') {
                 return (
                     <TouchableOpacity style={styles.btnKeyBoard} key={key}>
-                        <Text style={styles.textFont(30, '#8A56AC')}>{''}</Text>
+                        <Text style={styles.textFont(33, '#000')}>{''}</Text>
                     </TouchableOpacity>
                 )
             } else if (btn == 'clear') {
                 return (
                     <TouchableOpacity style={styles.btnKeyBoard} key={key} 
                         onPress={() => clearCode()}>
-                            <Feather name="delete" size={25} color="#8A56AC" />
+                            <Feather name="delete" size={25} color="#0009" />
                     </TouchableOpacity>
                 )
             } else {
                 return (
                     <TouchableOpacity style={styles.btnKeyBoard} key={key} 
                         onPress={() => setMessageCode(btn)}>
-                        <Text style={styles.textFont(30, '#8A56AC')}>{btn}</Text>
+                        <Text style={styles.textFont(33, '#000')}>{btn}</Text>
                     </TouchableOpacity>
                 )
             }
@@ -112,7 +112,7 @@ export default props => {
                 </View>
                 <TouchableOpacity style={styles.btnResendCode}
                     onPress={() => resendCode()} >
-                    <Text style={styles.textFont(12, '#8A56AC')}>Resend Code</Text>
+                    <Text style={styles.textFont(12, '#8A56AC', 'bold')}>Resend Code</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.viewBottom}>
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap', 
-        justifyContent: 'space-around',
+        justifyContent: 'center',
 		alignItems: 'stretch',
 		// height: 310,
 		width: WIDTH,
@@ -180,7 +180,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 		alignItems: 'center',
         // borderWidth: 1, 
-        padding: 15,
+        padding: 10,
+        margin: 5,
+        paddingHorizontal: 20,
         width: WIDTH/4,
     },
 
@@ -197,7 +199,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 25,
         marginHorizontal: 5,
         backgroundColor: "#FFF",
-        borderRadius: 15
+        borderRadius: 15,
+        color: '#8A56AC'
     },
 
     btnResendCode: {
@@ -227,7 +230,8 @@ const styles = StyleSheet.create({
 		return {
 			color: color ||'#FFF',
             fontSize: fts || 13,
-            fontWeight: fontWeight && 'bold'
+            fontWeight: fontWeight && 'bold',
+            fontFamily: 'Montserrat-Light'
 		}
 	}
 })

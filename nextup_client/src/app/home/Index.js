@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
 	},
 
 	containerCenter: {
-		flex: 2,
+		flex: 2.2,
 	},
 
 	containerBottom: {

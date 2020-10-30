@@ -17,28 +17,28 @@ const listRecomendedTest = [
         title: 'Thai Thai',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended4.jpeg')
     },
     {
         id: Math.random(),
         title: 'Thai2 Thai2',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended2.png')
     },
     {
         id: Math.random(),
         title: 'Thai3 Thai4',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended3.jpeg')
     },
     {
         id: Math.random(),
         title: 'Thai3 Thai4',
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        img: require('./../../../assets/images/recomended4.jpeg')
     }
 ]
 export default props => {
@@ -59,13 +59,15 @@ export default props => {
                         <TouchableOpacity style={styles.postContainer}>
                             <ImageBackground style={styles.postInto} 
                                 imageStyle={{ borderRadius: 40}}
-                                source={require('./../../../assets/images/recomended1.png')}>
-                                <View style={styles.postContent}>
-                                    <Text style={styles.textFont(12, null, 'bold')}>{item.title}</Text>
-                                    <Text style={styles.textFont(12)}>{item.stars}</Text>
-                                </View>
-                                <View style={{alignItems: 'center'}}>
-                                    <Text style={styles.textFont(12)}>{item.category}</Text>
+                                source={item.img}>
+                                <View style={styles.descriptionPost}>
+                                    <View style={styles.postContent}>
+                                        <Text style={styles.textFont(12, null, 'bold')}>{item.title}</Text>
+                                        <Text style={styles.textFont(12)}>{item.stars}</Text>
+                                    </View>
+                                    <View style={{alignItems: 'center'}}>
+                                        <Text style={styles.textFont(12)}>{item.category}</Text>
+                                    </View>
                                 </View>
                             </ImageBackground>
                         </TouchableOpacity>
@@ -115,16 +117,15 @@ const styles = StyleSheet.create({
     postContainer: {
         // borderWidth: 1,
         // borderColor: '#FFF',
-        marginLeft: 15,
+        marginHorizontal: 10,
         borderRadius: 40,
-        width: 120
+        width: 130
     },
 
     postInto: {
         flex: 1,
         justifyContent: 'flex-end',
         backgroundColor:'#EA909A',
-        paddingVertical: 5,
         borderRadius: 40,
         
     },
@@ -136,6 +137,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10
     },
     // post
+
+    descriptionPost: {
+        // borderColor: 'red',
+        // borderWidth: 1,
+        paddingBottom: 10,
+        borderBottomLeftRadius: 40,
+        borderBottomRightRadius: 40,
+        backgroundColor: '#0002'
+    }
 
 
 })
