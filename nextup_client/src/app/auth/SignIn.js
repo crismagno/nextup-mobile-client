@@ -15,7 +15,8 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 export default props => {
 
     const [userAuth, setUserAuth] = useState({ email: '', password: '' })
-    
+	const [currentInput, setCurrentInput] = useState(0)
+	
     const showToast = text => {
         ToastAndroid.show(String(text), ToastAndroid.SHORT)
     }
@@ -64,14 +65,19 @@ export default props => {
 					</TouchableOpacity>
 				</View>
 				<View style={styles.form}>
-                    <TextInput style={styles.inputForm} 
+                    <TextInput style={currentInput === 1 ? styles.inputFormActive : styles.inputForm} 
                         value={userAuth.email}
                         onChangeText={val => setUserAuth({ ...userAuth, email: val })}
+						onFocus={() => setCurrentInput(1)}
+						onBlur={() => setCurrentInput(0)}
                         placeholder="Email" 
-                        keyboardType="email-address" />
-                    <TextInput style={styles.inputForm} 
+                        keyboardType="email-address" 
+					/>
+                    <TextInput style={currentInput === 2 ? styles.inputFormActive : styles.inputForm}  
                         value={userAuth.password}
-                        onChangeText={val => setUserAuth({ ...userAuth, password: val })}
+						onChangeText={val => setUserAuth({ ...userAuth, password: val })}
+						onFocus={() => setCurrentInput(2)}
+						onBlur={() => setCurrentInput(0)}
                         placeholder="Password" 
                         secureTextEntry={true}
                         />
@@ -148,6 +154,13 @@ const styles = StyleSheet.create({
         marginVertical: 5,
         paddingBottom: 5
 	},
+	inputFormActive: {
+		borderBottomWidth: 2,
+        borderColor: '#463851',
+        marginVertical: 5,
+		paddingBottom: 5
+	},
+
 	btnContinue: {
 		justifyContent: 'center',
 		alignItems: 'center',

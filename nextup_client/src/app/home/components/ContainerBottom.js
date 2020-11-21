@@ -68,8 +68,31 @@ export default props => {
     const [listLine, setListLine] = useState(listLineTest)
 
     const timeCalc = time => {
-        let timeSub = moment().diff(time, 'seconds')
-        return timeSub+""
+        let seconds = moment().diff(time, 'seconds')
+        let minutes = moment().diff(time, 'minutes')
+        let hours = moment().diff(time, 'hours')
+        let days = moment().diff(time, 'days')
+        let objTime = {
+            value: 'empty',
+            color: '#000'
+        }
+
+        // verificar se será setado horas ou segundos
+        if (+seconds <= 60) {
+            objTime['value'] = `${seconds} sec`
+        } else if (+seconds > 60 && +seconds <= 3600){
+            objTime['value'] = `${minutes} min`
+        } else if (+seconds > 3600 && +seconds <= 86400) {
+            objTime['value'] = `${hours} hr`
+        } else {
+            objTime['value'] = `${days} days` 
+        }
+
+        if (+minutes < 16) {
+            objTime['color'] = '#D47FA6'
+        }
+
+        return objTime
     }
 
     return (
@@ -95,8 +118,8 @@ export default props => {
                                 <Text style={styles.textFont(10, '#0007')}>{item.subtitle}</Text>
                             </View>
                             <View style={styles.postEnd}>
-                                <Text style={styles.textFont(16, 'red', true)}>{timeCalc(item.date.hours)}</Text>
-                                <Text style={styles.textFont(8.2, '#0007')}>{timeCalc(item.date.hours)}</Text>
+                                <Text style={styles.textFont(16, timeCalc(item.date.hours).color, true)}>{timeCalc(item.date.hours).value}</Text>
+                                <Text style={styles.textFont(11, '#0007')}>{timeCalc(item.date.hours).value}</Text>
                             </View>
                         </TouchableOpacity>
                     }
@@ -114,7 +137,7 @@ const styles = StyleSheet.create({
     },
 
     containerTop: {
-        height: 35,
+        height: 45,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',

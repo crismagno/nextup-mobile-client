@@ -4,14 +4,10 @@ import {
     View,
     Text,
     TouchableOpacity,
-    Dimensions,
-    Button,
-    SafeAreaView,
-    TextInput
+    Dimensions
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
 
@@ -25,7 +21,7 @@ export default props => {
             <View style={styles.containerCenter}>
                 <View style={styles.viewBtn}>
                     <TouchableOpacity style={styles.btnDefault}>
-                        <MaterialCommunityIcons name="heart-outline" color="#0004" size={20} />
+                        <MaterialCommunityIcons name="heart-outline" color="#0008" size={20} />
                     </TouchableOpacity>
                     <Text style={styles.textFormat(11, '#0004')}>FAVOURITE</Text>
                 </View>
@@ -37,7 +33,7 @@ export default props => {
                 </View>
                 <View style={styles.viewBtn}>
                     <TouchableOpacity style={styles.btnDefault}>
-                        <AntDesign name="search1" color="#0004" size={20} />
+                        <AntDesign name="search1" color="#0008" size={20} />
                     </TouchableOpacity>
                     <Text style={styles.textFormat(11, '#0004')}>SEARCH</Text>
                 </View>

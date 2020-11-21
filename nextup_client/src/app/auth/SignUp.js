@@ -15,7 +15,8 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 export default props => {
 
 	const [user, setUser] = useState({ name: '', email: '', password: '', phone: '' })
-	
+	const [currentInput, setCurrentInput] = useState(0)
+
 	const showToast = text => {
         ToastAndroid.show(String(text), ToastAndroid.SHORT)
     }
@@ -64,20 +65,28 @@ export default props => {
 					</TouchableOpacity>
 				</View>
 				<View style={styles.form}>
-					<TextInput style={styles.inputForm} 
+					<TextInput style={currentInput === 1 ? styles.inputFormActive : styles.inputForm}
 						onChangeText={val => setUser({ ...user, name: val})}
+						onFocus={() => setCurrentInput(1)}
+						onBlur={() => setCurrentInput(0)}
 						placeholder="Name" />
-					<TextInput style={styles.inputForm} 
+					<TextInput style={currentInput === 2 ? styles.inputFormActive : styles.inputForm}
 						onChangeText={val => setUser({ ...user, email: val})}
+						onFocus={() => setCurrentInput(2)}
+						onBlur={() => setCurrentInput(0)}
 						placeholder="Email" 
 						keyboardType="email-address" />
-					<TextInput style={styles.inputForm} 
+					<TextInput style={currentInput === 3 ? styles.inputFormActive : styles.inputForm}
 						onChangeText={val => setUser({ ...user, password: val})}
+						onFocus={() => setCurrentInput(3)}
+						onBlur={() => setCurrentInput(0)}
 						placeholder="Password" 
 						secureTextEntry={true}/>
-					<TextInput style={styles.inputForm} 
+					<TextInput style={currentInput === 4 ? styles.inputFormActive : styles.inputForm}
 						onChangeText={val => setUser({ ...user, phone: val})}
 						keyboardType="number-pad"
+						onFocus={() => setCurrentInput(4)}
+						onBlur={() => setCurrentInput(0)}
 						placeholder="Phone #" />
 				</View>
 				<TouchableOpacity style={styles.btnContinue}
@@ -140,6 +149,12 @@ const styles = StyleSheet.create({
 	inputForm: {
 		borderBottomWidth: 0.8,
 		borderColor: '#0004'
+	},
+	inputFormActive: {
+		borderBottomWidth: 2,
+        borderColor: '#463851',
+        marginVertical: 5,
+		paddingBottom: 5
 	},
 	btnContinue: {
 		justifyContent: 'center',

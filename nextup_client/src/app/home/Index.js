@@ -13,24 +13,19 @@ import ContainerTop from './components/ContainerTop'
 import ContainerCenter from './components/ContainerCenter'
 import ContainerBottom from './components/ContainerBottom'
 
-
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
-
 export default props => {
 
-	return (
-		<View style={styles.container}>
-			<View style={styles.containerTop}>
-				<ContainerTop {...props}/>
-			</View>
-			<View style={styles.containerCenter}>
-				<ContainerCenter {...props}/>
-			</View>
-			<View style={styles.containerBottom}>
-				<ContainerBottom {...props}/>
-			</View>
+	return <View style={styles.container}>
+		<View style={styles.containerTop}>
+			<ContainerTop {...props}/>
 		</View>
-	)
+		<View style={styles.containerCenter}>
+			<ContainerCenter {...props}/>
+		</View>
+		<View style={styles.containerBottom}>
+			<ContainerBottom {...props}/>
+		</View>
+	</View>
 }
 
 const styles = StyleSheet.create({

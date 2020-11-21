@@ -89,6 +89,10 @@ export default props => {
 
     const [listTrending, setListCategories] = useState(listTrendingTest)
 
+    const goBookIt = () => {
+        props.navigation.navigate('BookIt')
+    }
+
     const renderListTrending = (trending, index) => {
         return <View key={trending.id}
             style={[styles.boxTrending, { backgroundColor: trending.background, zIndex: -index }]}>
@@ -112,7 +116,7 @@ export default props => {
             
             {/* bottom */}
             <View style={styles.boxBottom}>
-                <TouchableOpacity style={styles.btnGo}>
+                <TouchableOpacity style={styles.btnGo} onPress={goBookIt}>
                     <Text style={[styles.textFont(13, '#FFF'), { marginRight: 5}]}>GO</Text>
                     <MaterialCommunityIcons name="arrow-right" color="#FFF" size={17} />     
                 </TouchableOpacity>

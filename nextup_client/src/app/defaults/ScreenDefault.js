@@ -6,29 +6,24 @@ import {
 	Dimensions,
 	Image
 } from 'react-native'
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
-const ScreenDefault = props => {
-	return (
-    <>
-		<View style={[styles.viewDefault, props.stylePass]}>
-			<View style={styles.viewTop}>
-				{
-					props.showCircle && 
-					<View style={styles.viewCircleTop}>
-						<Image style={{ width: 90, height: 90 }} source={require('./../../assets/images/img_queue.png')}/>
-						<Text style={styles.textFont}>NextUp</Text>
-					</View>
-				}
-			</View>
-			<View style={styles.viewBottom}>
-				{props.children}
-			</View>
+export default props => {
+	return <View style={[styles.viewDefault, props.stylePass]}>
+		<View style={styles.viewTop}>
+			{
+				props.showCircle && 
+				<View style={styles.viewCircleTop}>
+					<Image style={{ width: 110, height: 110 }} source={require('./../../assets/images/img_queue2.png')}/>
+					<Text style={styles.textFont}>NextUp</Text>
+				</View>
+			}
 		</View>
-    </>
-	);
+		<View style={styles.viewBottom}>
+			{props.children}
+		</View>
+	</View>
 }
 		  
 const styles = StyleSheet.create({
@@ -64,8 +59,6 @@ const styles = StyleSheet.create({
 
 	//text------------
 	textFont: {
-		fontSize: 20
+		fontSize: 20,
 	}
 })
-
-export default ScreenDefault

@@ -63,14 +63,14 @@ export default props => {
     }
 
     const renderButtons = () => {
-        const buttons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'empty', 0, 'clear']
 
+        const buttons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'empty', 0, 'clear']
         const btnsRender = buttons.map((btn, key) => {
 
             if (btn == 'empty') {
                 return (
                     <TouchableOpacity style={styles.btnKeyBoard} key={key}>
-                        <Text style={styles.textFont(33, '#000')}>{''}</Text>
+                        <Text style={styles.textFont(35, '#000')}>{''}</Text>
                     </TouchableOpacity>
                 )
             } else if (btn == 'clear') {
@@ -84,7 +84,7 @@ export default props => {
                 return (
                     <TouchableOpacity style={styles.btnKeyBoard} key={key} 
                         onPress={() => setMessageCode(btn)}>
-                        <Text style={styles.textFont(33, '#000')}>{btn}</Text>
+                        <Text style={styles.textFont(35, '#000')}>{btn}</Text>
                     </TouchableOpacity>
                 )
             }
@@ -93,40 +93,36 @@ export default props => {
         return btnsRender
     }
 
-	return (
-    <>
-		<View style={styles.viewDefault}>
-            <View style={styles.viewTop}>
-                <TouchableOpacity style={styles.btnGoBack}
-                    onPress={() => props.navigation.goBack()} >
-                    <Ionicons name="arrow-back" color="#0006" size={22}/>
-                </TouchableOpacity>
-                <Text style={{ marginBottom: 30, fontSize: 25, fontWeight: 'bold'}}>Verification Code</Text>
+	return <View style={styles.viewDefault}>
+        <View style={styles.viewTop}>
+            <TouchableOpacity style={styles.btnGoBack}
+                onPress={() => props.navigation.goBack()} >
+                <Ionicons name='arrow-back' color='#0006' size={22}/>
+            </TouchableOpacity>
+            <Text style={{ marginBottom: 30, fontSize: 25, fontWeight: 'bold'}}>Verification Code</Text>
+        </View>
+        <View style={styles.viewCenter}>
+            <View style={styles.viewCode}>
+                <Text style={styles.boxTextCode}>{code[0]}</Text>
+                <Text style={styles.boxTextCode}>{code[1]}</Text>
+                <Text style={styles.boxTextCode}>{code[2]}</Text>
+                <Text style={styles.boxTextCode}>{code[3]}</Text>
             </View>
-            <View style={styles.viewCenter}>
-                <View style={styles.viewCode}>
-                    <Text style={styles.boxTextCode}>{code[0]}</Text>
-                    <Text style={styles.boxTextCode}>{code[1]}</Text>
-                    <Text style={styles.boxTextCode}>{code[2]}</Text>
-                    <Text style={styles.boxTextCode}>{code[3]}</Text>
-                </View>
-                <TouchableOpacity style={styles.btnResendCode}
-                    onPress={() => resendCode()} >
-                    <Text style={styles.textFont(12, '#8A56AC', 'bold')}>Resend Code</Text>
-                </TouchableOpacity>
+            <TouchableOpacity style={styles.btnResendCode}
+                onPress={() => resendCode()} >
+                <Text style={styles.textFont(12, '#8A56AC', 'bold')}>Resend Code</Text>
+            </TouchableOpacity>
+        </View>
+        <View style={styles.viewBottom}>
+            <TouchableOpacity style={styles.btnVerify}
+                onPress={() => verifyCode()}>
+                <Text style={styles.textFont(15, '#FFF', 'bold')}>VERIFY</Text>
+            </TouchableOpacity>
+            <View style={styles.keyboardCode}>
+                {renderButtons()}
             </View>
-            <View style={styles.viewBottom}>
-                <TouchableOpacity style={styles.btnVerify}
-                    onPress={() => verifyCode()}>
-                    <Text style={styles.textFont(15, "#FFF")}>VERIFY</Text>
-                </TouchableOpacity>
-                <View style={styles.keyboardCode}>
-                    {renderButtons()}
-                </View>
-            </View>
-		</View>
-    </>
-	);
+        </View>
+    </View>
 }
 		  
 const styles = StyleSheet.create({
@@ -230,7 +226,7 @@ const styles = StyleSheet.create({
 		return {
 			color: color ||'#FFF',
             fontSize: fts || 13,
-            fontWeight: fontWeight && 'bold',
+            fontWeight: fontWeight || 'normal',
             fontFamily: 'Montserrat-Light'
 		}
 	}

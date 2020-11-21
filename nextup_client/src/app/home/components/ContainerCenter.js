@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
         // borderColor: '#FFF',
         marginHorizontal: 10,
         borderRadius: 40,
-        width: 130
+        width: 135
     },
 
     postInto: {
@@ -143,8 +143,7 @@ const styles = StyleSheet.create({
         // borderWidth: 1,
         paddingBottom: 10,
         borderBottomLeftRadius: 40,
-        borderBottomRightRadius: 40,
-        backgroundColor: '#0002'
+        borderBottomRightRadius: 40
     }
 
 
