@@ -3,7 +3,6 @@ import {
 	StyleSheet,
 	View,
 	Dimensions,
-	ToastAndroid,
 	Text
 } from 'react-native'
 
@@ -49,7 +48,7 @@ export default props => {
 		phone: '754-723-1122'
 	}
 
-	const [showModal, setShowModal] = useState(0)
+	const [showModal, setShowModal] = useState(1)
 	const [textStep, setTextStep] = useState(steps)
 	const [stepModal, setStepModal] = useState(1)
 	const [waitTime, setWaitTime] = useState(false)

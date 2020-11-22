@@ -1,31 +1,44 @@
 import React, { useState } from 'react';
+
+import { useDispatch, useSelector } from "react-redux";
 import {
 	StyleSheet,
 	View,
-	Text,
-	TouchableOpacity,
 	Dimensions,
-	Button,
-	SafeAreaView
 } from 'react-native'
 
 import ContainerTop from './components/ContainerTop'
 import ContainerCenter from './components/ContainerCenter'
+import Search from './../search/Index'
+import IF from './../defaults/IF'
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
 
-	return (
-		<View style={styles.container}>
-			<View style={styles.containerTop}>
-				<ContainerTop {...props}/>
-			</View>
-            <View style={styles.containerCenter}>
-				<ContainerCenter {...props}/>
-			</View>
+	const dispatch = useDispatch({})
+    const generalStore = useSelector(state => state.general)
+
+	const goBackEventSearch = () => {
+		dispatch({
+			type: 'CHANGE_MODE_SEARCH',
+			payload: false
+		})
+	}
+
+	return <View style={styles.container}>
+		<View style={styles.containerTop}>
+			<ContainerTop {...props}/>
 		</View>
-	)
+		<View style={styles.containerCenter}>
+			<ContainerCenter {...props}/>
+		</View>
+
+		{/* search categories */}
+		<IF condition={generalStore.modeSearch}>
+			<Search goBackEvent={goBackEventSearch} />
+		</IF>
+	</View>
 }
 
 const styles = StyleSheet.create({

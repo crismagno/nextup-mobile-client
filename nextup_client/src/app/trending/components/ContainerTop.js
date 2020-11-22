@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux'
 import {
     StyleSheet,
     View,
@@ -10,6 +11,16 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import AntDesign from 'react-native-vector-icons/AntDesign'
 
 export default props => {
+
+    const dispatch = useDispatch({})
+
+    const goCategorySearch = () => {
+        dispatch({
+			type: 'CHANGE_MODE_SEARCH',
+			payload: true
+		})
+        props.navigation.navigate('Category')
+    }
 
     return (
         <View style={styles.container}>
@@ -32,7 +43,8 @@ export default props => {
                     <Text style={styles.textFormat(11, '#000')}>TRENDING</Text>
                 </View>
                 <View style={styles.viewBtn}>
-                    <TouchableOpacity style={styles.btnDefault}>
+                    <TouchableOpacity onPress={() => goCategorySearch()}
+                        style={styles.btnDefault}>
                         <AntDesign name="search1" color="#0008" size={20} />
                     </TouchableOpacity>
                     <Text style={styles.textFormat(11, '#0004')}>SEARCH</Text>

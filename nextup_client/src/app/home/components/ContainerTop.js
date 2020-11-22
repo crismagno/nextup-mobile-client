@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
 import {
     StyleSheet,
     View,
     Text,
-    TouchableOpacity,
-    Dimensions,
-    Button,
-    SafeAreaView,
-    TextInput
+    TouchableOpacity
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
+
+    const dispatch = useDispatch({})
+
+    const goCategorySearch = () => {
+        dispatch({
+			type: 'CHANGE_MODE_SEARCH',
+			payload: true
+		})
+        props.navigation.navigate('Category')
+    }
 
     return (
         <View style={styles.container}>
@@ -27,7 +33,7 @@ export default props => {
                     <Text style={styles.textFont(11, "#FFF")}>HOME</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btnDefault}
-                    onPress={() => props.navigation.navigate("Category")}>
+                    onPress={() => goCategorySearch()}>
                     <Text style={styles.textFont(11, "#0007")}>SEARCH</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btnDefault}
