@@ -33,7 +33,13 @@ const styles = StyleSheet.create({
 			paddingVertical: 16,
 			width: WIDTH / 1.6,
 			borderRadius: 25,
-			backgroundColor: color || '#FFF'
+			backgroundColor: color || '#FFF',
+
+		// 	shadowColor: '#000',
+		// 	shadowOffset: { width: 10, height: 100 },
+		// 	shadowOpacity: 0,
+		// 	shadowRadius: 25,
+		// 	elevation: 30,
 		}
 	},
 

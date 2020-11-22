@@ -20,10 +20,20 @@ export default props => {
         props.navigation.navigate('Category')
     }
 
+    const goCategory = () => {
+        dispatch({
+			type: 'CHANGE_MODE_SEARCH',
+			payload: false
+		})
+        props.navigation.navigate('Category')
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.containerTop}>
-                <MaterialCommunityIcons style={{marginTop: 20}} name="cog-outline" color="#000" size={23} />
+                <TouchableOpacity onPress={() => props.navigation.openDrawer()}>
+                    <MaterialCommunityIcons style={{marginTop: 20}} name="cog-outline" color="#000" size={23} />
+                </TouchableOpacity>
             </View>
             <View style={styles.containerCenter}>
                 <Text style={styles.textFormat()} >My NextUp!</Text>
@@ -37,7 +47,7 @@ export default props => {
                     <Text style={styles.textFont(11, "#0007")}>SEARCH</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btnDefault}
-                    onPress={() => props.navigation.navigate("Category")}>
+                    onPress={() => goCategory()}>
                     <Text style={styles.textFont(11, "#0007")}>CATEGORIES</Text>
                 </TouchableOpacity>
             </View>

@@ -20,8 +20,10 @@ export default props => {
             <View style={styles.containerTop}>
                 <TouchableOpacity onPress={() => props.navigation.goBack()}>
                     <MaterialCommunityIcons style={{marginTop: 20}} name="arrow-left" color="#000" size={23} />      
-                </TouchableOpacity>      
-                <MaterialCommunityIcons style={{marginTop: 20}} name="cog-outline" color="#000" size={23} />
+                </TouchableOpacity>   
+                <TouchableOpacity onPress={() => props.navigation.openDrawer()}>
+                    <MaterialCommunityIcons style={{marginTop: 20}} name="cog-outline" color="#000" size={23} />
+                </TouchableOpacity>   
             </View>
             <View style={styles.containerCenter}>
                 <Text style={styles.textFormat(23, '#000', true)} >THAI THAI</Text>
