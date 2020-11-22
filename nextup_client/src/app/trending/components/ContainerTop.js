@@ -19,7 +19,6 @@ export default props => {
 			type: 'CHANGE_MODE_SEARCH',
 			payload: true
 		})
-        props.navigation.navigate('Category')
     }
 
     return (

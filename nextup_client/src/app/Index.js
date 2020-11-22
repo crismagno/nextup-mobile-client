@@ -1,12 +1,21 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native'
-import { NavigationContainer } from "@react-navigation/native";
 import NavigationAppIndex from "./../navigation/NavigationDrawer";
 
+import { useSelector } from "react-redux"
+import Search from './search/Index'
+import IF from './defaults/IF'
+
 export default () => {
+
+    const generalStore = useSelector(state => state.general)
+
 	return <SafeAreaView style={{ flex: 1 }}>
-		{/* <NavigationContainer independent={true}> */}
 		<NavigationAppIndex />
-		{/* </NavigationContainer> */}
+		
+		{/* search categories */}
+		<IF condition={generalStore.modeSearch}>
+			<Search />
+		</IF>
 	</SafeAreaView>
 }

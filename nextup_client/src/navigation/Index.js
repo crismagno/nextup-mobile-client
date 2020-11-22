@@ -9,5 +9,4 @@ export default () => {
 			<NavigationAuth />
 		</NavigationContainer>
 	</SafeAreaView>
-
 }

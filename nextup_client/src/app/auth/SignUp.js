@@ -67,17 +67,20 @@ export default props => {
 				<View style={styles.form}>
 					<TextInput style={currentInput === 1 ? styles.inputFormActive : styles.inputForm}
 						onChangeText={val => setUser({ ...user, name: val})}
+						value={user.name}
 						onFocus={() => setCurrentInput(1)}
 						onBlur={() => setCurrentInput(0)}
 						placeholder="Name" />
 					<TextInput style={currentInput === 2 ? styles.inputFormActive : styles.inputForm}
 						onChangeText={val => setUser({ ...user, email: val})}
+						value={user.email}
 						onFocus={() => setCurrentInput(2)}
 						onBlur={() => setCurrentInput(0)}
 						placeholder="Email" 
 						keyboardType="email-address" />
 					<TextInput style={currentInput === 3 ? styles.inputFormActive : styles.inputForm}
 						onChangeText={val => setUser({ ...user, password: val})}
+						value={user.password}
 						onFocus={() => setCurrentInput(3)}
 						onBlur={() => setCurrentInput(0)}
 						placeholder="Password" 
@@ -85,6 +88,7 @@ export default props => {
 					<TextInput style={currentInput === 4 ? styles.inputFormActive : styles.inputForm}
 						onChangeText={val => setUser({ ...user, phone: val})}
 						keyboardType="number-pad"
+						value={user.phone}
 						onFocus={() => setCurrentInput(4)}
 						onBlur={() => setCurrentInput(0)}
 						placeholder="Phone #" />

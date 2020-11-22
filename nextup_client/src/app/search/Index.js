@@ -22,6 +22,7 @@ import {
 } from './components/syledComponents'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import { useDispatch } from "react-redux"
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
@@ -59,6 +60,7 @@ export default props => {
 		}
 	]
 
+	const dispatch = useDispatch({})
 	const [searchArrayCompanies, setSearchArrayCompanies] = useState([])
 	const [valueSearch, setValueSearch] = useState('')
 
@@ -79,8 +81,11 @@ export default props => {
 		setSearchArrayCompanies(arrayFilter)
 	}
 
-	const goBackEvent = () => {
-		props && props.goBackEvent && props.goBackEvent() 
+	const goBackEventSearch = () => {
+		dispatch({
+			type: 'CHANGE_MODE_SEARCH',
+			payload: false
+		})
 	}
 
 	// render companies search
@@ -114,7 +119,7 @@ export default props => {
 		<Container height={HEIGHT} width={WIDTH}>
 
 			<ContainerHeader height={60} width={WIDTH}>
-				<ButtonBack onPress={() => goBackEvent()}>
+				<ButtonBack onPress={() => goBackEventSearch()}>
 					<MaterialCommunityIcons name="arrow-left" size={25} color="#FFF" />
 				</ButtonBack>
 			</ContainerHeader>

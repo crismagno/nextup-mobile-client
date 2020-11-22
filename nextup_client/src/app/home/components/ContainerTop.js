@@ -17,14 +17,9 @@ export default props => {
 			type: 'CHANGE_MODE_SEARCH',
 			payload: true
 		})
-        props.navigation.navigate('Category')
     }
 
     const goCategory = () => {
-        dispatch({
-			type: 'CHANGE_MODE_SEARCH',
-			payload: false
-		})
         props.navigation.navigate('Category')
     }
 
