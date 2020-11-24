@@ -19,8 +19,7 @@ const Title = styled.Text`
 
 export default props => {
 
-    return( 
-    <Container>
+    return <Container>
         <Title primary>fdfdsfs</Title>
-    </Container>)
+    </Container>
 }
