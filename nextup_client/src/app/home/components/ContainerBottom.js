@@ -5,13 +5,11 @@ import {
     Text,
     Image,
     TouchableOpacity,
-    Dimensions,
     FlatList
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import moment from 'moment'
 import 'moment/locale/pt-br'
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
+import generalStyles from './../../../helpers/styles/general'
 
 const listLineTest = [
     {
@@ -98,8 +96,8 @@ export default props => {
     return (
         <View style={styles.container}>
             <View style={styles.containerTop}>
-                <Text style={{ color: '#000', fontSize: 12}}>YOUR LINE</Text>
-                <Text style={{ color: '#000', fontSize: 12}}>TIMES</Text>
+                <Text style={styles.textFont(12, '#000')}>YOUR LINE</Text>
+                <Text style={styles.textFont(12, '#000')}>TIMES</Text>
             </View>
             
             <View style={styles.containerCenter}>
@@ -113,13 +111,13 @@ export default props => {
                                 <Image style={styles.postImage} source={require('./../../../assets/images/recomended1.png')} />
                             </View>
                             <View style={styles.postCenter}>
-                                <Text style={styles.textFont(16, '#000', true)}>{item.title.toUpperCase()}</Text>
-                                <Text style={styles.textFont(13, '#0007')}>{item.category}</Text>
-                                <Text style={styles.textFont(10, '#0007')}>{item.subtitle}</Text>
+                                <Text style={styles.textFont(16, '#000', 'bold')}>{item.title.toUpperCase()}</Text>
+                                <Text style={styles.textFont(13, '#0007', 'bold')}>{item.category}</Text>
+                                <Text style={styles.textFont(10, '#0007', 'bold')}>{item.subtitle}</Text>
                             </View>
                             <View style={styles.postEnd}>
-                                <Text style={styles.textFont(16, timeCalc(item.date.hours).color, true)}>{timeCalc(item.date.hours).value}</Text>
-                                <Text style={styles.textFont(11, '#0007')}>{timeCalc(item.date.hours).value}</Text>
+                                <Text style={styles.textFont(16, timeCalc(item.date.hours).color, 'bold')}>{timeCalc(item.date.hours).value}</Text>
+                                <Text style={styles.textFont(11, '#0007', 'bold')}>{timeCalc(item.date.hours).value}</Text>
                             </View>
                         </TouchableOpacity>
                     }
@@ -161,7 +159,8 @@ const styles = StyleSheet.create({
         return {
             color: color || '#FFF',
             fontSize: fts || 13,
-            fontWeight: fontWeight && 'bold',
+            fontWeight: fontWeight || 'normal',
+            fontFamily: generalStyles.fontFamily1,
         }
     },
 

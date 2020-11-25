@@ -5,12 +5,11 @@ import {
     Text,
     TouchableOpacity,
     Dimensions,
-    ScrollView,
-    Image
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Entypo from 'react-native-vector-icons/Entypo'
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
+import generalStyles from './../../../helpers/styles/general'
 
 export default props => {
 
@@ -95,7 +94,8 @@ const styles = StyleSheet.create({
         return {
             fontSize,
             color,
-            fontWeight
+            fontWeight,
+            fontFamily: generalStyles.fontFamily1
         }
     }
 })

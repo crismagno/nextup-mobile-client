@@ -11,7 +11,6 @@ import generalStyles from './../helpers/styles/general'
 
 import { DrawerContentScrollView } from '@react-navigation/drawer'
 import Feather from 'react-native-vector-icons/Feather'
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 
 export default props => {
 
@@ -26,27 +25,27 @@ export default props => {
 
     const arrayListDrawer = [
         {
-            icon: <Feather name="home" size={20} color={isCurrentRoute('Home') ? '#FFF' : '#B3AEB8'} />,
+            icon: <Feather name="home" size={18} color={isCurrentRoute('Home') ? '#FFF' : '#B4AFB9'} />,
             route: 'Home',
             label: 'Home'
         },
         {
-            icon: <Feather name="users" size={20} color={isCurrentRoute('Category') ? '#FFF' : '#B3AEB8'} />,
+            icon: <Feather name="users" size={18} color={isCurrentRoute('Category') ? '#FFF' : '#B4AFB9'} />,
             route: 'Category',
             label: 'Categories'
         },
         {
-            icon: <Feather name="calendar" size={20} color={isCurrentRoute('Trending') ? '#FFF' : '#B3AEB8'} />,
+            icon: <Feather name="calendar" size={18} color={isCurrentRoute('Trending') ? '#FFF' : '#B4AFB9'} />,
             route: 'Trending',
             label: 'My queue'
         },
         {
-            icon: <Feather name="user" size={20} color={isCurrentRoute('Contact') ? '#FFF' : '#B3AEB8'} />,
+            icon: <Feather name="user" size={18} color={isCurrentRoute('Contact') ? '#FFF' : '#B4AFB9'} />,
             route: 'Contact',
             label: 'Contact Us'
         },
         {
-            icon: <Feather name="info" size={20} color={isCurrentRoute('About') ? '#FFF' : '#B3AEB8'} />,
+            icon: <Feather name="info" size={18} color={isCurrentRoute('About') ? '#FFF' : '#B4AFB9'} />,
             route: 'About',
             label: 'About Us'
         }
@@ -55,10 +54,10 @@ export default props => {
     const renderItemsDrawer = () => {
         return arrayListDrawer.map((item, index) => {
             const active = isCurrentRoute(item.route)
-            return <TouchableOpacity onPress={() => props.navigation.navigate(item.route)}>
+            return <TouchableOpacity onPress={() => props.navigation.navigate(item.route)} key={`${item.Route}_${index}`}>
                 <View style={[styles.itemMenu, active && styles.colorMenuActive]}>
                     {item.icon}
-                    <Text style={[styles.textFormat(20, (!active && '#000'), 'normal', 0, 10), { fontFamily: generalStyles.fontFamily1}]}>{item.label}</Text>
+                    <Text style={[styles.textFormat(17, (!active && '#463851'), '600', 0, 10), { fontFamily: generalStyles.fontFamily1}]}>{item.label}</Text>
                 </View>
             </TouchableOpacity>
         })
@@ -76,7 +75,7 @@ export default props => {
             />
             <View style={styles.containerTopOpacity}>
                 <Image  style={styles.avatar} source={avatar} />
-                <Text style={styles.textFormat(25, '#FFF', 'bold', 20)}>{'Aurélien Salomon'}</Text>
+                <Text style={[styles.textFormat(25, '#FFF', 'bold', 20), { letterSpacing: 1 }]}>{'Aurélien Salomon'}</Text>
                 <Text style={styles.textFormat(15, '#99939E', 'normal', 5)}>{'@aureliensalomon'}</Text>
             </View>
         </View>
@@ -95,8 +94,8 @@ export default props => {
         <View style={{paddingHorizontal: 20, marginTop: 5}}>
             <TouchableOpacity onPress={() => props.navigation.navigate('Open')}>
                 <View style={styles.itemMenu}>
-                    <Feather name="log-out" size={20} color='#B3AEB8' />
-                    <Text style={[styles.textFormat(20, '#000', 'normal', 0, 10), { fontFamily: generalStyles.fontFamily1}]}>Log Out</Text>
+                    <Feather name="log-out" size={18} color='#B3AEB8' />
+                    <Text style={[styles.textFormat(17, '#463851', '600', 0, 10), { fontFamily: generalStyles.fontFamily1}]}>Log Out</Text>
                 </View>
             </TouchableOpacity>
         </View>
@@ -122,7 +121,6 @@ const styles = StyleSheet.create({
 
     containerTopOpacity: {
         position: 'absolute',
-        // justifyContent: 'center',
         paddingTop: 60,
         paddingHorizontal: 40,
         left: 0,
@@ -151,9 +149,10 @@ const styles = StyleSheet.create({
         return {
             color: color || '#FFF',
             fontSize: fts || 13,
-            fontWeight: fontWeight && 'normal',
+            fontWeight: fontWeight || 'normal',
             marginTop: mt || 0,
-            marginLeft: ml || 0
+            marginLeft: ml || 0,
+            fontFamily: generalStyles.fontFamily1
         }
     },
     
@@ -176,7 +175,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         width: 170,
         paddingHorizontal: 18,
-        paddingVertical: 10,
+        paddingVertical: 8,
         marginVertical: 8
     },
 

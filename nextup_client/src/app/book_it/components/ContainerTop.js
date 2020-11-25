@@ -5,13 +5,10 @@ import {
     Text,
     TouchableOpacity,
     Dimensions,
-    Button,
-    SafeAreaView,
-    TextInput,
     Image
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
+import generalStyles from './../../../helpers/styles/general'
 
 export default props => {
 
@@ -66,7 +63,8 @@ const styles = StyleSheet.create({
             color: color || '#FFF',
             fontSize: fts || 13,
             fontWeight: fontWeight && 'bold',
-            marginTop: 5
+            marginTop: 5,
+            fontFamily: generalStyles.fontFamily1
         }
     },
 

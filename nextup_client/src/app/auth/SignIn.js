@@ -8,7 +8,7 @@ import {
     TouchableOpacity,
     ToastAndroid
 } from 'react-native'
-import FontAwesome from "react-native-vector-icons/FontAwesome";
+import generalStyles from './../../helpers/styles/general'
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
@@ -57,11 +57,11 @@ export default props => {
 			<View style={styles.viewFloat} >
 				<View style={styles.groupButton}>
 					<TouchableOpacity style={[styles.btnDefault, styles.btnLogin]}>
-						<Text style={styles.textFont(13, "#FFF")}>LOG IN</Text>
+						<Text style={styles.textFont(13, '#FFF', 'bold')}>LOG IN</Text>
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.btnDefault}
                         onPress={() => props.navigation.navigate("SignUp")}>
-						<Text style={styles.textFont(13, "#0007")}>SIGN UP</Text>
+						<Text style={styles.textFont(13, '#0007', 'bold')}>SIGN UP</Text>
 					</TouchableOpacity>
 				</View>
 				<View style={styles.form}>
@@ -84,11 +84,11 @@ export default props => {
 				</View>
 				<TouchableOpacity style={styles.btnContinue}
                     onPress={() => signIn()}>
-					<Text style={styles.textFont(14)}>CONTINUE</Text>
+					<Text style={styles.textFont(14, '#FFF', 'bold')}>CONTINUE</Text>
 				</TouchableOpacity>
                 <TouchableOpacity style={styles.btnForgot}
                     onPress={() => forgotPassword()}>
-					<Text style={styles.textFont(13, '#8A56AC', true)}>FORGOT PASSWORD?</Text>
+					<Text style={styles.textFont(13, '#8A56AC', 'bold')}>FORGOT PASSWORD?</Text>
 				</TouchableOpacity>
 			</View>
 		</View>
@@ -152,13 +152,17 @@ const styles = StyleSheet.create({
 		borderBottomWidth: 0.8,
         borderColor: '#0004',
         marginVertical: 5,
-        paddingBottom: 5
+		paddingBottom: 5,
+		fontFamily: generalStyles.fontFamily1,
+		fontWeight: '600'
 	},
 	inputFormActive: {
-		borderBottomWidth: 2,
+		borderBottomWidth: 1.2,
         borderColor: '#463851',
         marginVertical: 5,
-		paddingBottom: 5
+		paddingBottom: 5,
+		fontFamily: generalStyles.fontFamily1,
+		fontWeight: '600'
 	},
 
 	btnContinue: {
@@ -181,7 +185,8 @@ const styles = StyleSheet.create({
 		return {
 			color: color ||'#FFF',
             fontSize: fts || 13,
-            fontWeight: fontWeight && 'bold'
+			fontWeight: fontWeight || 'normal',
+			fontFamily: generalStyles.fontFamily1,
 		}
 	}
 })

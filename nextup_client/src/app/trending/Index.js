@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import {
 	StyleSheet,
 	View,
-	Text,
-	TouchableOpacity,
-	Dimensions,
-	Button,
-	SafeAreaView
+	Dimensions
 } from 'react-native'
 
 import ContainerTop from './components/ContainerTop'

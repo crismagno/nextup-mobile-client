@@ -8,7 +8,8 @@ import {
     ScrollView,
     Image
 } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import generalStyles from './../../../helpers/styles/general'
+
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 const listCategoriesTest = [
@@ -98,6 +99,7 @@ const listCategoriesTest = [
         img: require('./../../../assets/images/recomended4.jpeg')
     }]
 ]
+
 export default props => {
 
     const [listCategories, setListCategories] = useState(listCategoriesTest)
@@ -109,7 +111,7 @@ export default props => {
             <Image style={styles.imgCategory}
                 source={category.img} />
             <View style={styles.boxCategoryBottom}>
-                <Text style={styles.textFont(12.5, "#fff")}>{category.category}</Text>
+                <Text style={styles.textFont(12.5, "#fff", 'bold')}>{category.category}</Text>
             </View>
         </TouchableOpacity>
     }
@@ -129,15 +131,12 @@ export default props => {
         </View>
     }
 
-    return (
-            <ScrollView 
-                contentContainerStyle={styles.styleScrollView1}
-                horizontal={false}
-                showsVerticalScrollIndicator={false}
-            >
-                {listCategories.map(item => renderListCategories(item))}
-            </ScrollView>
-    )
+    return  <ScrollView 
+        contentContainerStyle={styles.styleScrollView1}
+        horizontal={false}
+        showsVerticalScrollIndicator={false}>
+        {listCategories.map(item => renderListCategories(item))}
+    </ScrollView>
 }
 
 const styles = StyleSheet.create({
@@ -162,7 +161,8 @@ const styles = StyleSheet.create({
         return {
             color: color || '#FFF',
             fontSize: fts || 13,
-            fontWeight: fontWeight && 'bold',
+            fontWeight: fontWeight || 'normal',
+            fontFamily: generalStyles.fontFamily1
         }
     },
 

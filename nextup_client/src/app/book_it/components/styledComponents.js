@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components/native";
 import { Dimensions } from 'react-native'
+import generalStyles from './../../../helpers/styles/general'
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
@@ -39,6 +40,7 @@ export const TextModal = styled.Text`
     padding-left: 70px;
     padding-right: 70px;
     padding-bottom: 20px;
+    font-family: ${generalStyles.fontFamily1}
 `
 
 export const ButtonStepNext = styled.TouchableOpacity`    
@@ -87,6 +89,7 @@ export const TextStep6 = styled.Text`
     color: ${props => props.primary ? '#8A56AC' : '#0005'};
     border-bottom-width: 0.7px;
     border-color:  ${props => props.primary ? '#8A56AC' : '#0005'};
+    font-family: ${generalStyles.fontFamily1}
 `
 
 export const BottomSubModal = styled.View`

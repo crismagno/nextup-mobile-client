@@ -6,7 +6,7 @@ import {
 	Dimensions,
 	Image
 } from 'react-native'
-
+import generalStyles from './../../helpers/styles/general'
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
@@ -60,5 +60,7 @@ const styles = StyleSheet.create({
 	//text------------
 	textFont: {
 		fontSize: 20,
+		fontFamily: generalStyles.fontFamily1,
+		fontWeight: '600'
 	}
 })

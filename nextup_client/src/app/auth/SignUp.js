@@ -8,8 +8,7 @@ import {
 	TouchableOpacity,
 	ToastAndroid
 } from 'react-native'
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-
+import generalStyles from './../../helpers/styles/general'
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
@@ -43,7 +42,7 @@ export default props => {
                 return false
             }
 
-            props.navigation.navigate('SignIn')
+            props.navigation.navigate('VerificationCode')
 
         } catch (error) {
             
@@ -58,10 +57,10 @@ export default props => {
 				<View style={styles.groupButton}>
 					<TouchableOpacity style={styles.btnDefault}
 						onPress={() => props.navigation.navigate("SignIn")}>
-						<Text style={styles.textFont(13, "#FFF8")}>LOG IN</Text>
+						<Text style={styles.textFont(13, '#FFF8', 'bold')}>LOG IN</Text>
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.btnDefault}>
-						<Text style={styles.textFont(13)}>SIGN UP</Text>
+						<Text style={styles.textFont(13, '#FFF', 'bold')}>SIGN UP</Text>
 					</TouchableOpacity>
 				</View>
 				<View style={styles.form}>
@@ -95,7 +94,7 @@ export default props => {
 				</View>
 				<TouchableOpacity style={styles.btnContinue}
 					onPress={() => continueLogin()}>
-					<Text style={styles.textFont(14)}>CONTINUE</Text>
+					<Text style={styles.textFont(14, '#FFF', 'bold')}>CONTINUE</Text>
 				</TouchableOpacity>
 			</View>
 		</View>
@@ -152,13 +151,15 @@ const styles = StyleSheet.create({
 	},
 	inputForm: {
 		borderBottomWidth: 0.8,
-		borderColor: '#0004'
+		borderColor: '#0004',
+		fontFamily: generalStyles.fontFamily1,
 	},
 	inputFormActive: {
-		borderBottomWidth: 2,
+		borderBottomWidth: 1.2,
         borderColor: '#463851',
         marginVertical: 5,
-		paddingBottom: 5
+		paddingBottom: 5,
+		fontFamily: generalStyles.fontFamily1,
 	},
 	btnContinue: {
 		justifyContent: 'center',
@@ -170,10 +171,12 @@ const styles = StyleSheet.create({
 	},
 
 	//text------------
-	textFont(fts, color) {
+	textFont(fts, color, fontWeight) {
 		return {
 			color: color ||'#FFF',
-			fontSize: fts || 13
+			fontSize: fts || 13,
+			fontWeight: fontWeight || 'normal',
+			fontFamily: generalStyles.fontFamily1
 		}
 	}
 })

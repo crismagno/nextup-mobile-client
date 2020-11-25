@@ -9,12 +9,10 @@ import Trending from './../app/trending/Index'
 import BookIt from './../app/book_it/Index'
 import TestStyled from './../app/test/test-styled'
 
-import Icon from 'react-native-vector-icons/Feather'
-
 const Drawer = createDrawerNavigator()
 export default props => (
         <Drawer.Navigator initialRouteName="Home"
-            drawerStyle={ { width: '85%', borderTopRightRadius: 100 }}
+            drawerStyle={ { width: '80%', borderTopRightRadius: 100 }}
             openByDefault={false}
             drawerContent ={props => DrawerCustom(props) }>
             <Drawer.Screen {...props} name="Home" component={Home} />

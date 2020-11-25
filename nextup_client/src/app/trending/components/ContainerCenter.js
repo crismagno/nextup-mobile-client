@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
+import generalStyles from './../../../helpers/styles/general'
 
 const listTrendingTest = [
     {
@@ -117,7 +118,7 @@ export default props => {
             {/* bottom */}
             <View style={styles.boxBottom}>
                 <TouchableOpacity style={styles.btnGo} onPress={goBookIt}>
-                    <Text style={[styles.textFont(13, '#FFF'), { marginRight: 5}]}>GO</Text>
+                    <Text style={[styles.textFont(13, '#FFF', 'bold'), { marginRight: 5}]}>GO</Text>
                     <MaterialCommunityIcons name="arrow-right" color="#FFF" size={17} />     
                 </TouchableOpacity>
             </View>
@@ -163,7 +164,8 @@ const styles = StyleSheet.create({
         return {
             color: color || '#FFF',
             fontSize: fts || 13,
-            fontWeight: fontWeight && 'bold'
+            fontWeight: fontWeight || 'normal',
+            fontFamily: generalStyles.fontFamily1
         }
     },
     

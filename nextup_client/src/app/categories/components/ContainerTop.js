@@ -3,14 +3,10 @@ import {
     StyleSheet,
     View,
     Text,
-    TouchableOpacity,
-    Dimensions,
-    Button,
-    SafeAreaView,
-    TextInput
+    TouchableOpacity
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
+import generalStyles from './../../../helpers/styles/general'
 
 export default props => {
 
@@ -60,8 +56,8 @@ const styles = StyleSheet.create({
             alignItems: 'center',
             fontSize: 25,
             fontWeight: 'bold',
-            marginTop: 10
-
+            marginTop: 10,
+            fontFamily: generalStyles.fontFamily1
         }
     },
 
@@ -70,7 +66,8 @@ const styles = StyleSheet.create({
         return {
             color: color || '#FFF',
             fontSize: fts || 13,
-            fontWeight: fontWeight && 'bold'
+            fontWeight: fontWeight && 'bold',
+            fontFamily: generalStyles.fontFamily1
         }
     }
 

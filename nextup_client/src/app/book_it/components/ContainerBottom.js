@@ -68,7 +68,7 @@ export default props => {
                 style={styles.defaultButton()}>
                 <Fontisto name="minus-a" size={20} color="#9599B3" />
             </TouchableOpacity>
-            <Text style={styles.textFormat(40, '#0004', null, 20, generalStyles.fontFamily1)}>{numPeople}</Text>
+            <Text style={styles.textFormat(40, '#0004', null, 20)}>{numPeople}</Text>
             <TouchableOpacity onPress={() => setNumPeople(numPeople + 1)}
                 style={styles.defaultButton('#9599B3')}>
                 <Fontisto name="plus-a" size={20} color="#FFF" />
@@ -83,7 +83,7 @@ export default props => {
         <View style={styles.viewButtonsBottom}>
             <TouchableOpacity onPress={() => executeBookIt()}
                 style={styles.btnBookIt}>
-                <Text style={styles.textFormat(14, '#FFF')}>BOOK IT</Text>
+                <Text style={styles.textFormat(14, '#FFF', 'bold')}>BOOK IT</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btnBack} onPress={() => props.navigation.goBack()}>
                 <Text style={styles.textFormat(12, '#8A56AC')}>GO BACK</Text>
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
             fontSize: fts || 13,
             fontWeight: fontWeight && 'bold',
             marginHorizontal: mh || 0,
-            fontFamily: fontFamily || '' 
+            fontFamily: generalStyles.fontFamily1
         }
     },
 

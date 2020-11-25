@@ -7,6 +7,7 @@ import {
     Dimensions
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import generalStyles from './../../../helpers/styles/general'
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
@@ -43,7 +44,7 @@ export default props => {
 
         <TouchableOpacity onPress={() => waitTimeOk()}
             style={styles.btnBookIt}>
-            <Text style={styles.textFormat(14, '#FFF')}>OK</Text>
+            <Text style={styles.textFormat(14, '#FFF', 'bold')}>OK</Text>
         </TouchableOpacity>
     </View>
 }
@@ -79,9 +80,9 @@ const styles = StyleSheet.create({
         return {
             color: color || '#FFF',
             fontSize: fts || 13,
-            fontWeight: fontWeight && 'bold',
+            fontWeight: fontWeight || 'normal',
             marginHorizontal: mh || 0,
-            fontFamily: fontFamily || '' 
+            fontFamily: generalStyles.fontFamily1
         }
     },
 

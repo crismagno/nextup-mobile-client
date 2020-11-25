@@ -7,6 +7,7 @@ import {
 	Dimensions
 } from 'react-native'
 import ScreenDefault from '../defaults/ScreenDefault'
+import generalStyles from './../../helpers/styles/general'
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
@@ -35,16 +36,17 @@ const styles = StyleSheet.create({
 			borderRadius: 25,
 			backgroundColor: color || '#FFF',
 
-		// 	shadowColor: '#000',
-		// 	shadowOffset: { width: 10, height: 100 },
-		// 	shadowOpacity: 0,
-		// 	shadowRadius: 25,
-		// 	elevation: 30,
+			// shadowColor: '#000',
+			// shadowOffset: { width: 10, height: 100 },
+			// shadowOpacity: 1,
+			// shadowRadius: 25,
+			// elevation: 3,
 		}
 	},
 
-	// text--------------
 	textBtn: {
-		color: '#FFF'
+		color: '#FFF',
+		fontFamily: generalStyles.fontFamily1,
+		fontWeight: 'bold'
 	}
 })

@@ -92,4 +92,5 @@ export const TextCustom = styled.Text`
     margin-bottom: ${props => props.mb || 0}px;
     margin-left: ${props => props.ml || 0}px;
     font-weight: ${props => props.bold || 'normal'};
+    font-family: ${generalStyles.fontFamily1};
 `

@@ -4,11 +4,11 @@ import {
     StyleSheet,
     View,
     Text,
-    TouchableOpacity,
-    Dimensions
+    TouchableOpacity
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
+import generalStyles from './../../../helpers/styles/general'
 
 export default props => {
 
@@ -33,7 +33,7 @@ export default props => {
                     <TouchableOpacity style={styles.btnDefault}>
                         <MaterialCommunityIcons name="heart-outline" color="#0008" size={20} />
                     </TouchableOpacity>
-                    <Text style={styles.textFormat(11, '#0004')}>FAVOURITE</Text>
+                    <Text style={styles.textFormat(11, '#0006')}>FAVOURITE</Text>
                 </View>
                 <View style={styles.viewBtn}>
                     <TouchableOpacity style={[styles.btnDefault, { borderColor: '#D47FA9', borderWidth: 2}]}>
@@ -46,7 +46,7 @@ export default props => {
                         style={styles.btnDefault}>
                         <AntDesign name="search1" color="#0008" size={20} />
                     </TouchableOpacity>
-                    <Text style={styles.textFormat(11, '#0004')}>SEARCH</Text>
+                    <Text style={styles.textFormat(11, '#0006')}>SEARCH</Text>
                 </View>
             </View>
         </View>
@@ -95,7 +95,9 @@ const styles = StyleSheet.create({
     textFormat(fts, color) {
         return {
             fontSize: fts || 10,
-            color: color || '#000'
+            color: color || '#000',
+            fontWeight: 'bold',
+            fontFamily: generalStyles.fontFamily1
         }
     }
 

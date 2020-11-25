@@ -9,7 +9,7 @@ import {
 import ScreenDefault from '../defaults/ScreenDefault'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Feather from 'react-native-vector-icons/Feather'
-import stylesGeneral from "./../../helpers/styles/general";
+import generalStyles from "./../../helpers/styles/general";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
@@ -91,6 +91,6 @@ const styles = StyleSheet.create({
     textCenter: {
         textAlign: 'center',
         fontSize: 23,
-        fontFamily: stylesGeneral.fontFamily1
+        fontFamily: generalStyles.fontFamily1
     }
 });

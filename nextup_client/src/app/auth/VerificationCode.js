@@ -4,12 +4,12 @@ import {
 	View,
 	Text,
 	Dimensions,
-	TextInput,
     TouchableOpacity,
     ToastAndroid
 } from 'react-native'
 import Feather from "react-native-vector-icons/Feather";
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import generalStyles from './../../helpers/styles/general'
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
@@ -99,7 +99,7 @@ export default props => {
                 onPress={() => props.navigation.goBack()} >
                 <Ionicons name='arrow-back' color='#0006' size={22}/>
             </TouchableOpacity>
-            <Text style={{ marginBottom: 30, fontSize: 25, fontWeight: 'bold'}}>Verification Code</Text>
+            <Text style={[styles.textFont(25, '#000', 'bold'), { marginBottom: 30}]}>Verification Code</Text>
         </View>
         <View style={styles.viewCenter}>
             <View style={styles.viewCode}>
@@ -196,7 +196,8 @@ const styles = StyleSheet.create({
         marginHorizontal: 5,
         backgroundColor: "#FFF",
         borderRadius: 15,
-        color: '#8A56AC'
+        color: '#8A56AC',
+        fontFamily: generalStyles.fontFamily1
     },
 
     btnResendCode: {
@@ -227,7 +228,7 @@ const styles = StyleSheet.create({
 			color: color ||'#FFF',
             fontSize: fts || 13,
             fontWeight: fontWeight || 'normal',
-            fontFamily: 'Montserrat-Light'
+            fontFamily: generalStyles.fontFamily1,
 		}
 	}
 })

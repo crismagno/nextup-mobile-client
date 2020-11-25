@@ -7,6 +7,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import generalStyles from './../../../helpers/styles/general'
 
 export default props => {
 
@@ -35,15 +36,15 @@ export default props => {
             </View>
             <View style={styles.containerBottom}>
                 <TouchableOpacity style={[styles.btnDefault, styles.btnHome]}>
-                    <Text style={styles.textFont(11, "#FFF")}>HOME</Text>
+                    <Text style={styles.textFont(11, "#FFF", "bold")}>HOME</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btnDefault}
                     onPress={() => goCategorySearch()}>
-                    <Text style={styles.textFont(11, "#0007")}>SEARCH</Text>
+                    <Text style={styles.textFont(11, "#0007", "bold")}>SEARCH</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.btnDefault}
                     onPress={() => goCategory()}>
-                    <Text style={styles.textFont(11, "#0007")}>CATEGORIES</Text>
+                    <Text style={styles.textFont(11, "#0007", "bold")}>CATEGORIES</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -84,8 +85,8 @@ const styles = StyleSheet.create({
             alignItems: 'center',
             fontSize: 25,
             fontWeight: 'bold',
-            marginTop: 10
-
+            marginTop: 10,
+            fontFamily: generalStyles.fontFamily1,
         }
     },
 
@@ -106,7 +107,8 @@ const styles = StyleSheet.create({
         return {
             color: color || '#FFF',
             fontSize: fts || 13,
-            fontWeight: fontWeight && 'bold'
+            fontWeight: fontWeight || 'normal',
+            fontFamily: generalStyles.fontFamily1
         }
     }
 
