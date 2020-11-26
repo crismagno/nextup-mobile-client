@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import generalStyles from './../../../helpers/styles/general'
+import MapView, { Marker } from 'react-native-maps';
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
@@ -38,6 +39,23 @@ export default props => {
             </View>
             <View style={styles.viewBottom}>
                 <View style={styles.viewLocale}>
+                    <MapView
+                        // customMapStyle={customMapStyle}
+                        style={{ flex: 1 }}
+                        initialRegion={{
+                            latitude: 37.78825,
+                            longitude: -122.4324,
+                            latitudeDelta: 0.0922,
+                            longitudeDelta: 0.0421,
+                        }}
+                    >
+                        <Marker
+                            coordinate={{
+                                latitude: 37.78825,
+                                longitude: -122.4324, 
+                            }}
+                        />
+                    </MapView>
                 </View>
             </View>
         </View>
@@ -116,13 +134,14 @@ const styles = StyleSheet.create({
     },
 
     viewLocale: {
-        borderWidth: 1,
+        // borderWidth: 1,
         borderColor: '#fff',
-        backgroundColor: '#241332',
+        backgroundColor: '#FFF',
         width: WIDTH/1.3,
         height: 110,
         borderTopRightRadius: 55,
-        borderBottomLeftRadius: 55
+        borderBottomLeftRadius: 55,
+        overflow: 'hidden'
     },
 
 })

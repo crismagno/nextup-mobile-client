@@ -197,6 +197,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFF",
         borderRadius: 15,
         color: '#8A56AC',
+        fontWeight: 'bold',
         fontFamily: generalStyles.fontFamily1
     },
 

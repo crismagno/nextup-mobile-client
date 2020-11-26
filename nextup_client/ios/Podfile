@@ -12,6 +12,8 @@ target 'nextup_client' do
 
   pod 'react-native-blur', :path => '../node_modules/@react-native-community/blur'
 
+  pod 'react-native-maps', :path => '../node_modules/react-native-maps'
+
   target 'nextup_clientTests' do
     inherit! :complete
     # Pods for testing

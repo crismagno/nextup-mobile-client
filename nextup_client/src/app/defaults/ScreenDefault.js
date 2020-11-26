@@ -61,6 +61,6 @@ const styles = StyleSheet.create({
 	textFont: {
 		fontSize: 20,
 		fontFamily: generalStyles.fontFamily1,
-		fontWeight: '600'
+		fontWeight: 'bold'
 	}
 })
