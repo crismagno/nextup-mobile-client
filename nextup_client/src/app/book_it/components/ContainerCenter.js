@@ -38,7 +38,8 @@ export default props => {
                 <View style={styles.viewLocale}>
                     <MapView
                         // customMapStyle={customMapStyle}
-                        style={{ flex: 1 }}
+                        mapType="standard"
+                        style={{ flex: 1, opacity: 0.999 }}
                         initialRegion={{
                             latitude: 37.78825,
                             longitude: -122.4324,
@@ -51,6 +52,8 @@ export default props => {
                                 latitude: 37.78825,
                                 longitude: -122.4324, 
                             }}
+                            title="NextUp"
+                            description="NextUp"
                         />
                     </MapView>
                 </View>

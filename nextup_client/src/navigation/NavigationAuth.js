@@ -18,7 +18,7 @@ import store from './../redux-store/store/store'
 export default props => (
     <Provider store={store} >
         <Stack.Navigator initialRouteName="Open" 
-            screenOptions={{ headerShown: false}}>
+            screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Open" component={Open} />
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="SignUp" component={SignUp} />

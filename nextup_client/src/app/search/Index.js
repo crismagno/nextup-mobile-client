@@ -128,6 +128,7 @@ export default props => {
 
 				<Input 
 					onChangeText={v => setValueSearch(v)}
+					onKeyPress={() => getSearch()}
 					value={valueSearch}
 					height={60} width={WIDTH - 50}
 					placeholder="Search"

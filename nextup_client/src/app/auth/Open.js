@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
 
 	textBtn: {
 		color: '#FFF',
-		fontFamily: generalStyles.fontFamily1,
-		fontWeight: 'bold'
+		fontFamily: generalStyles.fontFamily2
 	}
 })
