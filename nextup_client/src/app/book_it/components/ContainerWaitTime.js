@@ -19,9 +19,9 @@ export default props => {
 
     return <View style={styles.container}>
 
-        <Text style={[styles.textFormat(30, '#000', 'bold'), { marginTop: 40 }]}>Waiting time</Text>
-        <Text style={styles.textFormat(30, '#000', 'bold')}>is up!</Text>
-        <Text style={[styles.textFormat(13, '#000', 'normal'), { marginTop: 25 }]}>Please come in now.</Text>
+        <Text style={[styles.textFormat(35, '#000', 'bold'), { marginTop: 40 }]}>Waiting time</Text>
+        <Text style={styles.textFormat(35, '#000', 'bold')}>is up!</Text>
+        <Text style={[styles.textFormat(15, '#000', 'normal'), { marginTop: 25 }]}>Please come in now.</Text>
 
         <View style={styles.containerMaps}>
             <View style={styles.viewTop}>
@@ -62,7 +62,7 @@ export default props => {
 
         <TouchableOpacity onPress={() => waitTimeOk()}
             style={styles.btnBookIt}>
-            <Text style={styles.textFormat(14, '#FFF', 'bold')}>OK</Text>
+            <Text style={styles.textFormat(14, '#FFF')}>OK</Text>
         </TouchableOpacity>
     </View>
 }

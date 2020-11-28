@@ -110,13 +110,13 @@ export default props => {
             </View>
             <TouchableOpacity style={styles.btnResendCode}
                 onPress={() => resendCode()} >
-                <Text style={styles.textFont(12, '#8A56AC', 'bold')}>Resend Code</Text>
+                <Text style={styles.textFont(12, '#8A56AC')}>Resend Code</Text>
             </TouchableOpacity>
         </View>
         <View style={styles.viewBottom}>
             <TouchableOpacity style={styles.btnVerify}
                 onPress={() => verifyCode()}>
-                <Text style={styles.textFont(15, '#FFF', 'bold')}>VERIFY</Text>
+                <Text style={styles.textFont(15, '#FFF')}>VERIFY</Text>
             </TouchableOpacity>
             <View style={styles.keyboardCode}>
                 {renderButtons()}
@@ -197,7 +197,6 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFF",
         borderRadius: 15,
         color: '#8A56AC',
-        fontWeight: 'bold',
         fontFamily: generalStyles.fontFamily1
     },
 

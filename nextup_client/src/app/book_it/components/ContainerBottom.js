@@ -13,34 +13,42 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
 
-    const datesBookIt = [
-        {
-            hours: '2.00',
-            type: 'PM'
-        },
-        {
-            hours: '2.15',
-            type: 'PM'
-        },
-        {
-            hours: '2.30',
-            type: 'PM'
-        },
-        {
-            hours: '2.45',
-            type: 'PM'
-        },
-        {
-            hours: '3.00',
-            type: 'PM'
+    const allHours = () => {
+        let arrayPM = []
+        let hours = 0
+        let sumTemp = 0.20
+
+        while(hours <= 12) {
+
+            arrayPM.push({
+                hours: hours.toFixed(2)+"",
+                type: 'PM'
+            })
+
+            hours += sumTemp
         }
-    ]
+
+        hours = 0
+
+        while(hours <= 12) {
+
+            arrayPM.push({
+                hours: hours.toFixed(2)+"",
+                type: 'AM'
+            })
+                        
+            hours += sumTemp
+        }
+
+        return arrayPM
+
+    }
 
     const [numPeople, setNumPeople] = useState(0)
     const [dateBook, setDateBook] = useState(2)
 
     const renderDatesBookIt = () => {
-        const buttonsFormat = datesBookIt.map((dateBookIt, index) => {
+        const buttonsFormat = allHours().map((dateBookIt, index) => {
             let activeButton = +dateBookIt.hours !== dateBook ? styles.buttonDateBookIt : styles.buttonDateBookItActive
             let activeText = +dateBookIt.hours !== dateBook ? styles.textFormat(12, '#0009') : styles.textFormat(12, '#000', 'bold')
             return <TouchableOpacity key={`${dateBookIt.hours}_${index}`} onPress={() => setDateBook(+dateBookIt.hours)}
@@ -62,7 +70,7 @@ export default props => {
     }
 
     return <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.textFormat(25, '#000', 'bold')}>How many people?</Text>
+        <Text style={styles.textFormat(28, '#000', 'bold')}>How many people?</Text>
         <View style={styles.viewManyMinusPeople}>
             <TouchableOpacity onPress={() => numPeople > 0 && setNumPeople(numPeople - 1)} 
                 style={styles.defaultButton()}>
@@ -75,7 +83,7 @@ export default props => {
             </TouchableOpacity>
         </View>
         <View style={styles.viewTime} >
-            <Text style={styles.textFormat(15, '#000', null)}>Time</Text>
+            <Text style={styles.textFormat(15, '#000')}>Time</Text>
 
             {renderDatesBookIt()}
 
@@ -83,10 +91,10 @@ export default props => {
         <View style={styles.viewButtonsBottom}>
             <TouchableOpacity onPress={() => executeBookIt()}
                 style={styles.btnBookIt}>
-                <Text style={styles.textFormat(14, '#FFF', 'bold')}>BOOK IT</Text>
+                <Text style={styles.textFormat(14, '#FFF')}>BOOK IT</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.btnBack} onPress={() => props.navigation.goBack()}>
-                <Text style={styles.textFormat(12, '#8A56AC')}>GO BACK</Text>
+                <Text style={styles.textFormat(12, '#AC66D9')}>GO BACK</Text>
             </TouchableOpacity>
         </View>
     </ScrollView>
@@ -142,18 +150,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 5,
         borderWidth: 1,
-        borderColor: '#0002',
+        borderColor: '#969696',
         backgroundColor: '#F8F8F8',
         borderRadius: 50,
         width: 150,
         marginBottom: 10
     },  
 
-    textFormat(fts, color, fontWeight, mh, fontFamily) {
+    textFormat(fts, color, fontWeight, mh) {
         return {
             color: color || '#FFF',
             fontSize: fts || 13,
-            fontWeight: fontWeight && 'bold',
+            fontWeight: fontWeight || 'normal',
             marginHorizontal: mh || 0,
             fontFamily: generalStyles.fontFamily1
         }

@@ -36,10 +36,10 @@ export const TextModal = styled.Text`
     font-size: ${props => props.size}px;
     font-weight: ${props => props.fontWeight};
     text-align: center;
-    padding-top: 20px;
-    padding-left: 70px;
-    padding-right: 70px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 10px;
     font-family: ${generalStyles.fontFamily1}
 `
 
@@ -61,7 +61,7 @@ export const ButtonStepCancel = styled.TouchableOpacity`
 `
 
 export const CenterModal = styled.View`
-    width: ${WIDTH - 100}px;
+    width: ${WIDTH - 50}px;
     align-items: center;
     justify-content: center;
 `

@@ -118,8 +118,8 @@ export default props => {
             {/* bottom */}
             <View style={styles.boxBottom}>
                 <TouchableOpacity style={styles.btnGo} onPress={goBookIt}>
-                    <Text style={[styles.textFont(13, '#FFF', 'bold'), { marginRight: 5}]}>GO</Text>
-                    <MaterialCommunityIcons name="arrow-right" color="#FFF" size={17} />     
+                    <Text style={[styles.textFont(13, '#FFF'), { marginRight: 5}]}>GO</Text>
+                    <MaterialCommunityIcons name="arrow-right" color="#FFF" size={22} />     
                 </TouchableOpacity>
             </View>
         </View>

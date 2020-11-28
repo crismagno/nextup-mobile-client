@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
     StyleSheet,
     View,
@@ -6,11 +6,13 @@ import {
     TouchableOpacity,
     Dimensions,
     Image
-} from 'react-native';
+} from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import generalStyles from './../../../helpers/styles/general'
 
 export default props => {
+
+    const avatar = require('./../../../assets/images/avatar.png')
 
     return (
         <View style={styles.container}>
@@ -23,9 +25,9 @@ export default props => {
                 </TouchableOpacity>   
             </View>
             <View style={styles.containerCenter}>
-                <Text style={styles.textFormat(23, '#000', true)} >THAI THAI</Text>
+                <Text style={styles.textFormat(23, '#000', 'bold')} >THAI THAI</Text>
                 <View sytle={styles.viewImg}>
-                    <Image style={styles.imgAvatar} source={require('./../../../assets/images/avatar.png')} />
+                    <Image style={styles.imgAvatar} source={avatar} />
                     <View style={styles.iconStar}>
                         <MaterialCommunityIcons name="star" color="#FFF" size={12} />
                     </View>
@@ -62,7 +64,7 @@ const styles = StyleSheet.create({
         return {
             color: color || '#FFF',
             fontSize: fts || 13,
-            fontWeight: fontWeight && 'bold',
+            fontWeight: fontWeight || 'normal',
             marginTop: 5,
             fontFamily: generalStyles.fontFamily1
         }

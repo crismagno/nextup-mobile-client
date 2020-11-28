@@ -1,4 +1,4 @@
 export default {
-    fontFamily1: 'Montserrat-Light',
-    fontFamily2: 'Montserrat-Regular'
+    fontFamily1: 'Montserrat-Regular',
+    fontFamily2: 'Montserrat-Light'
 }

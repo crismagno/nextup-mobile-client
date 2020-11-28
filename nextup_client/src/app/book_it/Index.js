@@ -35,7 +35,7 @@ export default props => {
 	
 	// texts modals
 	const steps = {
-		step1To4: "Waiting for Thai's confirmation.",
+		step1To4: "Waiting for Thai Thai's confirmation.",
 		step5: "Your spot at Thai Thai for 2:00 PM is confirmed",
 		step6: "You're next up in 15 minutes",
 		cancelNow: "Cancel your spot now?",
@@ -104,7 +104,7 @@ export default props => {
 			showHeader = false
 		}
 
-		return <Modal top={stepModal == 9 ? HEIGHT/3.4 : HEIGHT/2.5}>
+		return <Modal top={stepModal == 9 ? HEIGHT/3.2 : HEIGHT/2.5}>
 			{ showHeader && renderModalHeader() }
 			{ renderModalCenter() }
 			{ renderModalBottom() }

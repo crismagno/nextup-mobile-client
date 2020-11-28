@@ -13,8 +13,8 @@ import TestMaps from './../app/test/test-maps'
 const Drawer = createDrawerNavigator()
 export default props => (
     <Drawer.Navigator initialRouteName="Home"
-        drawerStyle={ { width: '80%', borderTopRightRadius: 100 }}
-        openByDefault={true}
+        drawerStyle={{ width: '80%', borderTopRightRadius: 100 }}
+        openByDefault={false}
         drawerContent ={props => DrawerCustom(props)}>
         <Drawer.Screen {...props} name="Home" component={Home} />
         <Drawer.Screen {...props} name="Category" component={Category} />

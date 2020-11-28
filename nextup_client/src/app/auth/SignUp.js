@@ -57,10 +57,10 @@ export default props => {
 				<View style={styles.groupButton}>
 					<TouchableOpacity style={styles.btnDefault}
 						onPress={() => props.navigation.navigate("SignIn")}>
-						<Text style={styles.textFont(13, '#FFF8', 'bold')}>LOG IN</Text>
+						<Text style={styles.textFont(13, '#FFF8', 'normal')}>LOG IN</Text>
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.btnDefault}>
-						<Text style={styles.textFont(13, '#FFF', 'bold')}>SIGN UP</Text>
+						<Text style={styles.textFont(13, '#FFF', 'normal')}>SIGN UP</Text>
 					</TouchableOpacity>
 				</View>
 				<View style={styles.form}>
@@ -94,7 +94,7 @@ export default props => {
 				</View>
 				<TouchableOpacity style={styles.btnContinue}
 					onPress={() => continueLogin()}>
-					<Text style={styles.textFont(14, '#FFF', 'bold')}>CONTINUE</Text>
+					<Text style={styles.textFont(14, '#FFF', 'normal')}>CONTINUE</Text>
 				</TouchableOpacity>
 			</View>
 		</View>
