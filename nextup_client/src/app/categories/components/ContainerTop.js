@@ -17,7 +17,7 @@ export default props => {
                     <MaterialCommunityIcons style={{marginTop: 20}} name="arrow-left" color="#000" size={23} />      
                 </TouchableOpacity>      
                 <TouchableOpacity onPress={() => props.navigation.openDrawer()}>
-                    <MaterialCommunityIcons style={{marginTop: 20}} name="cog-outline" color="#000" size={23} />
+                    <MaterialCommunityIcons style={{marginTop: 20}} name="cog-outline" color="#0005" size={23} />
                 </TouchableOpacity>
             </View>
             <View style={styles.containerCenter}>

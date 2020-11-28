@@ -40,11 +40,11 @@ export const ContainerCenter = styled.View`
     height: ${props => props.height};
     width: ${props => props.width};
     /* margin-top: 10px; */
-    margin-bottom: 30px
+    margin-bottom: 10px
 `
 export const ContainerBottom = styled.View`
-    padding-top: 40px;
-    align-items: center;
+    padding-top: 0px;
+    align-items: flex-start;
     flex: 1;
     width: ${props => props.width};
 `
@@ -69,21 +69,24 @@ export const Scroll = styled.ScrollView`
 export const ContainerBox = styled.TouchableOpacity`
     flex-direction: row;
     align-items: center;
-    border-bottom-color: #463851;
+    justify-content: flex-start;
+    border-bottom-color: #FFF3;
     border-bottom-width: 1px;
+    width: ${props => props.width};
     padding-top: 20px;
-    padding-right: 15px;
+    /* padding-right: 15px; */
     padding-bottom: 20px;
-    padding-left: 15px;
+    /* padding-left: 15px; */
 `
 export const ContainerBoxTitle = styled.View`
 `
 
 export const ImageCompany = styled.Image`
     margin-right: 10px;
-    width: 45px;
-    height: 45px;
-    border-radius: 1000
+    width: 50px;
+    height: 50px;
+    border-radius: 1000;
+    border: 1.5px solid #fff
 `
 export const TextCustom = styled.Text`
     font-size: ${props => props.size || 10}px;
@@ -93,4 +96,5 @@ export const TextCustom = styled.Text`
     margin-left: ${props => props.ml || 0}px;
     font-weight: ${props => props.bold || 'normal'};
     font-family: ${generalStyles.fontFamily1};
+    color: #FFF;
 `
