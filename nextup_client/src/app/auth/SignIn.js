@@ -133,11 +133,12 @@ const styles = StyleSheet.create({
 		paddingVertical: 7,
 		paddingHorizontal: 20,
         marginHorizontal: 5,
-        borderRadius: 50
+		borderRadius: 50,
     },
     
     btnLogin: {
-        backgroundColor: '#8A56AC'
+		backgroundColor: '#8A56AC',
+		...generalStyles.shadowButtons()
     },  
 
 	form: {
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
 		fontWeight: '600'
 	},
 	inputFormActive: {
-		borderBottomWidth: 1.2,
+		borderBottomWidth: 1.5,
         borderColor: '#463851',
         marginVertical: 5,
 		paddingBottom: 5,
@@ -171,13 +172,15 @@ const styles = StyleSheet.create({
 		height: 50,
 		marginTop: 25,
 		backgroundColor: '#8A56AC',
-		borderRadius: 25
+		borderRadius: 25,
+		...generalStyles.shadowButtons()
     },
     btnForgot: {
         justifyContent: 'center',
 		alignItems: 'center',
         marginVertical: 15,
-        padding: 10
+		padding: 10,
+		...generalStyles.shadowButtons()
     },
 
 	//text------------

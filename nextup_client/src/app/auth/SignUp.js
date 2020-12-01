@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
 		alignItems: 'stretch',
 		backgroundColor: '#FFF',
 		borderRadius: 50,
-		paddingHorizontal: 30
+		paddingHorizontal: 30,
 	},
 	inputForm: {
 		borderBottomWidth: 0.8,
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
 		fontFamily: generalStyles.fontFamily1,
 	},
 	inputFormActive: {
-		borderBottomWidth: 1.2,
+		borderBottomWidth: 1.5,
         borderColor: '#463851',
         marginVertical: 5,
 		paddingBottom: 5,
@@ -167,7 +167,8 @@ const styles = StyleSheet.create({
 		height: 50,
 		marginTop: 25,
 		backgroundColor: '#8A56AC',
-		borderRadius: 25
+		borderRadius: 25,
+		...generalStyles.shadowButtons()
 	},
 
 	//text------------

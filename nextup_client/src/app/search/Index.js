@@ -23,6 +23,8 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { useDispatch } from "react-redux"
+import * as Animatable from 'react-native-animatable'
+
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
@@ -135,50 +137,52 @@ export default props => {
 		</View>
 	}
 	
-	return <Container height={HEIGHT} width={WIDTH}>
-        <BlurView style={styles.blurView}
-            reducedTransparencyFallbackColor="gray"
-            blurType="dark"
-            blurAmount={10}
-        />
-
+	return <Animatable.View animation={'slideInRight'} duration={500} style={styles.containerAnimation}>
 		<Container height={HEIGHT} width={WIDTH}>
+			<BlurView style={styles.blurView}
+				reducedTransparencyFallbackColor="gray"
+				blurType="dark"
+				blurAmount={10}
+			/>
 
-			<ContainerHeader height={60} width={WIDTH}>
-				<ButtonBack onPress={() => goBackEventSearch()}>
-					<MaterialCommunityIcons name="arrow-left" size={25} color="#FFF" />
-				</ButtonBack>
-			</ContainerHeader>
-			
-			<ContainerCenter height={15} width={WIDTH}>
+			<Container height={HEIGHT} width={WIDTH}>
 
-				<Input 
-					onChangeText={v => setValueSearch(v)}
-					onKeyPress={() => getSearch()}
-					value={valueSearch}
-					height={60} width={WIDTH - 50}
-					placeholder="Search"
-					placeholderTextColor="#F5F4F6"
-					selectionColor="#F5F4F6"
-				/>
-
-				<ButtonSearch onPress={() => getSearch()}>
-					<AntDesign name="search1" size={20} color="#FFF" />
-				</ButtonSearch>
+				<ContainerHeader height={60} width={WIDTH}>
+					<ButtonBack onPress={() => goBackEventSearch()}>
+						<MaterialCommunityIcons name="arrow-left" size={25} color="#FFF" />
+					</ButtonBack>
+				</ContainerHeader>
 				
-			</ContainerCenter>
-			
-			<ContainerBottom height={50} width={WIDTH}>
+				<ContainerCenter height={15} width={WIDTH}>
 
-				{/* <Modal height={HEIGHT/2} width={WIDTH - 40}> */}
-					{renderCompanies()}
-				{/* </Modal> */}
+					<Input 
+						onChangeText={v => setValueSearch(v)}
+						onKeyPress={() => getSearch()}
+						value={valueSearch}
+						height={60} width={WIDTH - 50}
+						placeholder="Search"
+						placeholderTextColor="#F5F4F6"
+						selectionColor="#F5F4F6"
+					/>
+
+					<ButtonSearch onPress={() => getSearch()}>
+						<AntDesign name="search1" size={20} color="#FFF" />
+					</ButtonSearch>
+					
+				</ContainerCenter>
 				
-			</ContainerBottom>
+				<ContainerBottom height={50} width={WIDTH}>
+
+					{/* <Modal height={HEIGHT/2} width={WIDTH - 40}> */}
+						{renderCompanies()}
+					{/* </Modal> */}
+					
+				</ContainerBottom>
+
+			</Container>
 
 		</Container>
-
-	</Container>
+	</Animatable.View>
 }
 
 const styles = StyleSheet.create({
@@ -194,6 +198,13 @@ const styles = StyleSheet.create({
 	containerBlur: {
 		flex: 1,
 		position: 'absolute',
-
 	},
+
+	containerAnimation: {
+		height: HEIGHT,
+		width: WIDTH,
+		position: 'absolute',
+		left: 0,
+		top: 0
+	}
 })

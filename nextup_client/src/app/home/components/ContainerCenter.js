@@ -118,7 +118,8 @@ const styles = StyleSheet.create({
         // borderColor: '#FFF',
         marginHorizontal: 10,
         borderRadius: 40,
-        width: 135
+        width: 135,
+        ...generalStyles.shadowButtons({ elevation: 5 })
     },
 
     postInto: {

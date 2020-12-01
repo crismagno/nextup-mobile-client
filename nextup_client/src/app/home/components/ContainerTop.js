@@ -99,7 +99,8 @@ const styles = StyleSheet.create({
 
     btnHome: {
 		backgroundColor: '#8A56AC',
-		marginRight: 20
+        marginRight: 20,
+        ...generalStyles.shadowButtons()
     },
 
     //text------------

@@ -9,22 +9,14 @@ import {
 import ScreenDefault from '../defaults/ScreenDefault'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Feather from 'react-native-vector-icons/Feather'
-import generalStyles from "./../../helpers/styles/general";
+import generalStyles from "./../../helpers/styles/general"
+import * as Animatable from 'react-native-animatable'
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
 
     const [step, setStep] = useState(1)
-
-    const renderStep = () => {
-        switch(step) {
-            case 1: return <Text style={styles.textCenter}>Your virtual line</Text>
-            case 2: return <Text style={styles.textCenter}>Check-in, book your spot, manage your line.</Text>
-            case 3: return <Text style={[styles.textCenter, { fontWeight: 'bold'}]}>Welcome to NextUp!</Text>
-            default: return <Text style={styles.textCenter}></Text>
-        }
-    }
 
     const nextStep = () => {
         if (step == 1) setStep(2)
@@ -38,7 +30,10 @@ export default props => {
                 style={styles.btnCenter}
                 onPress={() => nextStep()}>
                 <View style={styles.stepsText}>
-                    {renderStep()}
+                    {step == 1 &&  <Animatable.Text animation="fadeIn" duration={500} style={styles.textCenter}>Your virtual line</Animatable.Text>}
+                    {step == 2 &&  <Animatable.Text animation="slideInRight" duration={500} style={styles.textCenter}>Check-in, book your spot, manage your line.</Animatable.Text>}
+                    {step == 3 &&  <Animatable.Text animation="slideInRight" duration={500} style={[styles.textCenter, { fontWeight: 'bold'}]}>Welcome to NextUp!</Animatable.Text>}
+                    {step == 4 &&  <Animatable.Text animation="slideInRight" duration={500} style={styles.textCenter}></Animatable.Text>}
                 </View>
                 <View style={styles.steps}>
                     <View/>

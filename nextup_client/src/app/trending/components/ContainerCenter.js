@@ -209,11 +209,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#817889',
         borderRadius: 50,
 
-        shadowColor: '#000',
-        shadowOffset: { width: 1, height: 2 },
-        shadowOpacity: 1,
-        shadowRadius: 5,
-        elevation: 5
+        ...generalStyles.shadowButtons()
     }
 
 })

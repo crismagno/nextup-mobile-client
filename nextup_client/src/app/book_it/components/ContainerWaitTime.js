@@ -91,7 +91,8 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         width: 180,
         marginVertical: 15,
-        backgroundColor: '#8A56AC'
+        backgroundColor: '#8A56AC',
+        ...generalStyles.shadowButtons()
     },
 
     textFormat(fts, color, fontWeight, mh, fontFamily) {

@@ -8,6 +8,7 @@ import {
 } from 'react-native'
 import ScreenDefault from '../defaults/ScreenDefault'
 import generalStyles from './../../helpers/styles/general'
+import * as Animatable from 'react-native-animatable'
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
@@ -35,12 +36,7 @@ const styles = StyleSheet.create({
 			width: WIDTH / 1.6,
 			borderRadius: 25,
 			backgroundColor: color || '#FFF',
-
-			// shadowColor: '#000',
-			// shadowOffset: { width: 10, height: 100 },
-			// shadowOpacity: 1,
-			// shadowRadius: 25,
-			// elevation: 3,
+			...generalStyles.shadowButtons()
 		}
 	},
 

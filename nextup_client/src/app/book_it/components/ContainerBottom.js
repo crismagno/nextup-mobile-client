@@ -142,7 +142,8 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         width: WIDTH/1.2,
         marginBottom: 10,
-        backgroundColor: '#8A56AC'
+        backgroundColor: '#8A56AC',
+        ...generalStyles.shadowButtons()
     },
 
     btnBack: {
@@ -154,7 +155,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#F8F8F8',
         borderRadius: 50,
         width: 150,
-        marginBottom: 10
+        marginBottom: 10,
+        ...generalStyles.shadowButtons()
     },  
 
     textFormat(fts, color, fontWeight, mh) {

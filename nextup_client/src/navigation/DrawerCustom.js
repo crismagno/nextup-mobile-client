@@ -108,7 +108,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#FFF',
-        borderTopRightRadius: 100
+        borderTopRightRadius: 100,
+        ...generalStyles.shadowButtons({ elevation: 10 })
     },
 
     containerTop: {
