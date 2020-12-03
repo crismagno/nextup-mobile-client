@@ -24,8 +24,8 @@ export default props => {
     return (
         <View style={styles.container}>
             <View style={styles.containerTop}>
-                <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                    <MaterialCommunityIcons style={{marginTop: 20, }} name="arrow-left" color="#000" size={25} />      
+                <TouchableOpacity style={styles.btnMini} onPress={() => props.navigation.goBack()}>
+                    <MaterialCommunityIcons name="arrow-left" color="#000" size={23} />      
                 </TouchableOpacity>      
             </View>
             <View style={styles.containerCenter}>
@@ -60,11 +60,11 @@ const styles = StyleSheet.create({
 
     containerTop: {
         flex: 1,
-		flexDirection: 'row',
+        flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
-        paddingTop: 5
-        // borderWidth: 1
+        marginTop: 15,
     },
 
     containerCenter: {
@@ -99,6 +99,10 @@ const styles = StyleSheet.create({
             fontWeight: 'bold',
             fontFamily: generalStyles.fontFamily1
         }
+    },
+
+    btnMini: {
+        padding: 7
     }
 
 })

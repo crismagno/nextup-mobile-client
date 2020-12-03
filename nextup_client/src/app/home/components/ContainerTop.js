@@ -27,8 +27,8 @@ export default props => {
     return (
         <View style={styles.container}>
             <View style={styles.containerTop}>
-                <TouchableOpacity onPress={() => props.navigation.openDrawer()}>
-                    <MaterialCommunityIcons style={{marginTop: 20}} name="cog-outline" color="#0005" size={23} />
+                <TouchableOpacity style={styles.btnMini} onPress={() => props.navigation.openDrawer()}>
+                    <MaterialCommunityIcons name="cog-outline" color="#0005" size={23} />
                 </TouchableOpacity>
             </View>
             <View style={styles.containerCenter}>
@@ -62,12 +62,13 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
         justifyContent: 'flex-end',
         alignItems: 'center',
-		paddingHorizontal: 20
+        paddingHorizontal: 20,
+        marginTop: 10
     },
 
     containerCenter: {
-        flex: 1,
-        paddingHorizontal: 50
+        // flex: 1,
+        paddingHorizontal: 55
     },
 
     containerBottom: {
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
 		borderBottomLeftRadius: 85,
 		paddingVertical: 10,
-		paddingHorizontal: 20
+		paddingHorizontal: 0
     },
 
     textFormat() {
@@ -85,7 +86,6 @@ const styles = StyleSheet.create({
             alignItems: 'center',
             fontSize: 25,
             fontWeight: 'bold',
-            marginTop: 10,
             fontFamily: generalStyles.fontFamily1,
         }
     },
@@ -111,6 +111,10 @@ const styles = StyleSheet.create({
             fontWeight: fontWeight || 'normal',
             fontFamily: generalStyles.fontFamily1
         }
+    },
+
+    btnMini: {
+        padding: 7
     }
 
 })

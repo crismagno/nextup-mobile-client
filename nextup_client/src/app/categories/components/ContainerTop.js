@@ -13,11 +13,11 @@ export default props => {
     return (
         <View style={styles.container}>
             <View style={styles.containerTop}>
-                <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                    <MaterialCommunityIcons style={{marginTop: 20}} name="arrow-left" color="#000" size={23} />      
+                <TouchableOpacity style={styles.btnMini} onPress={() => props.navigation.goBack()}>
+                    <MaterialCommunityIcons name="arrow-left" color="#000" size={23} />      
                 </TouchableOpacity>      
-                <TouchableOpacity onPress={() => props.navigation.openDrawer()}>
-                    <MaterialCommunityIcons style={{marginTop: 20}} name="cog-outline" color="#0005" size={23} />
+                <TouchableOpacity style={styles.btnMini} onPress={() => props.navigation.openDrawer()}>
+                    <MaterialCommunityIcons name="cog-outline" color="#0005" size={23} />
                 </TouchableOpacity>
             </View>
             <View style={styles.containerCenter}>
@@ -34,10 +34,11 @@ const styles = StyleSheet.create({
     },
 
     containerTop: {
-		flexDirection: 'row',
+        flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
-        paddingTop: 5,
+        marginTop: 10,
 
         shadowColor: '#000',
         shadowOffset: { width: 10, height: 2 },
@@ -47,8 +48,7 @@ const styles = StyleSheet.create({
     },
 
     containerCenter: {
-        paddingHorizontal: 55,
-        borderBottomLeftRadius: 85
+        paddingHorizontal: 55
     },
 
     textFormat() {
@@ -69,6 +69,10 @@ const styles = StyleSheet.create({
             fontWeight: fontWeight && 'bold',
             fontFamily: generalStyles.fontFamily1
         }
+    },
+
+    btnMini: {
+        padding: 7
     }
 
 })

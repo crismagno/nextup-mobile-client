@@ -17,11 +17,11 @@ export default props => {
     return (
         <View style={styles.container}>
             <View style={styles.containerTop}>
-                <TouchableOpacity onPress={() => props.navigation.goBack()}>
-                    <MaterialCommunityIcons style={{marginTop: 20}} name="arrow-left" color="#000" size={23} />      
+                <TouchableOpacity style={styles.btnMini} onPress={() => props.navigation.goBack()}>
+                    <MaterialCommunityIcons name="arrow-left" color="#000" size={23} />      
                 </TouchableOpacity>   
-                <TouchableOpacity onPress={() => props.navigation.openDrawer()}>
-                    <MaterialCommunityIcons style={{marginTop: 20}} name="cog-outline" color="#0005" size={23} />
+                <TouchableOpacity style={styles.btnMini} onPress={() => props.navigation.openDrawer()}>
+                    <MaterialCommunityIcons name="cog-outline" color="#0005" size={23} />
                 </TouchableOpacity>   
             </View>
             <View style={styles.containerCenter}>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
-        paddingTop: 0,
+        marginTop: 10,
 
         shadowColor: '#000',
         shadowOffset: { width: 10, height: 2 },
@@ -94,6 +94,10 @@ const styles = StyleSheet.create({
         width: 55,
         height: 55,
         borderRadius: 1000
+    },
+
+    btnMini: {
+        padding: 7
     }
 
 })

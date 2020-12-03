@@ -23,7 +23,7 @@ export default props => {
 
     const verifyCode = () => {
         try {
-            if (code.length < 4) {
+            if (code.length < 3) {
                 showToast('code invalid!')
                 return false
             }
@@ -47,11 +47,13 @@ export default props => {
     }
 
     const setMessageCode = val => {
-        if (code.length < 4) {
-            let newCode = [...code]
+        let newCode = [...code]
+        if (code.length <= 3) {
             newCode.push(val)
             setCode(newCode)
+            code.length > 2 && verifyCode()
         }
+
     }
 
     const clearCode = () => {

@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     },
     
     styleScrollView1: {
-        paddingTop: 150,
+        paddingTop: 140,
         paddingBottom: 50
     },
 
