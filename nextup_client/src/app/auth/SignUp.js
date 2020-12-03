@@ -6,7 +6,8 @@ import {
 	Dimensions,
 	TextInput,
 	TouchableOpacity,
-	ToastAndroid
+	ToastAndroid,
+	Image
 } from 'react-native'
 import generalStyles from './../../helpers/styles/general'
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
@@ -15,6 +16,7 @@ export default props => {
 
 	const [user, setUser] = useState({ name: '', email: '', password: '', phone: '' })
 	const [currentInput, setCurrentInput] = useState(0)
+	const [load, setLoad] = useState(false)
 
 	const showToast = text => {
         ToastAndroid.show(String(text), ToastAndroid.SHORT)
@@ -40,9 +42,15 @@ export default props => {
             if (!user.phone.trim()) {
                 showToast('Phone invalid!')
                 return false
-            }
+			}
+			
+			setLoad(true)
 
-            props.navigation.navigate('VerificationCode')
+			setTimeout(() => {
+				props.navigation.navigate('VerificationCode')
+				setLoad(false)
+			}, 1000)
+
 
         } catch (error) {
             
@@ -94,7 +102,11 @@ export default props => {
 				</View>
 				<TouchableOpacity style={styles.btnContinue}
 					onPress={() => continueLogin()}>
-					<Text style={styles.textFont(14, '#FFF', 'normal')}>CONTINUE</Text>
+						{
+							load ? <Image style={{ width: 30, height: 30 }} 
+								source={generalStyles.loadRing} /> :
+							<Text style={styles.textFont(14, '#FFF', 'normal')}>CONTINUE</Text>
+						}
 				</TouchableOpacity>
 			</View>
 		</View>

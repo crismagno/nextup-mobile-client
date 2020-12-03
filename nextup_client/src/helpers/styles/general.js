@@ -1,4 +1,5 @@
 export default {
+
     fontFamily1: 'Montserrat-Regular',
     fontFamily2: 'Montserrat-Light',
 
@@ -10,5 +11,7 @@ export default {
             shadowRadius: objStyle.radius || 25, 
             elevation: objStyle.elevation || 1
         }
-    }
+    },
+
+    loadRing: require('./../../assets/images/load-ring.gif')
 }

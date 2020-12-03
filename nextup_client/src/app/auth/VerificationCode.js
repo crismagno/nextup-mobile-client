@@ -5,7 +5,8 @@ import {
 	Text,
 	Dimensions,
     TouchableOpacity,
-    ToastAndroid
+    ToastAndroid,
+    Image
 } from 'react-native'
 import Feather from "react-native-vector-icons/Feather";
 import Ionicons from 'react-native-vector-icons/Ionicons'
@@ -16,6 +17,7 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 export default props => {
 
     const [code, setCode] = useState([])
+    const [load, setLoad] = useState(false)
     
     const showToast = text => {
         ToastAndroid.show(String(text), ToastAndroid.SHORT)
@@ -28,8 +30,14 @@ export default props => {
                 return false
             }
 
-            showToast('Verification Code')
-            props.navigation.navigate('Steps')
+            
+            setLoad(true)
+            
+			setTimeout(() => {
+                showToast('Verification Code')
+                props.navigation.navigate('Steps')
+				setLoad(false)
+			}, 1000)
 
         } catch (error) {
             
@@ -118,7 +126,11 @@ export default props => {
         <View style={styles.viewBottom}>
             <TouchableOpacity style={styles.btnVerify}
                 onPress={() => verifyCode()}>
-                <Text style={styles.textFont(15, '#FFF')}>VERIFY</Text>
+                {
+                    load ? <Image style={{ width: 30, height: 30 }} 
+                        source={generalStyles.loadRing} /> :
+                    <Text style={styles.textFont(15, '#FFF')}>VERIFY</Text>
+                }
             </TouchableOpacity>
             <View style={styles.keyboardCode}>
                 {renderButtons()}

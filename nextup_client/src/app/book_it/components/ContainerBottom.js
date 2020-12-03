@@ -5,7 +5,8 @@ import {
     Text,
     TouchableOpacity,
     Dimensions,
-    ScrollView
+    ScrollView,
+    Image
 } from 'react-native';
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import generalStyles from "./../../../helpers/styles/general";
@@ -46,6 +47,7 @@ export default props => {
 
     const [numPeople, setNumPeople] = useState(0)
     const [dateBook, setDateBook] = useState(2)
+    const [load, setLoad] = useState(false)
 
     const renderDatesBookIt = () => {
         const buttonsFormat = allHours().map((dateBookIt, index) => {
@@ -66,7 +68,12 @@ export default props => {
     }
 
     const executeBookIt = () => {
-        props && props.executeBookIt && props.executeBookIt()
+        setLoad(true)
+
+        setTimeout(() => {
+            setLoad(false)
+            props && props.executeBookIt && props.executeBookIt()
+        }, 1000)
     }
 
     return <ScrollView contentContainerStyle={styles.container}>
@@ -91,7 +98,11 @@ export default props => {
         <View style={styles.viewButtonsBottom}>
             <TouchableOpacity onPress={() => executeBookIt()}
                 style={styles.btnBookIt}>
-                <Text style={styles.textFormat(14, '#FFF')}>BOOK IT</Text>
+                {
+                    load ? <Image style={{ width: 30, height: 30 }} 
+                        source={generalStyles.loadRing} /> :
+                    <Text style={styles.textFormat(14, '#FFF')}>BOOK IT</Text>
+                }
             </TouchableOpacity>
             <TouchableOpacity style={styles.btnBack} onPress={() => props.navigation.goBack()}>
                 <Text style={styles.textFormat(12, '#AC66D9')}>GO BACK</Text>
@@ -138,6 +149,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 15,
+        height: 50,
         // borderWidth: 1,
         borderRadius: 50,
         width: WIDTH/1.2,

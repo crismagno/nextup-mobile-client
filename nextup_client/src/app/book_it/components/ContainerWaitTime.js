@@ -4,7 +4,8 @@ import {
     View,
     Text,
     TouchableOpacity,
-    Dimensions
+    Dimensions,
+    Image
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import generalStyles from './../../../helpers/styles/general'
@@ -13,8 +14,15 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
 
+    const [load, setLoad] = useState(false)
+
     const waitTimeOk = () => {
-        props && props.waitTimeOk && props.waitTimeOk()
+        setLoad(true)
+
+        setTimeout(() => {
+            setLoad(false)
+            props && props.waitTimeOk && props.waitTimeOk()
+        }, 1000)
     }
 
     return <View style={styles.container}>
@@ -62,7 +70,11 @@ export default props => {
 
         <TouchableOpacity onPress={() => waitTimeOk()}
             style={styles.btnBookIt}>
-            <Text style={styles.textFormat(14, '#FFF')}>OK</Text>
+                {
+                    load ? <Image style={{ width: 30, height: 30 }} 
+                        source={generalStyles.loadRing} /> :
+                    <Text style={styles.textFormat(14, '#FFF')}>OK</Text>
+                }
         </TouchableOpacity>
     </View>
 }
@@ -90,6 +102,7 @@ const styles = StyleSheet.create({
         // borderWidth: 1,
         borderRadius: 50,
         width: 180,
+        height: 50,
         marginVertical: 15,
         backgroundColor: '#8A56AC',
         ...generalStyles.shadowButtons()
