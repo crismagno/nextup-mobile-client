@@ -46,14 +46,14 @@ export default props => {
     }
 
     const [numPeople, setNumPeople] = useState(0)
-    const [dateBook, setDateBook] = useState(2)
+    const [dateBook, setDateBook] = useState('')
     const [load, setLoad] = useState(false)
 
     const renderDatesBookIt = () => {
         const buttonsFormat = allHours().map((dateBookIt, index) => {
-            let activeButton = +dateBookIt.hours !== dateBook ? styles.buttonDateBookIt : styles.buttonDateBookItActive
-            let activeText = +dateBookIt.hours !== dateBook ? styles.textFormat(12, '#0009') : styles.textFormat(12, '#000', 'bold')
-            return <TouchableOpacity key={`${dateBookIt.hours}_${index}`} onPress={() => setDateBook(+dateBookIt.hours)}
+            let activeButton = `${dateBookIt.hours}_${dateBookIt.type}` !== dateBook ? styles.buttonDateBookIt : styles.buttonDateBookItActive
+            let activeText = `${dateBookIt.hours}_${dateBookIt.type}` !== dateBook ? styles.textFormat(12.5, '#0008', 'bold') : styles.textFormat(12.5, '#000', 'bold')
+            return <TouchableOpacity key={`${dateBookIt.hours}_${index}`} onPress={() => setDateBook(`${dateBookIt.hours}_${dateBookIt.type}`)}
                 style={activeButton}>
                 <Text style={[activeText, { marginRight: 5 }]}>{String(dateBookIt.hours).replace('.', ':')}</Text>
                 <Text style={activeText}>{dateBookIt.type}</Text>
@@ -201,11 +201,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         borderWidth: 0.5,
-        borderColor: '#0004',
+        borderColor: '#0003',
         marginHorizontal: 60,
         marginVertical: 5,
         borderRadius: 20,
-        padding: 3
+        padding: 4
     },
 
     buttonDateBookItActive: {

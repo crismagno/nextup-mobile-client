@@ -324,7 +324,6 @@ const styles = StyleSheet.create({
 	},
 
 	containerTop: {
-		height: '20%',
 		width: WIDTH,
 		backgroundColor: '#FFF',
 		borderBottomLeftRadius: 85,

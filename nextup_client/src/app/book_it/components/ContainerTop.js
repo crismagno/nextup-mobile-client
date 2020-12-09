@@ -57,7 +57,8 @@ const styles = StyleSheet.create({
     },
 
     containerCenter: {
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 2
     },
 
     textFormat(fts, color, fontWeight) {
@@ -71,8 +72,7 @@ const styles = StyleSheet.create({
     },
 
     viewImg: {
-        position: 'relative',
-        marginTop: 10
+        position: 'relative'
     },
 
     iconStar: {
