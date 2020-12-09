@@ -92,7 +92,7 @@ export default props => {
 				<TouchableOpacity style={styles.btnContinue}
                     onPress={() => signIn()}>
 					{
-						load ? <Image style={{ width: 30, height: 30 }} 
+						load ? <Image style={{ width: 25, height: 25 }} 
 							source={generalStyles.loadRing} /> :
 						<Text style={styles.textFont(14, '#FFF')}>CONTINUE</Text>
 					}

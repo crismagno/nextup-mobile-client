@@ -127,7 +127,7 @@ export default props => {
             <TouchableOpacity style={styles.btnVerify}
                 onPress={() => verifyCode()}>
                 {
-                    load ? <Image style={{ width: 30, height: 30 }} 
+                    load ? <Image style={{ width: 25, height: 25 }} 
                         source={generalStyles.loadRing} /> :
                     <Text style={styles.textFont(15, '#FFF')}>VERIFY</Text>
                 }
@@ -226,6 +226,7 @@ const styles = StyleSheet.create({
         paddingVertical: 14,
         paddingHorizontal: 10,
         width: WIDTH,
+        height: 48
     },
 
     btnGoBack: {

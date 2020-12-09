@@ -99,7 +99,7 @@ export default props => {
             <TouchableOpacity onPress={() => executeBookIt()}
                 style={styles.btnBookIt}>
                 {
-                    load ? <Image style={{ width: 30, height: 30 }} 
+                    load ? <Image style={{ width: 25, height: 25 }} 
                         source={generalStyles.loadRing} /> :
                     <Text style={styles.textFormat(14, '#FFF')}>BOOK IT</Text>
                 }
