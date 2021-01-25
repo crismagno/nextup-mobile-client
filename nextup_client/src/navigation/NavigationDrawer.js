@@ -12,7 +12,7 @@ import TestMaps from './../app/test/test-maps'
 
 const Drawer = createDrawerNavigator()
 export default props => (
-    <Drawer.Navigator initialRouteName="BookIt"
+    <Drawer.Navigator initialRouteName="Home"
         drawerStyle={{ width: '80%', borderTopRightRadius: 100 }}
         openByDefault={false}
         drawerContent ={props => DrawerCustom(props)}>
