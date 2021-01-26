@@ -9,7 +9,7 @@ import {
     Image
 } from 'react-native';
 import Fontisto from 'react-native-vector-icons/Fontisto'
-import generalStyles from "./../../../helpers/styles/general";
+import generalStyles from "./../../../assets/styles/general";
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {

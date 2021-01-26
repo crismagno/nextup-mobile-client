@@ -1,47 +1,34 @@
-import React from 'react'
-import {
-	StyleSheet,
-	View,
-	Text,
-	TouchableOpacity,
-	Dimensions
-} from 'react-native'
-import ScreenDefault from '../defaults/ScreenDefault'
-import generalStyles from './../../helpers/styles/general'
-import * as Animatable from 'react-native-animatable'
-
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import ScreenDefault from './../../components/defaults/ScreenDefault';
+import generalStyles from './../../assets/styles/general';
+import ButtonB1 from "../../components/defaults/buttons/ButtonB1";
 
 export default props => {
+
+	const goToRoute = route => {
+		props.navigation.navigate(route);
+	};
+
 	return <ScreenDefault showCircle>
-		<TouchableOpacity style={styles.btnDefault('#8A56AC')}
-			onPress={() => props.navigation.navigate("SignIn")}>
-			<Text style={styles.textBtn}>LOG IN</Text>
-		</TouchableOpacity>
-		<TouchableOpacity style={styles.btnDefault('#241332')}
-			onPress={() => props.navigation.navigate("SignUp")}>
-			<Text style={styles.textBtn}>SIGN UP</Text>
-		</TouchableOpacity>
+		<ButtonB1 
+			style={styles.btnDefault}
+			backgroundColor={generalStyles.colors.colorA3} 
+			typeWidthBtn="middle"
+			label="LOG IN"
+			execEvent={() => goToRoute("SignIn")}
+		/>
+		<ButtonB1 
+			backgroundColor={generalStyles.colors.colorA4} 
+			typeWidthBtn="middle"
+			label="SIGN UP"
+			execEvent={() => goToRoute("SignUp")}
+		/>
 	</ScreenDefault>
-}
+};
 
 const styles = StyleSheet.create({
-	btnDefault(color) {
-		return {
-			justifyContent: 'center',
-			alignItems: 'center',
-			// borderWidth: 1,
-			marginVertical: 12,
-			paddingVertical: 16,
-			width: WIDTH / 1.6,
-			borderRadius: 25,
-			backgroundColor: color || '#FFF',
-			...generalStyles.shadowButtons()
-		}
-	},
-
-	textBtn: {
-		color: '#FFF',
-		fontFamily: generalStyles.fontFamily1
+	btnDefault: {
+		marginBottom: 15
 	}
-})
+});

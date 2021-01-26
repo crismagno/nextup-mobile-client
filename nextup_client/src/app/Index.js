@@ -1,10 +1,10 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native'
-import NavigationAppIndex from "./../navigation/NavigationDrawer";
+import { SafeAreaView } from 'react-native';
+import { useSelector } from "react-redux";
 
-import { useSelector } from "react-redux"
-import Search from './search/Index'
-import IF from './defaults/IF'
+import NavigationAppIndex from "./../navigation/NavigationDrawer";
+import Search from './search/Index';
+import IF from './../components/defaults/IF';
 
 export default () => {
 
@@ -18,4 +18,4 @@ export default () => {
 			<Search />
 		</IF>
 	</SafeAreaView>
-}
+};

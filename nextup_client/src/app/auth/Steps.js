@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
   Dimensions
 } from 'react-native';
-import ScreenDefault from '../defaults/ScreenDefault'
+import ScreenDefault from './../../components/defaults/ScreenDefault'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Feather from 'react-native-vector-icons/Feather'
-import generalStyles from "./../../helpers/styles/general"
+import generalStyles from "./../../assets/styles/general"
 import * as Animatable from 'react-native-animatable'
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
@@ -24,7 +24,7 @@ export default props => {
         else props.navigation.navigate('App')
     }
 
-    return <ScreenDefault showCircle stylePass={{ backgroundColor: '#FFF'}}>
+    return <ScreenDefault showCircle stylePass={{ backgroundColor: generalStyles.colors.colorA1 }}>
         <View>
             <TouchableOpacity
                 style={styles.btnCenter}
@@ -39,13 +39,13 @@ export default props => {
                     <View/>
                     <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                         <FontAwesome style={{marginHorizontal: 10}}
-                            name={ step == 1 ? 'circle' : 'circle-o' } color="#0008" size={9} />
+                            name={ step == 1 ? 'circle' : 'circle-o' } color={generalStyles.colors.colorA6} size={9} />
                         <FontAwesome style={{marginHorizontal: 10}}
-                            name={ step == 2 ? 'circle' : 'circle-o' } color="#0008" size={9} />
+                            name={ step == 2 ? 'circle' : 'circle-o' } color={generalStyles.colors.colorA6} size={9} />
                         <FontAwesome style={{marginHorizontal: 10}}
-                            name={ step == 3 ? 'circle' : 'circle-o' } color="#0008" size={9} />
+                            name={ step == 3 ? 'circle' : 'circle-o' } color={generalStyles.colors.colorA6} size={9} />
                     </View>
-                    {step === 3 ? <Feather name="arrow-right" color="#0006" size={22}/> : <View />}
+                    {step === 3 ? <Feather name="arrow-right" color={generalStyles.colors.colorA6} size={22}/> : <View />}
                 </View>
             </TouchableOpacity>
         </View>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
             paddingVertical: 14,
             width: WIDTH / 1.8,
             borderRadius: 25,
-            backgroundColor: color || '#FFF' 
+            backgroundColor: color || generalStyles.colors.colorA1
         }
     },
 
@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20
     },
 
-    // text--------------
     steps: {
         width: WIDTH,
         flexDirection: 'row',
@@ -86,6 +85,6 @@ const styles = StyleSheet.create({
     textCenter: {
         textAlign: 'center',
         fontSize: 23,
-        fontFamily: generalStyles.fontFamily1
+        fontFamily: generalStyles.fonts.fontFamily1
     }
 });

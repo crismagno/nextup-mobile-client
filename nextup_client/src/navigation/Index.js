@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import NavigationAuth from "./NavigationAuth";
 
@@ -9,4 +9,4 @@ export default () => {
 			<NavigationAuth />
 		</NavigationContainer>
 	</SafeAreaView>
-}
+};

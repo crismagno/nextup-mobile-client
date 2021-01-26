@@ -7,15 +7,16 @@ import {
 	TextInput,
     TouchableOpacity,
 	ToastAndroid,
-	Image
+	ScrollView
 } from 'react-native'
-import generalStyles from './../../helpers/styles/general'
+import generalStyles from './../../assets/styles/general'
+import ButtonB1 from "./../../components/defaults/buttons/ButtonB1";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
-
-    const [userAuth, setUserAuth] = useState({ email: '', password: '' })
+	const userInit = { email: '', password: '' }
+    const [userAuth, setUserAuth] = useState(userInit)
 	const [currentInput, setCurrentInput] = useState(0)
 	const [load, setLoad] = useState(false)
 	
@@ -64,11 +65,11 @@ export default props => {
 			<View style={styles.viewFloat} >
 				<View style={styles.groupButton}>
 					<TouchableOpacity style={[styles.btnDefault, styles.btnLogin]}>
-						<Text style={styles.textFont(13, '#FFF')}>LOG IN</Text>
+						<Text style={styles.textFont(13, generalStyles.colors.colorA1, "bold")}>LOG IN</Text>
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.btnDefault}
                         onPress={() => props.navigation.navigate("SignUp")}>
-						<Text style={styles.textFont(13, '#0007')}>SIGN UP</Text>
+						<Text style={styles.textFont(13, generalStyles.colors.colorA6)}>SIGN UP</Text>
 					</TouchableOpacity>
 				</View>
 				<View style={styles.form}>
@@ -89,18 +90,19 @@ export default props => {
                         secureTextEntry={true}
                         />
 				</View>
-				<TouchableOpacity style={styles.btnContinue}
-                    onPress={() => signIn()}>
-					{
-						load ? <Image style={{ width: 25, height: 25 }} 
-							source={generalStyles.loadRing} /> :
-						<Text style={styles.textFont(14, '#FFF')}>CONTINUE</Text>
-					}
-				</TouchableOpacity>
-                <TouchableOpacity style={styles.btnForgot}
-                    onPress={() => forgotPassword()}>
-					<Text style={styles.textFont(13, '#8A56AC', 'bold')}>FORGOT PASSWORD?</Text>
-				</TouchableOpacity>
+				<View style={styles.viewBottom}>
+					<ButtonB1 
+						backgroundColor={generalStyles.colors.colorA3} 
+						typeWidthBtn="large"
+						label="CONTINUE"
+						loadIsValid={load}
+						execEvent={() => signIn()}
+					/>
+					<TouchableOpacity style={styles.btnForgot}
+						onPress={() => forgotPassword()}>
+						<Text style={styles.textFont(13, generalStyles.colors.colorA3, 'bold')}>FORGOT PASSWORD?</Text>
+					</TouchableOpacity>
+				</View>
 			</View>
 		</View>
     </>
@@ -114,14 +116,14 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		height: HEIGHT,
 		width: WIDTH,
-		backgroundColor: '#FFF'
+		backgroundColor: generalStyles.colors.colorA1
 	},
 	viewTop: {
 		justifyContent: 'center',
 		alignItems: 'center',
 		height: HEIGHT - (HEIGHT/1.75),
 		width: WIDTH,
-		backgroundColor: '#8A56AC',
+		backgroundColor: generalStyles.colors.colorA3,
 		borderBottomLeftRadius: 85
 	},
 	viewFloat: {
@@ -148,7 +150,7 @@ const styles = StyleSheet.create({
     },
     
     btnLogin: {
-		backgroundColor: '#8A56AC',
+		backgroundColor: generalStyles.colors.colorA3,
 		...generalStyles.shadowButtons()
     },  
 
@@ -156,36 +158,27 @@ const styles = StyleSheet.create({
 		// flex: 1,
 		justifyContent: 'center',
 		alignItems: 'stretch',
-		backgroundColor: '#FFF',
+		backgroundColor: generalStyles.colors.colorA1,
         paddingHorizontal: 5,
         marginVertical: 20
 	},
 	inputForm: {
 		borderBottomWidth: 0.8,
-        borderColor: '#0004',
+        borderColor: generalStyles.colors.colorA8,
         marginVertical: 5,
 		paddingBottom: 5,
-		fontFamily: generalStyles.fontFamily1,
+		fontFamily: generalStyles.fonts.fontFamily1,
 		fontWeight: '600'
 	},
 	inputFormActive: {
 		borderBottomWidth: 1.5,
-        borderColor: '#463851',
+        borderColor: generalStyles.colors.colorA4,
         marginVertical: 5,
 		paddingBottom: 5,
-		fontFamily: generalStyles.fontFamily1,
+		fontFamily: generalStyles.fonts.fontFamily1,
 		fontWeight: '600'
 	},
 
-	btnContinue: {
-		justifyContent: 'center',
-		alignItems: 'center',
-		height: 50,
-		marginTop: 25,
-		backgroundColor: '#8A56AC',
-		borderRadius: 25,
-		...generalStyles.shadowButtons()
-    },
     btnForgot: {
         justifyContent: 'center',
 		alignItems: 'center',
@@ -197,10 +190,15 @@ const styles = StyleSheet.create({
 	//text------------
 	textFont(fts, color, fontWeight) {
 		return {
-			color: color ||'#FFF',
+			color: color ||generalStyles.colors.colorA1,
             fontSize: fts || 13,
 			fontWeight: fontWeight || 'normal',
-			fontFamily: generalStyles.fontFamily1,
+			fontFamily: generalStyles.fonts.fontFamily1,
 		}
+	},
+
+	viewBottom: {
+		marginTop: 20,
+		alignItems: "center"
 	}
 })

@@ -1,5 +1,5 @@
 import styled from 'styled-components/native'
-import generalStyles from "./../../../helpers/styles/general";
+import generalStyles from "../../../assets/styles/general";
 
 export const Container = styled.View`
     position: absolute; 
@@ -19,7 +19,7 @@ export const Input = styled.TextInput`
     border-color: #F5F4F6;
     color: #F5F4F6;
     font-size: 20px;
-    font-family: ${generalStyles.fontFamily1};
+    font-family: ${generalStyles.fonts.fontFamily1};
     padding-right: 50px;
     padding-left: 10px
 `
@@ -95,6 +95,6 @@ export const TextCustom = styled.Text`
     margin-bottom: ${props => props.mb || 0}px;
     margin-left: ${props => props.ml || 0}px;
     font-weight: ${props => props.bold || 'normal'};
-    font-family: ${generalStyles.fontFamily1};
+    font-family: ${generalStyles.fonts.fontFamily1};
     color: #FFF;
 `

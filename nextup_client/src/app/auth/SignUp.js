@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import {
 	StyleSheet,
 	View,
@@ -9,12 +9,15 @@ import {
 	ToastAndroid,
 	Image
 } from 'react-native'
-import generalStyles from './../../helpers/styles/general'
+import generalStyles from './../../assets/styles/general'
+import ButtonB1 from "./../../components/defaults/buttons/ButtonB1";
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
 
-	const [user, setUser] = useState({ name: '', email: '', password: '', phone: '' })
+	const userObj = { name: '', email: '', password: '', phone: '' }
+	
+	const [user, setUser] = useState(userObj)
 	const [currentInput, setCurrentInput] = useState(0)
 	const [load, setLoad] = useState(false)
 
@@ -51,24 +54,22 @@ export default props => {
 				setLoad(false)
 			}, 1000)
 
-
         } catch (error) {
             
         }
 	}
 	
-	return (
-    <>
+	return <>
 		<View style={styles.viewDefault}>
 			<View style={styles.viewTop} />
 			<View style={styles.viewFloat} >
 				<View style={styles.groupButton}>
 					<TouchableOpacity style={styles.btnDefault}
 						onPress={() => props.navigation.navigate("SignIn")}>
-						<Text style={styles.textFont(13, '#FFF8', 'normal')}>LOG IN</Text>
+						<Text style={styles.textFont(13, generalStyles.colors.colorA7, 'normal')}>LOG IN</Text>
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.btnDefault}>
-						<Text style={styles.textFont(13, '#FFF', 'normal')}>SIGN UP</Text>
+						<Text style={styles.textFont(13, generalStyles.colors.colorA1, 'bold')}>SIGN UP</Text>
 					</TouchableOpacity>
 				</View>
 				<View style={styles.form}>
@@ -100,18 +101,17 @@ export default props => {
 						onBlur={() => setCurrentInput(0)}
 						placeholder="Phone #" />
 				</View>
-				<TouchableOpacity style={styles.btnContinue}
-					onPress={() => continueLogin()}>
-						{
-							load ? <Image style={{ width: 25, height: 25 }} 
-								source={generalStyles.loadRing} /> :
-							<Text style={styles.textFont(14, '#FFF', 'normal')}>CONTINUE</Text>
-						}
-				</TouchableOpacity>
+				<ButtonB1 
+					style={{ marginTop: 25}}
+					backgroundColor={generalStyles.colors.colorA3} 
+					typeWidthBtn="large"
+					label="CONTINUE"
+					loadIsValid={load}
+					execEvent={() => continueLogin()}
+				/>
 			</View>
 		</View>
     </>
-	);
 }
 		  
 const styles = StyleSheet.create({
@@ -119,14 +119,14 @@ const styles = StyleSheet.create({
 		flex: 1,
 		height: HEIGHT,
 		width: WIDTH,
-		backgroundColor: '#F1F0F2'
+		backgroundColor: generalStyles.colors.colorA5
 	},
 	viewTop: {
 		justifyContent: 'center',
 		alignItems: 'center',
 		height: HEIGHT - (HEIGHT/1.75),
 		width: WIDTH,
-		backgroundColor: '#8A56AC',
+		backgroundColor: generalStyles.colors.colorA3,
 		borderBottomLeftRadius: 85
 	},
 	viewFloat: {
@@ -157,39 +157,29 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'stretch',
-		backgroundColor: '#FFF',
+		backgroundColor: generalStyles.colors.colorA1,
 		borderRadius: 50,
 		paddingHorizontal: 30,
 	},
 	inputForm: {
 		borderBottomWidth: 0.8,
-		borderColor: '#0004',
-		fontFamily: generalStyles.fontFamily1,
+		borderColor: generalStyles.colors.colorA8,
+		fontFamily: generalStyles.fonts.fontFamily1,
 	},
 	inputFormActive: {
 		borderBottomWidth: 1.5,
-        borderColor: '#463851',
+        borderColor: generalStyles.colors.colorA4,
         marginVertical: 5,
 		paddingBottom: 5,
-		fontFamily: generalStyles.fontFamily1,
-	},
-	btnContinue: {
-		justifyContent: 'center',
-		alignItems: 'center',
-		height: 50,
-		marginTop: 25,
-		backgroundColor: '#8A56AC',
-		borderRadius: 25,
-		...generalStyles.shadowButtons()
+		fontFamily: generalStyles.fonts.fontFamily1,
 	},
 
-	//text------------
 	textFont(fts, color, fontWeight) {
 		return {
-			color: color ||'#FFF',
+			color: color || generalStyles.colors.colorA1,
 			fontSize: fts || 13,
 			fontWeight: fontWeight || 'normal',
-			fontFamily: generalStyles.fontFamily1
+			fontFamily: generalStyles.fonts.fontFamily1
 		}
 	}
 })

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { 
     View, 
     Text, 
@@ -7,7 +7,7 @@ import {
     ImageBackground,
     TouchableOpacity
 } from 'react-native'
-import generalStyles from './../helpers/styles/general'
+import generalStyles from '../assets/styles/general'
 
 import { DrawerContentScrollView } from '@react-navigation/drawer'
 import Feather from 'react-native-vector-icons/Feather'

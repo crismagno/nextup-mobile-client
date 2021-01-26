@@ -1,23 +1,23 @@
-import React from "react"
-import { createStackNavigator } from "@react-navigation/stack"
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
 // routes
-import Open from '../app/auth/Open'
-import SignUp from '../app/auth/SignUp'
-import SignIn from '../app/auth/SignIn'
-import VerificationCode from '../app/auth/VerificationCode'
-import Steps from '../app/auth/Steps'
-import App from '../app/Index'
+import Open from '../app/auth/Open';
+import SignUp from '../app/auth/SignUp';
+import SignIn from '../app/auth/SignIn';
+import VerificationCode from '../app/auth/VerificationCode';
+import Steps from '../app/auth/Steps';
+import App from '../app/Index';
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
 
 // create store
 import { Provider } from "react-redux";
-import store from './../redux-store/store/store'
+import store from './../redux-store/store/store';
 
 export default props => (
     <Provider store={store} >
-        <Stack.Navigator initialRouteName="Open" 
+        <Stack.Navigator initialRouteName="App" 
             screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Open" component={Open} />
             <Stack.Screen name="SignIn" component={SignIn} />
@@ -27,4 +27,4 @@ export default props => (
             <Stack.Screen name="App" component={App} />
         </Stack.Navigator>
     </Provider>
-)
+);

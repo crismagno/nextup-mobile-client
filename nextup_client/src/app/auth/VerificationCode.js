@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import Feather from "react-native-vector-icons/Feather";
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import generalStyles from './../../helpers/styles/general'
+import generalStyles from './../../assets/styles/general'
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
@@ -80,21 +80,21 @@ export default props => {
             if (btn == 'empty') {
                 return (
                     <TouchableOpacity style={styles.btnKeyBoard} key={key}>
-                        <Text style={styles.textFont(35, '#000')}>{''}</Text>
+                        <Text style={styles.textFont(35, generalStyles.colors.colorA2)}>{''}</Text>
                     </TouchableOpacity>
                 )
             } else if (btn == 'clear') {
                 return (
                     <TouchableOpacity style={styles.btnKeyBoard} key={key} 
                         onPress={() => clearCode()}>
-                            <Feather name="delete" size={25} color="#0009" />
+                            <Feather name="delete" size={25} color={generalStyles.colors.colorA6} />
                     </TouchableOpacity>
                 )
             } else {
                 return (
                     <TouchableOpacity style={styles.btnKeyBoard} key={key} 
                         onPress={() => setMessageCode(btn)}>
-                        <Text style={styles.textFont(35, '#000')}>{btn}</Text>
+                        <Text style={styles.textFont(35, generalStyles.colors.colorA4)}>{btn}</Text>
                     </TouchableOpacity>
                 )
             }
@@ -107,9 +107,9 @@ export default props => {
         <View style={styles.viewTop}>
             <TouchableOpacity style={styles.btnGoBack}
                 onPress={() => props.navigation.goBack()} >
-                <Ionicons name='arrow-back' color='#0006' size={22}/>
+                <Ionicons name='arrow-back' color={generalStyles.colors.colorA8} size={22}/>
             </TouchableOpacity>
-            <Text style={[styles.textFont(25, '#000', 'bold'), { marginBottom: 30}]}>Verification Code</Text>
+            <Text style={[styles.textFont(25, generalStyles.colors.colorA4, 'bold'), { marginBottom: 30}]}>Verification Code</Text>
         </View>
         <View style={styles.viewCenter}>
             <View style={styles.viewCode}>
@@ -120,7 +120,7 @@ export default props => {
             </View>
             <TouchableOpacity style={styles.btnResendCode}
                 onPress={() => resendCode()} >
-                <Text style={styles.textFont(12, '#8A56AC')}>Resend Code</Text>
+                <Text style={styles.textFont(12, generalStyles.colors.colorA3, "bold")}>Resend Code</Text>
             </TouchableOpacity>
         </View>
         <View style={styles.viewBottom}>
@@ -128,8 +128,8 @@ export default props => {
                 onPress={() => verifyCode()}>
                 {
                     load ? <Image style={{ width: 25, height: 25 }} 
-                        source={generalStyles.loadRing} /> :
-                    <Text style={styles.textFont(15, '#FFF')}>VERIFY</Text>
+                        source={generalStyles.loadGif.loadRing} /> :
+                    <Text style={styles.textFont(15, generalStyles.colors.colorA1, "bold")}>VERIFY</Text>
                 }
             </TouchableOpacity>
             <View style={styles.keyboardCode}>
@@ -146,14 +146,14 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		height: HEIGHT,
 		width: WIDTH,
-		backgroundColor: '#F1F0F2'
+		backgroundColor: generalStyles.colors.colorA5
 	},
 	viewTop: {
 		justifyContent: 'flex-end',
 		alignItems: 'center',
 		height: HEIGHT * 0.17,
 		width: WIDTH,
-		backgroundColor: '#FFF',
+		backgroundColor: generalStyles.colors.colorA1,
 		borderBottomLeftRadius: 85
 	},
 	viewCenter: {
@@ -167,9 +167,8 @@ const styles = StyleSheet.create({
         flex: 1,
 		justifyContent: 'flex-end',
 		alignItems: 'center',
-		// height: HEIGHT * 0.18,
 		width: WIDTH,
-		backgroundColor: '#8A56AC',
+		backgroundColor: generalStyles.colors.colorA3,
 		borderTopLeftRadius: 85
     },
     
@@ -179,9 +178,8 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap', 
         justifyContent: 'center',
 		alignItems: 'stretch',
-		// height: 310,
 		width: WIDTH,
-		backgroundColor: '#FFF',
+		backgroundColor: generalStyles.colors.colorA1,
         borderTopLeftRadius: 85,
         padding: 20
     },
@@ -189,7 +187,6 @@ const styles = StyleSheet.create({
     btnKeyBoard: {
         justifyContent: 'center',
 		alignItems: 'center',
-        // borderWidth: 1, 
         padding: 10,
         margin: 5,
         paddingHorizontal: 20,
@@ -200,7 +197,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
 		alignItems: 'center',
-		// height: 340,
 		width: WIDTH,
     },
 
@@ -208,20 +204,18 @@ const styles = StyleSheet.create({
         paddingVertical: 25,
         paddingHorizontal: 25,
         marginHorizontal: 5,
-        backgroundColor: "#FFF",
+        backgroundColor: generalStyles.colors.colorA1,
         borderRadius: 15,
-        color: '#8A56AC',
-        fontFamily: generalStyles.fontFamily1
+        color: generalStyles.colors.colorA3,
+        fontFamily: generalStyles.fonts.fontFamily1
     },
 
     btnResendCode: {
-        // borderWidth: 1,
         marginTop: 15
     },
 
     btnVerify: {
         alignItems: 'center',
-        // borderWidth: 1,
         marginBottom: 6,
         paddingVertical: 14,
         paddingHorizontal: 10,
@@ -233,17 +227,15 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center', 
         width: WIDTH,
-        // borderWidth: 1,
         paddingLeft: 20
     },
 
-	//text------------
 	textFont(fts, color, fontWeight) {
 		return {
-			color: color ||'#FFF',
+			color: color || generalStyles.colors.colorA1,
             fontSize: fts || 13,
             fontWeight: fontWeight || 'normal',
-            fontFamily: generalStyles.fontFamily1,
+            fontFamily: generalStyles.fonts.fontFamily1,
 		}
 	}
 })

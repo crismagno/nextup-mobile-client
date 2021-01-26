@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Entypo from 'react-native-vector-icons/Entypo'
-import generalStyles from './../../../helpers/styles/general'
+import generalStyles from './../../../assets/styles/general'
 import MapView, { Marker } from 'react-native-maps';
 import customMapStyle from './customStyle' 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')

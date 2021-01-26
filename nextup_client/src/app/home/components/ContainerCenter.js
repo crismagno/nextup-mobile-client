@@ -7,7 +7,7 @@ import {
     TouchableOpacity,
     FlatList
 } from 'react-native';
-import generalStyles from './../../../helpers/styles/general'
+import generalStyles from './../../../assets/styles/general'
 
 const listRecomendedTest = [
     {
@@ -46,7 +46,7 @@ export default props => {
     return (
         <View style={styles.container}>
             <View style={styles.containerTop}>
-                <Text style={[styles.tag, styles.textFont(11)]}>RECOMMENDED FOR YOU</Text>
+                <Text style={[styles.tag, styles.textFont(12, null, "bold")]}>RECOMMENDED FOR YOU</Text>
             </View>
             <View style={styles.containerCenter}>
                 <FlatList
@@ -63,11 +63,11 @@ export default props => {
                                         <Text style={styles.textFont(12, null, 'bold')}>{item.title}</Text>
                                         <Text style={styles.textFont(12)}>{item.stars}</Text>
                                     </View>
-                                    <View style={{alignItems: 'center'}}>
-                                        <Text style={styles.textFont(12)}>{item.category}</Text>
-                                    </View>
                                 </View>
                             </ImageBackground>
+                            <View style={{alignItems: 'center'}}>
+                                <Text style={styles.textFont(13, null, "bold")}>{item.category}</Text>
+                            </View>
                         </TouchableOpacity>
                     }
                     keyExtractor={item => item.id}
@@ -80,24 +80,23 @@ export default props => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingVertical: 5
+        paddingVertical: 20
     },
 
     containerTop: {
         height: 30,
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal: 20,
+        paddingHorizontal: 20
     },
 
     containerCenter: {
         flex: 1,
-        // paddingHorizontal: 20,
         paddingVertical: 5
     },
 
     tag: {
-        backgroundColor: '#352641',
+        backgroundColor: generalStyles.colors.colorA9,
         paddingHorizontal: 27,
         paddingVertical: 5,
         borderRadius: 20
@@ -105,46 +104,36 @@ const styles = StyleSheet.create({
 
     textFont(fts, color, fontWeight) {
         return {
-            color: color || '#FFF',
+            color: color || generalStyles.colors.colorA1,
             fontSize: fts || 13,
             fontWeight: fontWeight && 'bold',
-            fontFamily: generalStyles.fontFamily1,
+            fontFamily: generalStyles.fonts.fontFamily1,
         }
     },
 
-    // parts posts
     postContainer: {
-        // borderWidth: 1,
-        // borderColor: '#FFF',
         marginHorizontal: 10,
         borderRadius: 40,
-        width: 135,
-        ...generalStyles.shadowButtons({ elevation: 5 })
+        width: 135
     },
 
     postInto: {
         flex: 1,
         justifyContent: 'flex-end',
-        backgroundColor:'#EA909A',
         borderRadius: 40,
-        
+        marginBottom: 5,
+        paddingVertical: 15
     },
 
     postContent: {
-        // borderWidth: 1,
-        // borderColor: '#FFF',
         height: 35,
         paddingHorizontal: 10
     },
-    // post
 
     descriptionPost: {
-        // borderColor: 'red',
-        // borderWidth: 1,
         paddingBottom: 10,
         borderBottomLeftRadius: 40,
         borderBottomRightRadius: 40
     }
-
 
 })

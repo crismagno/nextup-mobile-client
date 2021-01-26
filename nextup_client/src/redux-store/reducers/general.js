@@ -5,8 +5,8 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
     switch(action.type) {
         case 'CHANGE_MODE_SEARCH':
-            return { ...state, modeSearch: action.payload }
+            return { ...state, modeSearch: action.payload };
         default: 
-            return state
-    }
-}
+            return state;
+    };
+};

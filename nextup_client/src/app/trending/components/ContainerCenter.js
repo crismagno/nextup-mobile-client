@@ -4,13 +4,11 @@ import {
     View,
     Text,
     TouchableOpacity,
-    Dimensions,
     ScrollView,
     Image
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
-import generalStyles from './../../../helpers/styles/general'
+import generalStyles from './../../../assets/styles/general'
 
 const listTrendingTest = [
     {
@@ -22,8 +20,8 @@ const listTrendingTest = [
             district: 'test district',
             street: 'test street FR, 0003'
         },
-        img: '',
-        background: '#D47FA6'
+        media: generalStyles.images.imageA2,
+        background: generalStyles.colors.colorA11
     },
     {
         id: Math.random()+"", 
@@ -34,8 +32,8 @@ const listTrendingTest = [
             district: 'test district',
             street: 'test street FR, 0003'
         },
-        img: '',
-        background: '#241332'
+        media: generalStyles.images.imageA2,
+        background: generalStyles.colors.colorA4
     },
     {
         id: Math.random()+"", 
@@ -46,8 +44,8 @@ const listTrendingTest = [
             district: 'test district',
             street: 'test street FR, 0003'
         },
-        img: '',
-        background: '#8A56AC'
+        media: generalStyles.images.imageA2,
+        background: generalStyles.colors.colorA3
     },
     {
         id: Math.random()+"", 
@@ -58,8 +56,8 @@ const listTrendingTest = [
             district: 'test district',
             street: 'test street FR, 0003'
         },
-        img: '',
-        background: '#D47FA6'
+        media: generalStyles.images.imageA2,
+        background: generalStyles.colors.colorA11
     },
     {
         id: Math.random()+"", 
@@ -70,8 +68,8 @@ const listTrendingTest = [
             district: 'test district',
             street: 'test street FR, 0003'
         },
-        img: '',
-        background: '#241332'
+        media: generalStyles.images.imageA2,
+        background: generalStyles.colors.colorA4
     },
     {
         id: Math.random()+"", 
@@ -82,44 +80,45 @@ const listTrendingTest = [
             district: 'test district',
             street: 'test street FR, 0003'
         },
-        img: '',
-        background: '#8A56AC'
+        media: generalStyles.images.imageA2,
+        background: generalStyles.colors.colorA3
     }
 ]
 export default props => {
 
     const [listTrending, setListCategories] = useState(listTrendingTest)
 
-    const goBookIt = () => {
+    const goToEvent = item => {
         props.navigation.navigate('BookIt')
     }
 
     const renderListTrending = (trending, index) => {
         return <View key={trending.id}
-            style={[styles.boxTrending, { backgroundColor: trending.background, zIndex: -index }]}>
+            style={styles.boxTrending(trending.background, -index)}>
+            
             {/* header */}
             <View style={styles.boxTop}>
-                <Text style={styles.textFont(11, "#FFF")}>{`${trending.miles} miles away`}</Text>
-                <Text style={styles.textFont(18, "#FFF", 'bold')}>{trending.title}</Text>
+                <Text style={styles.textFont(13, generalStyles.colors.colorA1)}>{`${trending.miles} miles away`}</Text>
+                <Text style={styles.textFont(22, generalStyles.colors.colorA1, 'bold')}>{trending.title}</Text>
             </View>
 
             {/* center */}
             <View style={styles.boxCenter}>
                 <Image style={styles.imgTrending}
                     imageStyle={{ borderTopRightRadius: 10, borderTopLeftRadius: 30, }}
-                    source={require('./../../../assets/images/recomended1.png')} />
+                    source={trending.media} />
                 <View>
-                    <Text style={[styles.textFont(12, "#FFF", 'bold'), { marginBottom: -3}]}>{trending.subtitle}</Text>
-                    <Text style={[styles.textFont(11, "#dedede"), { marginBottom: -3}]}>{trending.address.district}</Text>
-                    <Text style={[styles.textFont(11, "#dedede"), { marginBottom: -3}]}>{trending.address.street}</Text>
+                    <Text style={[styles.textFont(13, generalStyles.colors.colorA1, 'bold'), { marginBottom: -3}]}>{trending.subtitle}</Text>
+                    <Text style={[styles.textFont(13, generalStyles.colors.colorA12), { marginBottom: -3}]}>{trending.address.district}</Text>
+                    <Text style={[styles.textFont(13, generalStyles.colors.colorA12), { marginBottom: -3}]}>{trending.address.street}</Text>
                 </View>
             </View>
             
             {/* bottom */}
             <View style={styles.boxBottom}>
-                <TouchableOpacity style={styles.btnGo} onPress={goBookIt}>
-                    <Text style={[styles.textFont(13, '#FFF'), { marginRight: 5}]}>GO</Text>
-                    <MaterialCommunityIcons name="arrow-right" color="#FFF" size={22} />     
+                <TouchableOpacity style={styles.btnGo} onPress={() => goToEvent(trending)}>
+                    <Text style={[styles.textFont(13, generalStyles.colors.colorA1), { marginRight: 5}]}>GO</Text>
+                    <MaterialCommunityIcons name="arrow-right" color={generalStyles.colors.colorA1} size={22} />     
                 </TouchableOpacity>
             </View>
         </View>
@@ -143,26 +142,23 @@ const styles = StyleSheet.create({
         flex: 1
     },
 
-    boxTrending: {
-        // borderWidth: 0.5,
-        // borderColor: '#FFF',
-        height: HEIGHT/2.5,
-        width: WIDTH,
-        paddingTop: 110,
-        paddingHorizontal: 30,
-        borderBottomLeftRadius: 85,
-        marginTop: -80,
-
-        shadowColor: '#000',
-        shadowOffset: { width: 10, height: 2 },
-        shadowOpacity: 1,
-        shadowRadius: 2,
-        elevation: 5
+    boxTrending(background, zIndex) {
+        return {
+            minHeight: (generalStyles.HEIGHT/5) + 140,
+            width: generalStyles.WIDTH,
+            paddingTop: 110,
+            paddingHorizontal: 30,
+            borderBottomLeftRadius: 85,
+            marginTop: -80,
+            backgroundColor: background,
+            zIndex: zIndex,
+            ...generalStyles.shadowButtons({ elevation: 5 })
+        }
     },
 
     textFont(fts, color, fontWeight) {
         return {
-            color: color || '#FFF',
+            color: color || generalStyles.colors.colorA1,
             fontSize: fts || 13,
             fontWeight: fontWeight || 'normal',
             fontFamily: generalStyles.fontFamily1
@@ -174,27 +170,24 @@ const styles = StyleSheet.create({
     },
 
     imgTrending: {
-        width: 50,
-        height: 50,
+        width: 60,
+        height: 60,
         borderRadius: 100,
         marginRight: 15,
         borderWidth: 1,
-        borderColor: '#FFF'
+        borderColor: generalStyles.colors.colorA1
     },
 
     boxTop: {
-        // borderWidth: 1,
         marginBottom: 5
     },
 
     boxCenter: {
-        flexDirection: 'row',
-        // borderWidth: 1,
+        flexDirection: 'row'
     },
 
     boxBottom: {
-        flexDirection: 'row-reverse',
-        // borderWidth: 1,
+        flexDirection: 'row-reverse'
     },
 
     btnGo: {
@@ -202,11 +195,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        // borderWidth: 0.2,
-        // borderColor: '#FFF',
         paddingHorizontal: 25,
         paddingVertical: 12,
-        backgroundColor: '#817889',
+        backgroundColor: generalStyles.colors.colorA10,
         borderRadius: 50,
 
         ...generalStyles.shadowButtons()

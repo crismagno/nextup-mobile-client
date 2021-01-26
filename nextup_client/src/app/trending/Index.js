@@ -1,21 +1,51 @@
 import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
 import {
 	StyleSheet,
-	View,
-	Dimensions
+	View
 } from 'react-native'
 
-import ContainerTop from './components/ContainerTop'
 import ContainerCenter from './components/ContainerCenter'
-
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
+import Header from './../../components/app/Header'
+import generalStyles from './../../assets/styles/general'
 
 export default props => {
+
+	const dispatch = useDispatch({})
+
+    const goCategorySearch = () => {
+        dispatch({
+			type: 'CHANGE_MODE_SEARCH',
+			payload: true
+		})
+    }
+
+	const listButtonsMenu = [
+		{
+			label: "MY QUEUE",
+			execEvent: () => null,
+			isActive: true
+		},
+		{
+			label: "SEARCH",
+			execEvent: () => goCategorySearch(),
+			isActive: false
+		},
+		{
+			label: "CATEGORIES",
+			execEvent: () => props.navigation.navigate('Category'),
+			isActive: false
+		}
+	]
 
 	return (
 		<View style={styles.container}>
 			<View style={styles.containerTop}>
-				<ContainerTop {...props}/>
+				<Header {...props} 
+					listButtonsMenu={listButtonsMenu}
+					showIconLeft={true}
+					showIconRight={true}
+				/>
 			</View>
             <View style={styles.containerCenter}>
 				<ContainerCenter {...props}/>
@@ -28,7 +58,7 @@ const styles = StyleSheet.create({
 	container: {
 		position: 'relative',
 		flex: 1,
-		backgroundColor: '#241332',
+		backgroundColor: generalStyles.colors.colorA4,
 	},
 
 	containerTop: {
@@ -36,16 +66,9 @@ const styles = StyleSheet.create({
 		top: 0,
 		left: 0,
 		height: '20%',
-		width: WIDTH,
-		backgroundColor: '#FFF',
-		borderBottomLeftRadius: 85,
+		width: generalStyles.WIDTH,
 		zIndex: 1000,
-
-		shadowColor: '#000',
-        shadowOffset: { width: 10, height: 2 },
-        shadowOpacity: 1,
-        shadowRadius: 2,
-        elevation: 5
+		...generalStyles.shadowButtons()
 	},
 
 	containerCenter: {

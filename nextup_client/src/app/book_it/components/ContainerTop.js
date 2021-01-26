@@ -8,7 +8,7 @@ import {
     Image
 } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import generalStyles from './../../../helpers/styles/general'
+import generalStyles from './../../../assets/styles/general'
 
 export default props => {
 

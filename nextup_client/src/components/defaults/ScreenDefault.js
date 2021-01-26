@@ -6,7 +6,7 @@ import {
 	Dimensions,
 	Image
 } from 'react-native'
-import generalStyles from './../../helpers/styles/general'
+import generalStyles from './../../assets/styles/general'
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
@@ -15,7 +15,7 @@ export default props => {
 			{
 				props.showCircle && 
 				<View style={styles.viewCircleTop}>
-					<Image style={{ width: 110, height: 110 }} source={require('./../../assets/images/img_queue2.png')}/>
+					<Image style={styles.imageQueue} source={generalStyles.images.imageA1}/>
 					<Text style={styles.textFont}>NextUp</Text>
 				</View>
 			}
@@ -31,20 +31,20 @@ const styles = StyleSheet.create({
 		flex: 1,
 		height: HEIGHT,
 		width: WIDTH,
-		backgroundColor: '#F1F0F2'
+		backgroundColor: generalStyles.colors.colorA5
 	},
 	viewTop: {
 		justifyContent: 'center',
 		alignItems: 'center',
 		height: HEIGHT - (HEIGHT/1.9),
 		width: WIDTH,
-		backgroundColor: '#8A56AC',
+		backgroundColor: generalStyles.colors.colorA3,
 		borderBottomLeftRadius: 85
 	},
 	viewCircleTop: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#FFF',
+		backgroundColor: generalStyles.colors.colorA1,
 		width: 200,
 		height: 200,
 		borderRadius: 100000
@@ -57,9 +57,14 @@ const styles = StyleSheet.create({
 		width: WIDTH
 	},
 
-	//text------------
 	textFont: {
 		fontSize: 20,
-		fontFamily: generalStyles.fontFamily1
+		fontFamily: generalStyles.fonts.fontFamily1,
+		color: generalStyles.colors.colorA4
+	},
+
+	imageQueue: { 
+		width: 110, 
+		height: 110
 	}
 })

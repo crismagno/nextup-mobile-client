@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
 import {
 	StyleSheet,
 	View,
-	Dimensions,
 	Text
 } from 'react-native'
 
@@ -28,10 +28,38 @@ import {
 	ContainerPhone
 } from './components/styledComponents'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import IF from "./../defaults/IF";
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
+import IF from "./../../components/defaults/IF";
+import Header from './../../components/app/Header'
+import generalStyles from './../../assets/styles/general'
 
 export default props => {
+
+	const dispatch = useDispatch({})
+
+    const goCategorySearch = () => {
+        dispatch({
+			type: 'CHANGE_MODE_SEARCH',
+			payload: true
+		})
+    }
+
+	const listButtonsMenu = [
+		{
+			label: "MY QUEUE",
+			execEvent: () => props.navigation.navigate('Trending'),
+			isActive: false
+		},
+		{
+			label: "SEARCH",
+			execEvent: () => goCategorySearch(),
+			isActive: false
+		},
+		{
+			label: "CATEGORIES",
+			execEvent: () => props.navigation.navigate('Category'),
+			isActive: false
+		}
+	]
 	
 	// texts modals
 	const steps = {
@@ -104,7 +132,7 @@ export default props => {
 			showHeader = false
 		}
 
-		return <Modal top={stepModal == 9 ? HEIGHT/3.2 : HEIGHT/2.5}>
+		return <Modal top={stepModal == 9 ? generalStyles.HEIGHT/3.2 : generalStyles.HEIGHT/2.5}>
 			{ showHeader && renderModalHeader() }
 			{ renderModalCenter() }
 			{ renderModalBottom() }
@@ -294,7 +322,11 @@ export default props => {
 
 	return <View style={styles.container}>
 		<View style={styles.containerTop}>
-			<ContainerTop {...props}/>
+			<Header {...props} 
+				listButtonsMenu={listButtonsMenu}
+				showIconLeft={true}
+				showIconRight={true}
+			/>
 		</View>
 
 		{/* condition to render components */}
@@ -320,48 +352,37 @@ const styles = StyleSheet.create({
 	container: {
 		position: 'relative',
 		flex: 1,
-		backgroundColor: '#241332',
+		backgroundColor: generalStyles.colors.colorA4
 	},
 
 	containerTop: {
-		width: WIDTH,
-		backgroundColor: '#FFF',
+		width: generalStyles.WIDTH,
+		height: "20%",
 		borderBottomLeftRadius: 85,
 		zIndex: 10000
 	},
 
 	containerCenter: {
-		height: HEIGHT/3.4,
-		width: WIDTH,
+		height: generalStyles.HEIGHT/3.4,
+		width: generalStyles.WIDTH,
 	},
 
 	containerBottom: {
 		flex: 1
 	},
 
-	containerMax: {
-		position: 'absolute',
-		height: HEIGHT,
-		width: WIDTH,
-		left: 0,
-		top: 0,
-		zIndex: -1,
-		backgroundColor: '#0002'
-	},
-
 	blurView:{
 		position: "absolute",
 		top: 0,
 		left: 0,
-		width: WIDTH,
-		height: HEIGHT,
+		width: generalStyles.WIDTH,
+		height: generalStyles.HEIGHT,
 		zIndex: 10
 	},
 
 	containerBlur: {
 		flex: 1,
-		position: 'absolute',
-		// zIndex: 1000
+		position: 'absolute'
 	}
 
 })

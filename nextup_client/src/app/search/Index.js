@@ -19,7 +19,7 @@ import {
 	ContainerBoxTitle,
 	ImageCompany,
 	TextCustom
-} from './components/syledComponents'
+} from './components/styledComponents'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { useDispatch } from "react-redux"

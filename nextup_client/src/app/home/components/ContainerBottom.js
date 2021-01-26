@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import moment from 'moment'
 import 'moment/locale/pt-br'
-import generalStyles from './../../../helpers/styles/general'
+import generalStyles from './../../../assets/styles/general'
 
 const listLineTest = [
     {
