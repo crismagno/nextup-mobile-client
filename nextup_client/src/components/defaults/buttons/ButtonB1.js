@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 			alignItems: 'center',
 			paddingVertical: 15,
 			width: widthIs(),
-			height: 45,
+			height: 50,
 			borderRadius: 25,
 			backgroundColor: backgroundColor || generalStyles.colors.colorA1,
 			...generalStyles.shadowButtons()

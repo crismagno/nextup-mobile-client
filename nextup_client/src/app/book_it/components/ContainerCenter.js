@@ -106,8 +106,8 @@ const styles = StyleSheet.create({
     },
 
     viewLocale: {
-        borderColor: '#fff',
-        backgroundColor: '#FFF',
+        borderColor: generalStyles.colors.colorA1,
+        backgroundColor: generalStyles.colors.colorA1,
         width: generalStyles.WIDTH/1.3,
         height: 110,
         borderTopRightRadius: 55,
@@ -115,12 +115,12 @@ const styles = StyleSheet.create({
         overflow: 'hidden'
     },
 
-    textFormat(fontSize = 10, color = '#FFF', fontWeight = 'normal') {
+    textFormat(fontSize = 10, color = generalStyles.colors.colorA1, fontWeight = 'normal') {
         return {
             fontSize,
             color,
             fontWeight,
-            fontFamily: generalStyles.fontFamily1
+            fontFamily: generalStyles.fonts.fontFamily1
         }
     }
 })

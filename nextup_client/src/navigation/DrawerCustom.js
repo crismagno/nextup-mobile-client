@@ -57,7 +57,7 @@ export default props => {
             return <TouchableOpacity onPress={() => props.navigation.navigate(item.route)} key={`${item.Route}_${index}`}>
                 <View style={[styles.itemMenu, active && styles.colorMenuActive]}>
                     {item.icon}
-                    <Text style={[styles.textFormat(17, (!active && '#463851'), '600', 0, 10), { fontFamily: generalStyles.fontFamily1}]}>{item.label}</Text>
+                    <Text style={[styles.textFormat(17, (!active && '#463851'), '600', 0, 10), { fontFamily: generalStyles.fonts.fontFamily1}]}>{item.label}</Text>
                 </View>
             </TouchableOpacity>
         })
@@ -95,7 +95,7 @@ export default props => {
             <TouchableOpacity onPress={() => props.navigation.navigate('Open')}>
                 <View style={styles.itemMenu}>
                     <Feather name="log-out" size={18} color='#B3AEB8' />
-                    <Text style={[styles.textFormat(17, '#463851', '600', 0, 10), { fontFamily: generalStyles.fontFamily1}]}>Log Out</Text>
+                    <Text style={[styles.textFormat(17, '#463851', '600', 0, 10), { fontFamily: generalStyles.fonts.fontFamily1}]}>Log Out</Text>
                 </View>
             </TouchableOpacity>
         </View>
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
             fontWeight: fontWeight || 'normal',
             marginTop: mt || 0,
             marginLeft: ml || 0,
-            fontFamily: generalStyles.fontFamily1
+            fontFamily: generalStyles.fonts.fontFamily1
         }
     },
     

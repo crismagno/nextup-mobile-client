@@ -17,7 +17,7 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
     border-top-right-radius: 80px;
     border-bottom-left-radius: 80px;
     margin: 0px 40px !important;
-    background-color: #FFF;
+    background-color: ${generalStyles.colors.colorA1};
 `
 export const HeaderModal = styled.View`
     flex-direction: row
@@ -25,12 +25,12 @@ export const HeaderModal = styled.View`
 export const HeaderModalStep = styled.View`
     width: 45px;
     height: 6px;
-    border: 1px solid #000;
+    border: 1px solid ${generalStyles.colors.colorA2};
     margin-right: 6px;
     margin-left: 6px;
     margin-bottom: 30px;
     border-radius: 10px;
-    background-color: ${props => props.active ? '#000' : '#FFF'};
+    background-color: ${props => props.active ? generalStyles.colors.colorA2 : generalStyles.colors.colorA1};
 `
 export const TextModal = styled.Text`
     font-size: ${props => props.size}px;
@@ -47,14 +47,14 @@ export const ButtonStepNext = styled.TouchableOpacity`
     padding: 15px;
     border-radius: 100px;
     background-color: ${props => props.background};
-    border: ${props => props.border || '0px solid #FFF'};
+    border: ${props => props.border || `0px solid ${generalStyles.colors.colorA1}`};
     z-index: 10000000000;
 `
 export const ButtonStepCancel = styled.TouchableOpacity`    
     padding: 15px;
     border-radius: 100px;
     background-color: ${props => props.background};
-    border: ${props => props.border || '0px solid #FFF'};
+    border: ${props => props.border || `0px solid ${generalStyles.colors.colorA1}`};
     z-index: 10000000000;
     /* margin-left: 10px; */
     margin-right: 10px;
@@ -81,14 +81,14 @@ export const ButtonStep6 = styled.TouchableOpacity`
     padding-bottom: 7px;
     padding-left: 25px;
     border-radius: 100px;
-    background-color: ${props => props.primary ? '#F8F8F8' : '#FFF'};
+    background-color: ${props => props.primary ? generalStyles.colors.colorA18 : generalStyles.colors.colorA1};
     margin-top: ${props => props.primary ? 10 : 0};
 `
 export const TextStep6 = styled.Text`    
     font-size: 12px;
-    color: ${props => props.primary ? '#8A56AC' : '#0005'};
+    color: ${props => props.primary ? generalStyles.colors.colorA3 : generalStyles.colors.colorA8};
     border-bottom-width: 0.7px;
-    border-color:  ${props => props.primary ? '#8A56AC' : '#0005'};
+    border-color:  ${props => props.primary ? generalStyles.colors.colorA3 : generalStyles.colors.colorA8};
     font-family: ${generalStyles.fonts.fontFamily1}
 `
 
@@ -105,7 +105,7 @@ export const ButtonStep10 = styled.TouchableOpacity`
     padding: 15px;
     border-radius: 100px;
     background-color: ${props => props.background};
-    border: ${props => props.border || '0px solid #FFF'};
+    border: ${props => props.border || `0px solid ${generalStyles.colors.colorA1}`};
     z-index: 10000000000;
     /* margin-left: 10px; */
     margin-right: 10px;
@@ -119,8 +119,7 @@ export const ButtonDefault1 = styled.TouchableOpacity`
     padding: 15px;
     border-radius: 100px;
     background-color: ${props => props.background};
-    border: ${props => props.border || '0px solid #FFF'};
+    border: ${props => props.border || `0px solid ${generalStyles.colors.colorA1}`};
     z-index: 10000000000;
-    /* margin-left: 10px; */
     margin-right: 10px;
 `

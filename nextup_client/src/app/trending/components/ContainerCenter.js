@@ -199,7 +199,6 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         backgroundColor: generalStyles.colors.colorA10,
         borderRadius: 50,
-
         ...generalStyles.shadowButtons()
     }
 
