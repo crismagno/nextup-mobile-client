@@ -1,8 +1,11 @@
+import generalStyles from "./../../assets/styles/general"
+
 const INITIAL_STATE = {
-    name: '',
-    email: '',
-    avatar: '',
-    online_at: false
+    name: 'Aurélien Salomon',
+    email: '@aureliensalomon',
+    avatar: generalStyles.images.imageA6,
+    online_at: false,
+    mediaBackground: generalStyles.images.imageA7
 };
 
 export default (state = INITIAL_STATE, action) => {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from "react-redux";
 import { 
     View, 
     Text, 
@@ -14,8 +15,14 @@ import Feather from 'react-native-vector-icons/Feather'
 
 export default props => {
 
-    const imgBackground = require('./../assets/images/background1.png')
-    const avatar = require('./../assets/images/avatar2.png')
+    // const user1 = useSelector(state => state.user)
+    const user = {
+        name: 'Aurélien Salomon',
+        email: '@aureliensalomon',
+        avatar: generalStyles.images.imageA6,
+        online_at: false,
+        mediaBackground: generalStyles.images.imageA7
+    };
 
     const isCurrentRoute = nameRoute => {
         const {index, routes} = props.navigation.dangerouslyGetState();
@@ -25,27 +32,27 @@ export default props => {
 
     const arrayListDrawer = [
         {
-            icon: <Feather name="home" size={18} color={isCurrentRoute('Home') ? '#FFF' : '#B4AFB9'} />,
+            icon: <Feather name="home" size={18} color={isCurrentRoute('Home') ? generalStyles.colors.colorA1 : generalStyles.colors.colorA20} />,
             route: 'Home',
             label: 'Home'
         },
         {
-            icon: <Feather name="users" size={18} color={isCurrentRoute('Category') ? '#FFF' : '#B4AFB9'} />,
+            icon: <Feather name="users" size={18} color={isCurrentRoute('Category') ? generalStyles.colors.colorA1 : generalStyles.colors.colorA20} />,
             route: 'Category',
             label: 'Categories'
         },
         {
-            icon: <Feather name="calendar" size={18} color={isCurrentRoute('Trending') ? '#FFF' : '#B4AFB9'} />,
+            icon: <Feather name="calendar" size={18} color={isCurrentRoute('Trending') ? generalStyles.colors.colorA1 : generalStyles.colors.colorA20} />,
             route: 'Trending',
             label: 'My queue'
         },
         {
-            icon: <Feather name="user" size={18} color={isCurrentRoute('Contact') ? '#FFF' : '#B4AFB9'} />,
+            icon: <Feather name="user" size={18} color={isCurrentRoute('Contact') ? generalStyles.colors.colorA1 : generalStyles.colors.colorA20} />,
             route: 'Contact',
             label: 'Contact Us'
         },
         {
-            icon: <Feather name="info" size={18} color={isCurrentRoute('About') ? '#FFF' : '#B4AFB9'} />,
+            icon: <Feather name="info" size={18} color={isCurrentRoute('About') ? generalStyles.colors.colorA1 : generalStyles.colors.colorA20} />,
             route: 'About',
             label: 'About Us'
         }
@@ -57,7 +64,7 @@ export default props => {
             return <TouchableOpacity onPress={() => props.navigation.navigate(item.route)} key={`${item.Route}_${index}`}>
                 <View style={[styles.itemMenu, active && styles.colorMenuActive]}>
                     {item.icon}
-                    <Text style={[styles.textFormat(17, (!active && '#463851'), '600', 0, 10), { fontFamily: generalStyles.fonts.fontFamily1}]}>{item.label}</Text>
+                    <Text style={[styles.textFormat(17, (!active && generalStyles.colors.colorA9), '600', 0, 10), { fontFamily: generalStyles.fonts.fontFamily1}]}>{item.label}</Text>
                 </View>
             </TouchableOpacity>
         })
@@ -66,7 +73,7 @@ export default props => {
 
     return <View style={styles.container}>
         <View style={styles.containerTop}>
-            <ImageBackground source={imgBackground}
+            <ImageBackground source={user.mediaBackground}
                 style={styles.imgBackgroundHeader}
                 imageStyle={{
                     borderBottomLeftRadius: 100,
@@ -74,9 +81,9 @@ export default props => {
                 }}
             />
             <View style={styles.containerTopOpacity}>
-                <Image  style={styles.avatar} source={avatar} />
-                <Text style={[styles.textFormat(25, '#FFF', 'bold', 20), { letterSpacing: 1 }]}>{'Aurélien Salomon'}</Text>
-                <Text style={styles.textFormat(15, '#99939E', 'normal', 5)}>{'@aureliensalomon'}</Text>
+                <Image  style={styles.avatar} source={user.avatar} />
+                <Text style={[styles.textFormat(25, generalStyles.colors.colorA1, 'bold', 20), { letterSpacing: 1 }]}>{user.name}</Text>
+                <Text style={styles.textFormat(15, generalStyles.colors.colorA20, 'normal', 5)}>{user.email}</Text>
             </View>
         </View>
 
@@ -94,8 +101,8 @@ export default props => {
         <View style={{paddingHorizontal: 20, marginTop: 5}}>
             <TouchableOpacity onPress={() => props.navigation.navigate('Open')}>
                 <View style={styles.itemMenu}>
-                    <Feather name="log-out" size={18} color='#B3AEB8' />
-                    <Text style={[styles.textFormat(17, '#463851', '600', 0, 10), { fontFamily: generalStyles.fonts.fontFamily1}]}>Log Out</Text>
+                    <Feather name="log-out" size={18} color={generalStyles.colors.colorA20} />
+                    <Text style={[styles.textFormat(17, generalStyles.colors.colorA9, '600', 0, 10), { fontFamily: generalStyles.fonts.fontFamily1}]}>Log Out</Text>
                 </View>
             </TouchableOpacity>
         </View>
@@ -107,7 +114,7 @@ export default props => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFF',
+        backgroundColor: generalStyles.colors.colorA1,
         borderTopRightRadius: 100,
         ...generalStyles.shadowButtons({ elevation: 10 })
     },
@@ -148,7 +155,7 @@ const styles = StyleSheet.create({
 
     textFormat(fts, color, fontWeight, mt, ml) {
         return {
-            color: color || '#FFF',
+            color: color || generalStyles.colors.colorA1,
             fontSize: fts || 13,
             fontWeight: fontWeight || 'normal',
             marginTop: mt || 0,
@@ -170,7 +177,7 @@ const styles = StyleSheet.create({
     },
 
     itemMenu: {
-        backgroundColor: '#FFF',
+        backgroundColor: generalStyles.colors.colorA1,
         flexDirection: 'row',
         alignItems: 'center',
         borderRadius: 50,
@@ -181,29 +188,6 @@ const styles = StyleSheet.create({
     },
 
     colorMenuActive: {
-        backgroundColor: '#8A56AC',
+        backgroundColor: generalStyles.colors.colorA3,
     }
 })
-
-// <DrawerItem key={`${item.label}_${index}`}
-//     style={styles.itemDrawer}
-//     labelStyle={{
-//         fontSize: 18, 
-//         fontFamily: generalStyles.fontFamily1,
-//         padding: 0
-//     }}
-//     icon={({ color, size }) => {
-//         <Feather 
-
-//             name="home"
-//             color="red"
-//             size={20}
-//         />
-//     }}
-//     activeBackgroundColor="#8A56AC"
-//     activeTintColor="#FFF"
-//     inactiveTintColor="#000"
-//     focused={isCurrentRoute(item.route)}
-//     label={item.label}
-//     onPress={() => props.navigation.navigate(item.route)}
-// />

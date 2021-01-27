@@ -17,7 +17,9 @@ const colors = {
     colorA16: "#5A9638",
     colorA17: "#65596F",
     colorA18: "#F8F8F8",
-    colorA19: "#FFF3"
+    colorA19: "#FFF3",
+    colorA20: "#B4AFB9",
+    colorA21: "#463851"
 };
 
 export default colors;

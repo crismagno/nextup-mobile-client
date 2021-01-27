@@ -43,6 +43,10 @@ export default props => {
 
     const [listRecomended, setListRecomended] = useState(listRecomendedTest)
 
+    const goToRoute = item => {
+        props.navigation.navigate("BookIt")
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.containerTop}>
@@ -54,7 +58,8 @@ export default props => {
                     horizontal={true}
                     data={listRecomended}
                     renderItem={({ item }) => 
-                        <TouchableOpacity style={styles.postContainer}>
+                        <TouchableOpacity onPress={() => goToRoute(item)}
+                            style={styles.postContainer}>
                             <ImageBackground style={styles.postInto} 
                                 imageStyle={{ borderRadius: 40}}
                                 source={item.media}>
