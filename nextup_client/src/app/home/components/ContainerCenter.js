@@ -15,28 +15,28 @@ const listRecomendedTest = [
         title: 'Thai Thai',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended4.jpeg')
+        media: generalStyles.images.imageA2
     },
     {
         id: Math.random(),
         title: 'Thai2 Thai2',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended2.png')
+        media: generalStyles.images.imageA3
     },
     {
         id: Math.random(),
         title: 'Thai3 Thai4',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended3.jpeg')
+        media: generalStyles.images.imageA4
     },
     {
         id: Math.random(),
         title: 'Thai3 Thai4',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended4.jpeg')
+        media: generalStyles.images.imageA5
     }
 ]
 export default props => {
@@ -57,7 +57,7 @@ export default props => {
                         <TouchableOpacity style={styles.postContainer}>
                             <ImageBackground style={styles.postInto} 
                                 imageStyle={{ borderRadius: 40}}
-                                source={item.img}>
+                                source={item.media}>
                                 <View style={styles.descriptionPost}>
                                     <View style={styles.postContent}>
                                         <Text style={styles.textFont(12, null, 'bold')}>{item.title}</Text>

@@ -3,41 +3,45 @@ import {
     StyleSheet,
     View,
     Text,
-    TouchableOpacity,
-    Dimensions,
+    TouchableOpacity
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import Entypo from 'react-native-vector-icons/Entypo'
 import generalStyles from './../../../assets/styles/general'
 import MapView, { Marker } from 'react-native-maps';
-import customMapStyle from './customStyle' 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
+import customMaps from './../../../assets/styles/maps' 
 
 export default props => {
+
+    const execEvent1 = () => {
+        props && props.execEvent1 && props.execEvent1()
+    }
 
     return (
         <View style={styles.container}>
             <View style={styles.viewTop}>
 
                 <View style={styles.viewTopLeft}>
-                    <Ionicons name="location-outline" size={25} color="#65596F" />
+                    <Ionicons name="location-outline" size={25} color={generalStyles.colors.colorA10} />
                 </View>
 
                 <View style={styles.viewTopCenter}>
-                    <Text style={styles.textFormat(13.5, '#FFF', 'bold')}>Asian Thai</Text>
-                    <Text style={styles.textFormat(11.5, '#65596F')}>78GT N Pine Island Rd, </Text>
-                    <Text style={styles.textFormat(11.5, '#65596F')}>Plantation, FL 33322</Text>
+                    <Text style={styles.textFormat(14, generalStyles.colors.colorA1, 'bold')}>{"Asian Thai"}</Text>
+                    <Text style={styles.textFormat(12, generalStyles.colors.colorA10)}>{"78GT N Pine Island Rd,"}</Text>
+                    <Text style={styles.textFormat(12, generalStyles.colors.colorA10)}>{"Plantation, FL 33322"}</Text>
                 </View>
 
-                <TouchableOpacity style={styles.viewTopRight}>
-                    <Entypo name="chevron-thin-right" size={15} color="#FFF" />
+                <TouchableOpacity 
+                    onPress={() => execEvent1()}
+                    style={styles.viewTopRight}>
+                    <Entypo name="chevron-thin-right" size={15} color={generalStyles.colors.colorA1} />
                 </TouchableOpacity>
 
             </View>
             <View style={styles.viewBottom}>
                 <View style={styles.viewLocale}>
                     <MapView
-                        // customMapStyle={customMapStyle}
+                        customMapStyle={customMaps}
                         mapType="standard"
                         style={{ flex: 1, opacity: 0.999 }}
                         initialRegion={{
@@ -52,8 +56,8 @@ export default props => {
                                 latitude: 37.78825,
                                 longitude: -122.4324, 
                             }}
-                            title="NextUp"
-                            description="NextUp"
+                            title={"NextUp"}
+                            description={"NextUp"}
                         />
                     </MapView>
                 </View>
@@ -97,16 +101,14 @@ const styles = StyleSheet.create({
     viewBottom: {
         flex: 1.7,
         alignItems: 'center',
-        // borderWidth: 1,
         borderColor: 'red',
         paddingHorizontal: 20
     },
 
     viewLocale: {
-        // borderWidth: 1,
         borderColor: '#fff',
         backgroundColor: '#FFF',
-        width: WIDTH/1.3,
+        width: generalStyles.WIDTH/1.3,
         height: 110,
         borderTopRightRadius: 55,
         borderBottomLeftRadius: 55,

@@ -2,6 +2,7 @@ import colors from "./colors";
 import fonts from "./fonts";
 import loadGif from "./loadGif";
 import images from "./images";
+import maps from "./maps";
 import { Dimensions } from "react-native";
 
 const generals = {
@@ -24,5 +25,6 @@ export default {
     colors,
     fonts,
     loadGif,
-    images
+    images,
+    maps
 }

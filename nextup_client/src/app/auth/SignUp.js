@@ -11,7 +11,6 @@ import {
 } from 'react-native'
 import generalStyles from './../../assets/styles/general'
 import ButtonB1 from "./../../components/defaults/buttons/ButtonB1";
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
 
@@ -117,15 +116,15 @@ export default props => {
 const styles = StyleSheet.create({
 	viewDefault: {
 		flex: 1,
-		height: HEIGHT,
-		width: WIDTH,
+		height: generalStyles.HEIGHT,
+		width: generalStyles.WIDTH,
 		backgroundColor: generalStyles.colors.colorA5
 	},
 	viewTop: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		height: HEIGHT - (HEIGHT/1.75),
-		width: WIDTH,
+		height: generalStyles.HEIGHT - (generalStyles.HEIGHT/1.75),
+		width: generalStyles.WIDTH,
 		backgroundColor: generalStyles.colors.colorA3,
 		borderBottomLeftRadius: 85
 	},
@@ -133,13 +132,11 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		justifyContent: 'center',
 		alignItems: 'stretch',
-		// borderWidth: 1,
-		width: WIDTH - 60,
+		width: generalStyles.WIDTH - 60,
 		minHeight: 450,
-		maxHeight: HEIGHT - 200,
+		maxHeight: generalStyles.HEIGHT - 200,
 		marginHorizontal: 30,
 		marginTop: 40
-		// bottom: 80
 	},
 	groupButton: {
 		flexDirection: 'row',

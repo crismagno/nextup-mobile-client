@@ -3,7 +3,6 @@ import {
 	StyleSheet,
 	View,
 	Text,
-	Dimensions,
     TouchableOpacity,
     ToastAndroid,
     Image
@@ -11,8 +10,6 @@ import {
 import Feather from "react-native-vector-icons/Feather";
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import generalStyles from './../../assets/styles/general'
-
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
 
@@ -144,30 +141,30 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
 		alignItems: 'center',
-		height: HEIGHT,
-		width: WIDTH,
+		height: generalStyles.HEIGHT,
+		width: generalStyles.WIDTH,
 		backgroundColor: generalStyles.colors.colorA5
 	},
 	viewTop: {
 		justifyContent: 'flex-end',
 		alignItems: 'center',
-		height: HEIGHT * 0.17,
-		width: WIDTH,
+		height: generalStyles.HEIGHT * 0.17,
+		width: generalStyles.WIDTH,
 		backgroundColor: generalStyles.colors.colorA1,
 		borderBottomLeftRadius: 85
 	},
 	viewCenter: {
         justifyContent: 'center',
 		alignItems: 'center',
-		height: HEIGHT * 0.25,
-		width: WIDTH,
+		height: generalStyles.HEIGHT * 0.25,
+		width: generalStyles.WIDTH,
     },
     
     viewBottom: {
         flex: 1,
 		justifyContent: 'flex-end',
 		alignItems: 'center',
-		width: WIDTH,
+		width: generalStyles.WIDTH,
 		backgroundColor: generalStyles.colors.colorA3,
 		borderTopLeftRadius: 85
     },
@@ -178,7 +175,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap', 
         justifyContent: 'center',
 		alignItems: 'stretch',
-		width: WIDTH,
+		width: generalStyles.WIDTH,
 		backgroundColor: generalStyles.colors.colorA1,
         borderTopLeftRadius: 85,
         padding: 20
@@ -190,14 +187,14 @@ const styles = StyleSheet.create({
         padding: 10,
         margin: 5,
         paddingHorizontal: 20,
-        width: WIDTH/4,
+        width: generalStyles.WIDTH/4,
     },
 
     viewCode: {
         flexDirection: 'row',
         justifyContent: 'center',
 		alignItems: 'center',
-		width: WIDTH,
+		width: generalStyles.WIDTH,
     },
 
     boxTextCode: {
@@ -219,14 +216,14 @@ const styles = StyleSheet.create({
         marginBottom: 6,
         paddingVertical: 14,
         paddingHorizontal: 10,
-        width: WIDTH,
+        width: generalStyles.WIDTH,
         height: 48
     },
 
     btnGoBack: {
         flex: 1,
         justifyContent: 'center', 
-        width: WIDTH,
+        width: generalStyles.WIDTH,
         paddingLeft: 20
     },
 

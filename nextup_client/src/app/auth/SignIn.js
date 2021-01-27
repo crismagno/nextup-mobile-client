@@ -3,16 +3,12 @@ import {
 	StyleSheet,
 	View,
 	Text,
-	Dimensions,
 	TextInput,
     TouchableOpacity,
-	ToastAndroid,
-	ScrollView
+	ToastAndroid
 } from 'react-native'
 import generalStyles from './../../assets/styles/general'
 import ButtonB1 from "./../../components/defaults/buttons/ButtonB1";
-
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
 	const userInit = { email: '', password: '' }
@@ -114,15 +110,15 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
 		alignItems: 'center',
-		height: HEIGHT,
-		width: WIDTH,
+		height: generalStyles.HEIGHT,
+		width: generalStyles.WIDTH,
 		backgroundColor: generalStyles.colors.colorA1
 	},
 	viewTop: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		height: HEIGHT - (HEIGHT/1.75),
-		width: WIDTH,
+		height: generalStyles.HEIGHT - (generalStyles.HEIGHT/1.75),
+		width: generalStyles.WIDTH,
 		backgroundColor: generalStyles.colors.colorA3,
 		borderBottomLeftRadius: 85
 	},
@@ -130,9 +126,9 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'stretch',
 		// borderWidth: 1,
-		width: WIDTH - 60,
+		width: generalStyles.WIDTH - 60,
 		minHeight: 450,
-		maxHeight: HEIGHT - 200,
+		maxHeight: generalStyles.HEIGHT - 200,
 		// bottom: 80
 	},
 	groupButton: {

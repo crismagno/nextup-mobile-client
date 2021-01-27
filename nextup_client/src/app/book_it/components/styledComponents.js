@@ -40,7 +40,7 @@ export const TextModal = styled.Text`
     padding-left: 50px;
     padding-right: 50px;
     padding-bottom: 10px;
-    font-family: ${generalStyles.fontFamily1}
+    font-family: ${generalStyles.fonts.fontFamily1}
 `
 
 export const ButtonStepNext = styled.TouchableOpacity`    
@@ -89,7 +89,7 @@ export const TextStep6 = styled.Text`
     color: ${props => props.primary ? '#8A56AC' : '#0005'};
     border-bottom-width: 0.7px;
     border-color:  ${props => props.primary ? '#8A56AC' : '#0005'};
-    font-family: ${generalStyles.fontFamily1}
+    font-family: ${generalStyles.fonts.fontFamily1}
 `
 
 export const BottomSubModal = styled.View`
@@ -115,3 +115,12 @@ export const ContainerPhone = styled.View`
     margin-right: 20px
 `
 
+export const ButtonDefault1 = styled.TouchableOpacity`    
+    padding: 15px;
+    border-radius: 100px;
+    background-color: ${props => props.background};
+    border: ${props => props.border || '0px solid #FFF'};
+    z-index: 10000000000;
+    /* margin-left: 10px; */
+    margin-right: 10px;
+`

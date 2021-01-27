@@ -10,7 +10,12 @@ const colors = {
     colorA9: "#352641",
     colorA10: "#817889",
     colorA11: "#D47FA6",
-    colorA12: "#dedede"
+    colorA12: "#dedede",
+    colorA13: "#EA909A",
+    colorA14: "#0001",
+    colorA15: "#9599B3",
+    colorA16: "#5A9638",
+    colorA17: "#65596F"
 };
 
 export default colors;

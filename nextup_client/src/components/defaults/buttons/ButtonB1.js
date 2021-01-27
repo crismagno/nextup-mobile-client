@@ -3,12 +3,9 @@ import {
 	StyleSheet,
 	Text,
 	TouchableOpacity,
-	Dimensions,
 	Image
 } from 'react-native';
 import generalStyles from '../../../assets/styles/general';
-
-const { width: WIDTH } = Dimensions.get('window');
 
 export default props => {
 
@@ -31,10 +28,10 @@ const styles = StyleSheet.create({
 
         const widthIs = () => {
             switch(typeWidthBtn) {
-                case "small": return WIDTH / 2;
-                case "middle": return WIDTH / 1.6;
-				case "large": return WIDTH / 1.18;
-				default: return WIDTH / 1.18;
+                case "small": return generalStyles.WIDTH / 2;
+                case "middle": return generalStyles.WIDTH / 1.6;
+				case "large": return generalStyles.WIDTH / 1.18;
+				default: return generalStyles.WIDTH / 1.18;
             };
         };
 
@@ -43,7 +40,7 @@ const styles = StyleSheet.create({
 			alignItems: 'center',
 			paddingVertical: 15,
 			width: widthIs(),
-			height: 50,
+			height: 45,
 			borderRadius: 25,
 			backgroundColor: backgroundColor || generalStyles.colors.colorA1,
 			...generalStyles.shadowButtons()

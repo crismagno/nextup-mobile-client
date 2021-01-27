@@ -11,7 +11,7 @@ import TestDefault from './../app/test/testDefault'
 
 const Drawer = createDrawerNavigator()
 export default props => (
-    <Drawer.Navigator initialRouteName="Trending"
+    <Drawer.Navigator initialRouteName="Home"
         drawerStyle={{ width: '80%', borderTopRightRadius: 100 }}
         openByDefault={false}
         drawerContent ={props => DrawerCustom(props)}>

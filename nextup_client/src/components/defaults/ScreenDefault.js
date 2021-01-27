@@ -3,11 +3,9 @@ import {
 	StyleSheet,
 	View,
 	Text,
-	Dimensions,
 	Image
 } from 'react-native'
 import generalStyles from './../../assets/styles/general'
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export default props => {
 	return <View style={[styles.viewDefault, props.stylePass]}>
@@ -29,15 +27,15 @@ export default props => {
 const styles = StyleSheet.create({
 	viewDefault: {
 		flex: 1,
-		height: HEIGHT,
-		width: WIDTH,
+		height: generalStyles.HEIGHT,
+		width: generalStyles.WIDTH,
 		backgroundColor: generalStyles.colors.colorA5
 	},
 	viewTop: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		height: HEIGHT - (HEIGHT/1.9),
-		width: WIDTH,
+		height: generalStyles.HEIGHT - (generalStyles.HEIGHT/1.9),
+		width: generalStyles.WIDTH,
 		backgroundColor: generalStyles.colors.colorA3,
 		borderBottomLeftRadius: 85
 	},
@@ -54,7 +52,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		width: WIDTH
+		width: generalStyles.WIDTH
 	},
 
 	textFont: {

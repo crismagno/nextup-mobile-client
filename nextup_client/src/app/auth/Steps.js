@@ -12,8 +12,6 @@ import Feather from 'react-native-vector-icons/Feather'
 import generalStyles from "./../../assets/styles/general"
 import * as Animatable from 'react-native-animatable'
 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
-
 export default props => {
 
     const [step, setStep] = useState(1)
@@ -60,7 +58,7 @@ const styles = StyleSheet.create({
             borderWidth: 1,
             marginVertical: 12,
             paddingVertical: 14,
-            width: WIDTH / 1.8,
+            width: generalStyles.WIDTH / 1.8,
             borderRadius: 25,
             backgroundColor: color || generalStyles.colors.colorA1
         }
@@ -75,7 +73,7 @@ const styles = StyleSheet.create({
     },
 
     steps: {
-        width: WIDTH,
+        width: generalStyles.WIDTH,
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',

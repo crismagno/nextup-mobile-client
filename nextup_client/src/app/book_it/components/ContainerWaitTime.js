@@ -2,15 +2,12 @@ import React, { useState } from 'react';
 import {
     StyleSheet,
     View,
-    Text,
-    TouchableOpacity,
-    Dimensions,
-    Image
+    Text
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import generalStyles from './../../../assets/styles/general'
 import MapView, { Marker } from 'react-native-maps';
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
+import ButtonB1 from "./../../../components/defaults/buttons/ButtonB1";
 
 export default props => {
 
@@ -21,27 +18,27 @@ export default props => {
 
         setTimeout(() => {
             setLoad(false)
-            props && props.waitTimeOk && props.waitTimeOk()
+            props && props.execEvent1 && props.execEvent1()
         }, 1000)
     }
 
     return <View style={styles.container}>
 
-        <Text style={[styles.textFormat(35, '#000', 'bold'), { marginTop: 40 }]}>Waiting time</Text>
-        <Text style={styles.textFormat(35, '#000', 'bold')}>is up!</Text>
-        <Text style={[styles.textFormat(15, '#000', 'normal'), { marginTop: 25 }]}>Please come in now.</Text>
+        <Text style={[styles.textFormat(35, generalStyles.colors.colorA2, 'bold'), { marginTop: 40 }]}>Waiting time</Text>
+        <Text style={styles.textFormat(35, generalStyles.colors.colorA2, 'bold')}>is up!</Text>
+        <Text style={[styles.textFormat(15, generalStyles.colors.colorA2, 'normal'), { marginTop: 25 }]}>Please come in now.</Text>
 
         <View style={styles.containerMaps}>
             <View style={styles.viewTop}>
 
                 <View style={styles.viewTopLeft}>
-                    <Ionicons name="location-outline" size={25} color="#65596F" />
+                    <Ionicons name="location-outline" size={25} color={generalStyles.colors.colorA10} />
                 </View>
 
                 <View style={styles.viewTopCenter}>
-                    <Text style={styles.textFormat(13.5, '#000', 'bold')}>Asian Thai</Text>
-                    <Text style={styles.textFormat(11.5, '#65596F')}>78GT N Pine Island Rd, </Text>
-                    <Text style={styles.textFormat(11.5, '#65596F')}>Plantation, FL 33322</Text>
+                    <Text style={styles.textFormat(13.5, generalStyles.colors.colorA2, 'bold')}>{"Asian Thai"}</Text>
+                    <Text style={styles.textFormat(11.5, generalStyles.colors.colorA10)}>{"78GT N Pine Island Rd, "}</Text>
+                    <Text style={styles.textFormat(11.5, generalStyles.colors.colorA10)}>{"Plantation, FL 33322"}</Text>
                 </View>
 
             </View>
@@ -68,14 +65,16 @@ export default props => {
             </View>
         </View>
 
-        <TouchableOpacity onPress={() => waitTimeOk()}
-            style={styles.btnBookIt}>
-                {
-                    load ? <Image style={{ width: 25, height: 25 }} 
-                        source={generalStyles.loadRing} /> :
-                    <Text style={styles.textFormat(14, '#FFF')}>OK</Text>
-                }
-        </TouchableOpacity>
+        <View>
+            <ButtonB1
+                style={{ marginBottom: 10 }}
+                backgroundColor={generalStyles.colors.colorA3} 
+                typeWidthBtn="small"
+                label="On my way!"
+                loadIsValid={load}
+                execEvent={() => waitTimeOk()}
+            />
+        </View>
     </View>
 }
 
@@ -83,7 +82,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginTop: 70,
-        backgroundColor: '#FFF',
+        backgroundColor: generalStyles.colors.colorA1,
         justifyContent: 'flex-start',
         alignItems: 'center',
         borderTopLeftRadius: 85,
@@ -99,22 +98,21 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         padding: 15,
-        // borderWidth: 1,
         borderRadius: 50,
         width: 180,
         height: 50,
         marginVertical: 15,
-        backgroundColor: '#8A56AC',
+        backgroundColor: generalStyles.colors.colorA3,
         ...generalStyles.shadowButtons()
     },
 
     textFormat(fts, color, fontWeight, mh, fontFamily) {
         return {
-            color: color || '#FFF',
+            color: color || generalStyles.colors.colorA1,
             fontSize: fts || 13,
             fontWeight: fontWeight || 'normal',
             marginHorizontal: mh || 0,
-            fontFamily: generalStyles.fontFamily1
+            fontFamily: generalStyles.fonts.fontFamily1
         }
     },
 
@@ -142,20 +140,18 @@ const styles = StyleSheet.create({
     viewBottom: {
         flex: 1.7,
         alignItems: 'center',
-        // borderWidth: 1,
         borderColor: 'red',
         paddingHorizontal: 20
     },
 
     viewLocale: {
         // borderWidth: 1,
-        borderColor: '#fff',
-        backgroundColor: '#FFF',
-        width: WIDTH/1.3,
+        borderColor: generalStyles.colors.colorA1,
+        backgroundColor: generalStyles.colors.colorA1,
+        width: generalStyles.WIDTH/1.3,
         height: 110,
         borderTopRightRadius: 55,
         borderBottomLeftRadius: 55,
         overflow: 'hidden'
-    },
-
+    }
 })

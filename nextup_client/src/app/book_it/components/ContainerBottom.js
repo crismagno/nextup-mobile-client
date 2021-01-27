@@ -4,13 +4,11 @@ import {
     View,
     Text,
     TouchableOpacity,
-    Dimensions,
-    ScrollView,
-    Image
+    ScrollView
 } from 'react-native';
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import generalStyles from "./../../../assets/styles/general";
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
+import ButtonB1 from "./../../../components/defaults/buttons/ButtonB1";
 
 export default props => {
 
@@ -44,16 +42,15 @@ export default props => {
         return arrayPM
 
     }
-
     const [numPeople, setNumPeople] = useState(0)
-    const [dateBook, setDateBook] = useState('')
+    const [requestTime, setRequestTime] = useState('')
     const [load, setLoad] = useState(false)
 
     const renderDatesBookIt = () => {
         const buttonsFormat = allHours().map((dateBookIt, index) => {
-            let activeButton = `${dateBookIt.hours}_${dateBookIt.type}` !== dateBook ? styles.buttonDateBookIt : styles.buttonDateBookItActive
-            let activeText = `${dateBookIt.hours}_${dateBookIt.type}` !== dateBook ? styles.textFormat(12.5, '#0008', 'bold') : styles.textFormat(12.5, '#000', 'bold')
-            return <TouchableOpacity key={`${dateBookIt.hours}_${index}`} onPress={() => setDateBook(`${dateBookIt.hours}_${dateBookIt.type}`)}
+            let activeButton = `${dateBookIt.hours}_${dateBookIt.type}` !== requestTime ? styles.buttonDateBookIt : styles.buttonDateBookItActive
+            let activeText = `${dateBookIt.hours}_${dateBookIt.type}` !== requestTime ? styles.textFormat(12.5, generalStyles.colors.colorA6, 'bold') : styles.textFormat(12.5, generalStyles.colors.colorA2, 'bold')
+            return <TouchableOpacity key={`${dateBookIt.hours}_${index}`} onPress={() => setRequestTime(`${dateBookIt.hours}_${dateBookIt.type}`)}
                 style={activeButton}>
                 <Text style={[activeText, { marginRight: 5 }]}>{String(dateBookIt.hours).replace('.', ':')}</Text>
                 <Text style={activeText}>{dateBookIt.type}</Text>
@@ -68,44 +65,54 @@ export default props => {
     }
 
     const executeBookIt = () => {
+
+        if (numPeople == 0 || requestTime == "") {
+            return false
+        }
+
         setLoad(true)
 
         setTimeout(() => {
             setLoad(false)
-            props && props.executeBookIt && props.executeBookIt()
+            const values = { numPeople, requestTime }
+            props && props.execBookIt && props.execBookIt(values)
         }, 1000)
     }
 
+    const execGoBack = () => {
+        props.navigation.goBack()
+    }
+
     return <ScrollView contentContainerStyle={styles.container}>
-        <Text style={styles.textFormat(28, '#000', 'bold')}>How many people?</Text>
+        <Text style={[styles.textFormat(28, generalStyles.colors.colorA2, 'bold'), { marginVertical: 10 }]}>How many people?</Text>
         <View style={styles.viewManyMinusPeople}>
             <TouchableOpacity onPress={() => numPeople > 0 && setNumPeople(numPeople - 1)} 
                 style={styles.defaultButton()}>
-                <Fontisto name="minus-a" size={20} color="#9599B3" />
+                <Fontisto name="minus-a" size={20} color={generalStyles.colors.colorA2} />
             </TouchableOpacity>
-            <Text style={styles.textFormat(40, '#0004', null, 20)}>{numPeople}</Text>
+            <Text style={styles.textFormat(40, generalStyles.colors.colorA8, null, 20)}>{numPeople}</Text>
             <TouchableOpacity onPress={() => setNumPeople(numPeople + 1)}
-                style={styles.defaultButton('#9599B3')}>
-                <Fontisto name="plus-a" size={20} color="#FFF" />
+                style={styles.defaultButton(generalStyles.colors.colorA15)}>
+                <Fontisto name="plus-a" size={20} color={generalStyles.colors.colorA1} />
             </TouchableOpacity>
         </View>
         <View style={styles.viewTime} >
-            <Text style={styles.textFormat(15, '#000')}>Time</Text>
+            <Text style={styles.textFormat(15, generalStyles.colors.colorA2)}>Time</Text>
 
             {renderDatesBookIt()}
 
         </View>
         <View style={styles.viewButtonsBottom}>
-            <TouchableOpacity onPress={() => executeBookIt()}
-                style={styles.btnBookIt}>
-                {
-                    load ? <Image style={{ width: 25, height: 25 }} 
-                        source={generalStyles.loadRing} /> :
-                    <Text style={styles.textFormat(14, '#FFF')}>BOOK IT</Text>
-                }
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.btnBack} onPress={() => props.navigation.goBack()}>
-                <Text style={styles.textFormat(12, '#AC66D9')}>GO BACK</Text>
+            <ButtonB1 
+                style={{ marginBottom: 10 }}
+                backgroundColor={generalStyles.colors.colorA3} 
+                typeWidthBtn="large"
+                label="BOOK IT"
+                loadIsValid={load}
+                execEvent={() => executeBookIt()}
+            />
+            <TouchableOpacity style={styles.btnBack} onPress={() => execGoBack()}>
+                <Text style={styles.textFormat(12, generalStyles.colors.colorA3)}>GO BACK</Text>
             </TouchableOpacity>
         </View>
     </ScrollView>
@@ -114,7 +121,7 @@ export default props => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFF',
+        backgroundColor: generalStyles.colors.colorA1,
         justifyContent: 'flex-start',
         alignItems: 'center',
         borderTopLeftRadius: 85,
@@ -125,7 +132,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        width: WIDTH,
+        width: generalStyles.WIDTH,
         marginTop: 10,
         marginTop: 5,
         paddingHorizontal: 20
@@ -135,8 +142,7 @@ const styles = StyleSheet.create({
         flex: 2,
         flexDirection: 'column',
         alignItems: 'center',
-        // borderWidth: 1,
-        width: WIDTH,
+        width: generalStyles.WIDTH,
         marginBottom: 10
     },
 
@@ -145,26 +151,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
-    btnBookIt: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 15,
-        height: 50,
-        // borderWidth: 1,
-        borderRadius: 50,
-        width: WIDTH/1.2,
-        marginBottom: 10,
-        backgroundColor: '#8A56AC',
-        ...generalStyles.shadowButtons()
-    },
-
     btnBack: {
         justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: 5,
         borderWidth: 1,
-        borderColor: '#969696',
-        backgroundColor: '#F8F8F8',
+        borderColor: generalStyles.colors.colorA15,
+        backgroundColor: generalStyles.colors.colorA5,
         borderRadius: 50,
         width: 150,
         marginBottom: 10,
@@ -173,11 +166,11 @@ const styles = StyleSheet.create({
 
     textFormat(fts, color, fontWeight, mh) {
         return {
-            color: color || '#FFF',
+            color: color || generalStyles.colors.colorA1,
             fontSize: fts || 13,
             fontWeight: fontWeight || 'normal',
             marginHorizontal: mh || 0,
-            fontFamily: generalStyles.fontFamily1
+            fontFamily: generalStyles.fonts.fontFamily1
         }
     },
 
@@ -187,21 +180,20 @@ const styles = StyleSheet.create({
             borderRadius: 1000,
             marginHorizontal: 15,
             padding: 15,
-            borderColor: '#9599B3',
-            backgroundColor: color || '#FFF'
+            borderColor: generalStyles.colors.colorA15,
+            backgroundColor: color || generalStyles.colors.colorA1
         }
     },
 
     scrollTime: {
-        // borderWidth: 1,
-        width: WIDTH / 2,
+        width: generalStyles.WIDTH / 2,
     },
 
     buttonDateBookIt: {
         flexDirection: 'row',
         justifyContent: 'center',
         borderWidth: 0.5,
-        borderColor: '#0003',
+        borderColor: generalStyles.colors.colorA8,
         marginHorizontal: 60,
         marginVertical: 5,
         borderRadius: 20,
@@ -217,7 +209,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         paddingVertical: 6,
         paddingHorizontal: 10,
-        borderColor: '#241332'
+        borderColor: generalStyles.colors.colorA4
     }
 
 })

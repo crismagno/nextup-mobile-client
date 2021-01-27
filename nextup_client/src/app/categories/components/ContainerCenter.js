@@ -4,13 +4,10 @@ import {
     View,
     Text,
     TouchableOpacity,
-    Dimensions,
     ScrollView,
     Image
 } from 'react-native';
 import generalStyles from './../../../assets/styles/general'
-
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 const listCategoriesTest = [
     [{
@@ -18,21 +15,21 @@ const listCategoriesTest = [
         title: 'Thai Thai',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended3.jpeg')
+        media: generalStyles.images.imageA2
     },
     {
         id: Math.random(),
         title: 'Thai2 Thai2',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended4.jpeg')
+        media: generalStyles.images.imageA2
     },
     {
         id: Math.random(),
         title: 'Thai3 Thai4',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended3.jpeg')
+        media: generalStyles.images.imageA2
     }],
     [{
 
@@ -40,63 +37,63 @@ const listCategoriesTest = [
         title: 'Thai Thai',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended1.png')
+        media: generalStyles.images.imageA2
     },
     {
         id: Math.random(),
         title: 'Thai2 Thai2',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended4.jpeg')
+        media: generalStyles.images.imageA2
     },
     {
         id: Math.random(),
         title: 'Thai3 Thai4',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended4.jpeg')
+        media: generalStyles.images.imageA2
     }],
     [{
         id: Math.random(),
         title: 'Thai Thai',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended2.png')
+        media: generalStyles.images.imageA2
     },
     {
         id: Math.random(),
         title: 'Thai2 Thai2',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended4.jpeg')
+        media: generalStyles.images.imageA2
     },
     {
         id: Math.random(),
         title: 'Thai3 Thai4',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended3.jpeg')
+        media: generalStyles.images.imageA2
     }],
     [{
         id: Math.random(),
         title: 'Thai Thai',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended4.jpeg')
+        media: generalStyles.images.imageA2
     },
     {
         id: Math.random(),
         title: 'Thai2 Thai2',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended3.jpeg')
+        media: generalStyles.images.imageA2
     },
     {
         id: Math.random(),
         title: 'Thai3 Thai4',
         stars: 4.6,
         category: 'Restaurants',
-        img: require('./../../../assets/images/recomended4.jpeg')
+        media: generalStyles.images.imageA2
     }]
 ]
 
@@ -109,16 +106,16 @@ export default props => {
             onPress={() => props.navigation.navigate('Trending')}
             style={styles.boxCategory}>
             <Image style={styles.imgCategory}
-                source={category.img} />
+                source={category.media} />
             <View style={styles.boxCategoryBottom}>
-                <Text style={styles.textFont(12.5, "#fff", 'bold')}>{category.category}</Text>
+                <Text style={styles.textFont(12.5, generalStyles.colors.colorA1, 'bold')}>{category.category}</Text>
             </View>
         </TouchableOpacity>
     }
 
     const renderListCategories = item => {
         return <View style={styles.boxScrollCategory} key={item[0].id}>
-            <View style={{flex: 1}}></View>
+            <View style={{flex: 1}}/>
             <View style={{flex: 3}}>
                 <ScrollView
                     contentContainerStyle={styles.styleScrollView2}
@@ -159,10 +156,10 @@ const styles = StyleSheet.create({
 
     textFont(fts, color, fontWeight) {
         return {
-            color: color || '#FFF',
+            color: color || generalStyles.colors.colorA1,
             fontSize: fts || 13,
             fontWeight: fontWeight || 'normal',
-            fontFamily: generalStyles.fontFamily1
+            fontFamily: generalStyles.fonts.fontFamily1
         }
     },
 
@@ -176,7 +173,7 @@ const styles = StyleSheet.create({
     postInto: {
         flex: 1,
         justifyContent: 'flex-end',
-        backgroundColor:'#EA909A',
+        backgroundColor: generalStyles.colors.colorA13,
         paddingVertical: 5,
         borderRadius: 40,
         
@@ -199,21 +196,16 @@ const styles = StyleSheet.create({
 
     boxScrollCategory: {
         justifyContent:  'flex-end',
-        height: HEIGHT / 3,
+        height: generalStyles.HEIGHT / 3,
     },
     boxCategory: {
         width: 170,
         borderWidth: 1.5,
-        borderColor: '#241332',
+        borderColor: generalStyles.colors.colorA4,
         borderRadius: 10,
         borderTopLeftRadius: 30,
         borderTopRightRadius: 20,
-
-        shadowColor: '#000',
-        shadowOffset: { width: 10, height: 2 },
-        shadowOpacity: 1,
-        shadowRadius: 2,
-        elevation: 5
+        ...generalStyles.shadowButtons({ elevation: 5 })
     },
     imgCategory: {
         flex: 2,
@@ -224,11 +216,10 @@ const styles = StyleSheet.create({
     boxCategoryBottom: {
         width: 190,
         height: 55,
-        backgroundColor: "#352641",
+        backgroundColor: generalStyles.colors.colorA9,
         borderBottomRightRadius: 10,
         borderBottomLeftRadius: 10,
         padding: 15 
     }
-
 
 })

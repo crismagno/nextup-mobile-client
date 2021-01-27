@@ -22,7 +22,7 @@ const listLineTest = [
         },
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        media: generalStyles.images.imageA2
     },
     {
         id: Math.random(),
@@ -34,7 +34,7 @@ const listLineTest = [
         },
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        media: generalStyles.images.imageA2
     },
     {
         id: Math.random(),
@@ -46,7 +46,7 @@ const listLineTest = [
         },
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        media: generalStyles.images.imageA2
     },
     {
         id: Math.random(),
@@ -58,7 +58,7 @@ const listLineTest = [
         },
         stars: 4.6,
         category: 'Restaurants',
-        img: 'url-img'
+        media: generalStyles.images.imageA2
     }
 ]
 export default props => {
@@ -72,7 +72,7 @@ export default props => {
         let days = moment().diff(time, 'days')
         let objTime = {
             value: 'empty',
-            color: '#000'
+            color: generalStyles.colors.colorA2
         }
 
         // verificar se será setado horas ou segundos
@@ -87,7 +87,7 @@ export default props => {
         }
 
         if (+minutes < 16) {
-            objTime['color'] = '#D47FA6'
+            objTime['color'] = generalStyles.colors.colorA11
         }
 
         return objTime
@@ -96,8 +96,8 @@ export default props => {
     return (
         <View style={styles.container}>
             <View style={styles.containerTop}>
-                <Text style={styles.textFont(12, '#000')}>YOUR LINE</Text>
-                <Text style={styles.textFont(12, '#000')}>TIMES</Text>
+                <Text style={styles.textFont(12, generalStyles.colors.colorA2)}>YOUR LINE</Text>
+                <Text style={styles.textFont(12, generalStyles.colors.colorA2)}>TIMES</Text>
             </View>
             
             <View style={styles.containerCenter}>
@@ -108,16 +108,16 @@ export default props => {
                     renderItem={({ item }) => 
                         <TouchableOpacity style={styles.postContainer}>
                             <View style={styles.postStart}>
-                                <Image style={styles.postImage} source={require('./../../../assets/images/recomended1.png')} />
+                                <Image style={styles.postImage} source={item.media} />
                             </View>
                             <View style={styles.postCenter}>
-                                <Text style={styles.textFont(16, '#000', 'bold')}>{item.title.toUpperCase()}</Text>
-                                <Text style={styles.textFont(13, '#0007', 'bold')}>{item.category}</Text>
-                                <Text style={styles.textFont(10, '#0007', 'bold')}>{item.subtitle}</Text>
+                                <Text style={styles.textFont(16, generalStyles.colors.colorA2, 'bold')}>{item.title.toUpperCase()}</Text>
+                                <Text style={styles.textFont(13, generalStyles.colors.colorA6, 'bold')}>{item.category}</Text>
+                                <Text style={styles.textFont(10, generalStyles.colors.colorA6, 'bold')}>{item.subtitle}</Text>
                             </View>
                             <View style={styles.postEnd}>
                                 <Text style={styles.textFont(16, timeCalc(item.date.hours).color, 'bold')}>{timeCalc(item.date.hours).value}</Text>
-                                <Text style={styles.textFont(11, '#0007', 'bold')}>{timeCalc(item.date.hours).value}</Text>
+                                <Text style={styles.textFont(11, generalStyles.colors.colorA6, 'bold')}>{timeCalc(item.date.hours).value}</Text>
                             </View>
                         </TouchableOpacity>
                     }
@@ -144,12 +144,11 @@ const styles = StyleSheet.create({
 
     containerCenter: {
         flex: 1,
-        paddingVertical: 5,
-
+        paddingVertical: 5
     },
 
     tag: {
-        backgroundColor: '#352641',
+        backgroundColor: generalStyles.colors.colorA9,
         paddingHorizontal: 25,
         paddingVertical: 5,
         borderRadius: 20
@@ -157,17 +156,16 @@ const styles = StyleSheet.create({
 
     textFont(fts, color, fontWeight) {
         return {
-            color: color || '#FFF',
+            color: color || generalStyles.colors.colorA1,
             fontSize: fts || 13,
             fontWeight: fontWeight || 'normal',
-            fontFamily: generalStyles.fontFamily1,
+            fontFamily: generalStyles.fonts.fontFamily1,
         }
     },
 
-    // parts posts
     postContainer: {
         borderBottomWidth: 1,
-        borderColor: '#0001',
+        borderColor: generalStyles.colors.colorA14,
         flexDirection: 'row',
         justifyContent: 'center',
         height: 90,
@@ -176,7 +174,6 @@ const styles = StyleSheet.create({
 
     postStart: {
         flex: 1,
-        // borderWidth: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
         paddingVertical: 15
@@ -185,8 +182,6 @@ const styles = StyleSheet.create({
     postCenter: {
         flex: 3.2,
         justifyContent: 'space-around',
-        // borderWidth: 1,
-        // backgroundColor: 'blue',
         paddingVertical: 10,
     },
 
@@ -195,8 +190,6 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         paddingVertical: 10,
         paddingHorizontal: 10
-        // borderWidth: 1,
-        // backgroundColor: '#0002'
     },
 
     postImage: {

@@ -3,29 +3,25 @@ import { useDispatch } from "react-redux";
 import {
 	StyleSheet,
 	View,
-	Text
+	ToastAndroid
 } from 'react-native'
 
-import ContainerTop from './components/ContainerTop'
 import ContainerCenter from './components/ContainerCenter'
 import ContainerBottom from './components/ContainerBottom'
+import ContainerPendingConfirmation from './components/ContainerPendingConfirmation'
+import ContainerPendingConfirmed from './components/ContainerPendingConfirmed'
+import ContainerNotAllowChange from './components/ContainerNotAllowChange'
+import ContainerNotAcceptedChange from './components/ContainerNotAcceptedChange'
 import ContainerWaitTime from './components/ContainerWaitTime'
+import ContainerSeeYou from './components/ContainerSeeYou'
 
 import { BlurView } from "@react-native-community/blur";
 import { 
-	Modal, 
-	HeaderModal, 
-	HeaderModalStep, 
+	Modal,
 	CenterModal,
 	BottomModal,
-	ButtonStepNext,
-	ButtonStep6,
-	TextStep6,
-	TextModal, 
-	ButtonStepCancel,
-	BottomSubModal,
-	ButtonStep10,
-	ContainerPhone
+	TextModal,
+	ButtonDefault1
 } from './components/styledComponents'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import IF from "./../../components/defaults/IF";
@@ -62,55 +58,158 @@ export default props => {
 	]
 	
 	// texts modals
-	const steps = {
-		step1To4: "Waiting for Thai Thai's confirmation.",
-		step5: "Your spot at Thai Thai for 2:00 PM is confirmed",
-		step6: "You're next up in 15 minutes",
+	const textSteps = {
 		cancelNow: "Cancel your spot now?",
 		cancelSuccess: "Your spot has been cancelled",
-		step9: {
-			text1: "Sorry, Thai Thai didn't accept your request.",
-			text2: "Do you want to Keep your previous spot at 2 PM for party of 2?"
-		},
-		step10: "Thai Thai didn't accept your request. You can contact then",
-		phone: '754-723-1122'
+		waitConfirmation: company => {
+			return ""
+		} 
 	}
 
-	const [showModal, setShowModal] = useState(0)
-	const [textStep, setTextStep] = useState(steps)
-	const [stepModal, setStepModal] = useState(1)
-	const [waitTime, setWaitTime] = useState(false)
+	const exampleValueBookIt = {
+		// ["normal",  "pendingConfirmation", "pendingConfirmed", "changeTime", "notAllowChangeTime", "notAcceptedChange"]
+		requestMoment: "normal",
+		requestTime: 0,
+		company: {},
+		showStep: 1,
+		numPeople: 0,
+		requestLastMoment: "normal"
+	}
+
+	const [stepModal, setStepModal] = useState(0)
+	const [waitTime, setWaitTime] = useState(0)
+	const [valueBookIt, setValueBookIt] = useState(exampleValueBookIt)
 	
-	const executeBookIt = () => {
-		setShowModal(1)
-
-		var num = 0
-		var intervalSteps = setInterval(() => {
-			if (num === 5) {
-				clearInterval(intervalSteps)
-			} else {
-				num += 1
-				setStepModal(num)
-			}
-
-		}, 500)
+	//-------------------------------------------------------------
+	// ----- EXECUTE EVENTS ------------------------------------
+	
+	// event that choose the hours and persons 
+	const execBookIt = values => {
+		
+		// ToastAndroid.show(JSON.stringify(values), ToastAndroid.LONG)
+		
+		// TODO----------request pending--------------------
+		setValueBookIt({
+			...valueBookIt,
+			numPeople: values.numPeople,
+			requestTime: values.requestTime,
+			requestMoment: "pendingConfirmation",
+			showStep: 2
+		})
+		
+		setTimeout(() => {
+			setValueBookIt({
+				...valueBookIt,
+				requestMoment: "pendingConfirmed",
+				showStep: 3
+			})
+		}, 4000)
+		
+	}
+	
+	// event go back on screen -> pendingConfirmation
+	const execGoBackPendingConfirmation = () => {
+		setValueBookIt({
+			...valueBookIt,
+			numPeople: 0,
+			requestTime: 0,
+			requestMoment: "normal",
+			showStep: 1
+		})
 	}
 
-	const execChangeIt = () => {
-		setShowModal(0)
+	// event that request change time on screen -> pendingConfirmed
+	const execChangeTime = () => {
+
+		// if not allowed change time
+		if (true) {
+			setValueBookIt({
+				...valueBookIt,
+				requestMoment: "notAllowChangeTime",
+				showStep: 4
+			})
+		} else {
+			setValueBookIt({
+				...valueBookIt,
+				requestMoment: "normal",
+				showStep: 1
+			})
+		}
+		
+	}
+
+	// show modal cancel book it
+	const execCancel = () => {
 		setStepModal(1)
 	}
 
-	const toStep = step => {
+	// close modal cancel book it
+	const execCloseCancel = () => {
+		setStepModal(0)
+	}
+
+	// restart values book it and close modal
+	const execInitBookIt = () => {
+		setValueBookIt(exampleValueBookIt)
+		setStepModal(0)
+	}
+
+	const execAcceptedChangeBookIt = () => {
+		if (true) {
+			setValueBookIt({
+				...valueBookIt,
+				requestMoment: "notAcceptedChange",
+				showStep: 5
+			})
+		} else {
+			setValueBookIt({
+				...valueBookIt,
+				requestMoment: "pendingConfirmed",
+				showStep: 3
+			})
+		}
+	}
+
+	const execCancelAcceptedChangeBookIt = () => {
+		setValueBookIt({
+			...valueBookIt,
+			requestMoment: "pendingConfirmed",
+			showStep: 3
+		})
+	}
+
+	const execEventGoBackNotAcceped = () => {
+		setValueBookIt({
+			...valueBookIt,
+			requestMoment: "pendingConfirmed",
+			showStep: 3
+		})
+	}
+
+	// event go to container wait time ok
+	const goToWaitTimeOk = () => {
+		setWaitTime(1)
+		setStepModal(0)
+	}
+
+	// event go to container see you
+	const goToContainerSeeYou = () => {
+		setWaitTime(2)
+		setStepModal(0)
+
+		setTimeout(() => {
+			setWaitTime(0)
+		}, 2000)
+	}
+
+	const toStepModal = step => {
 		setStepModal(step)
 	}
 
-	const waitTimeOk = () => {
-		setWaitTime(false)
-		setStepModal(10)
-	}
+	//----------------------------------------------------------------------
+	// ----- RENDER COMPONENTS ---------------------------------------------
 
-	// render modal
+	// component modal
 	const renderModal = () => {
 		return <View style={styles.containerBlur}>
 			<BlurView style={styles.blurView}
@@ -118,53 +217,16 @@ export default props => {
 				blurType="dark"
 				blurAmount={15}
 			/>
-
-			{ modalWaiting() }
+			<Modal top={generalStyles.HEIGHT/3.2}>
+				<CenterModal>
+					{ renderTextModal() }
+				</CenterModal>
+				{ renderModalBottom() }
+			</Modal>
 		</View>
 	}
 
-	// modal waiting component
-	const modalWaiting = () => {
-
-		let showHeader = true
-
-		if (!(stepModal < 6 || stepModal == 9 || stepModal == 10)) {
-			showHeader = false
-		}
-
-		return <Modal top={stepModal == 9 ? generalStyles.HEIGHT/3.2 : generalStyles.HEIGHT/2.5}>
-			{ showHeader && renderModalHeader() }
-			{ renderModalCenter() }
-			{ renderModalBottom() }
-			{/* { stepModal == 9 && renderModalBottomSub() } */}
-		</Modal>
-	}
-
-	//header modal
-	const renderModalHeader = () => {
-		let showHeader = true
-
-		if (!(stepModal > 3 || stepModal == 9 || stepModal == 10)) {
-			showHeader = false
-		}
-
-		return <HeaderModal>
-			<HeaderModalStep active={stepModal == 1} />
-			<HeaderModalStep active={stepModal == 2}/>
-			<HeaderModalStep active={stepModal == 3}/>
-			<HeaderModalStep active={showHeader}/>
-		</HeaderModal>
-	}
-
-	//center modal
-	const renderModalCenter = () => {
-		return <CenterModal>
-			{ renderTextModal() }
-			{ stepModal == 6 && renderButtonCenterStep6() }
-		</CenterModal>
-	}
-
-	//bottom modal
+	// bottom modal
 	const renderModalBottom = () => {
 		let flexValue = {
 			direction: 'row',
@@ -178,146 +240,96 @@ export default props => {
 		}
 
 		return <BottomModal direction={flexValue.direction} justify={flexValue.justify} align={flexValue.align}>
-			{ stepModal == 5 && renderButtonStep5() }
-			{ stepModal == 6 && renderButtonsStep6()}
-			{ stepModal == 7 && renderButtonsStep7()}
-			{ stepModal == 8 && renderButtonsStep8()}
-			{ stepModal == 9 && renderButtonsStep9()}
-			{ stepModal == 10 && renderButtonsStep10()}
+			{ stepModal == 1 && renderButtonsStep1()}
+			{ stepModal == 2 && renderButtonsStep2()}
 		</BottomModal>
 	}
 
-	//bottom modal
-	const renderModalBottomSub = () => {
-		let flexValue = {
-			direction: 'row',
-			justify: 'flex-end',
-			align: 'center'
-		}
-
-		return <BottomSubModal direction={flexValue.direction} justify={flexValue.justify} align={flexValue.align}>
-			<Text>dasda</Text>
-		</BottomSubModal>
-	}
-
-	// render text center
+	// text modal
 	const renderTextModal = () => {
-		if (stepModal < 5) {
+		if (stepModal === 1) {
 			return <TextModal fontWeight="bold" size={25}>
-				{textStep.step1To4}
+				{textSteps.cancelNow}
 			</TextModal>
-		} else if (stepModal === 5) {
-			return <TextModal fontWeight="normal" size={20}>
-				{textStep.step5}
-			</TextModal>
-		} else if (stepModal === 6) {
+		} else if (stepModal === 2) {
 			return <TextModal fontWeight="bold" size={25}>
-				{textStep.step6}
-			</TextModal>
-		} else if (stepModal === 7) {
-			return <TextModal fontWeight="bold" size={25}>
-				{textStep.cancelNow}
-			</TextModal>
-		} else if (stepModal === 8) {
-			return <TextModal fontWeight="bold" size={25}>
-				{textStep.cancelSuccess}
-			</TextModal>
-		} else if (stepModal === 9) {
-			return <>
-				<TextModal fontWeight="normal" size={20}>
-					{textStep.step9.text1}
-				</TextModal>
-				<TextModal fontWeight="normal" size={20}>
-					{textStep.step9.text2}
-				</TextModal>
-			</>
-		} else if (stepModal === 10) {
-			return <TextModal fontWeight="normal" size={20}>
-				{textStep.step10}
+				{textSteps.cancelSuccess}
 			</TextModal>
 		}
 	}
 
-	// button step 5
-	const renderButtonStep5 = () => {
-		return <ButtonStepNext onPress={() => toStep(6)} background="#D47FA6">
-			<MaterialCommunityIcons name="arrow-right" color="#fff" size={23} />      
-		</ButtonStepNext>
-	}
-
-	// button center step 6
-	const renderButtonCenterStep6 = () => {
-		return <ButtonStepNext onPress={() => toStep(9)} 
-			background="#FFF" border="1px solid #000">
-			<MaterialCommunityIcons name="arrow-right" color="#000" size={23} />      
-		</ButtonStepNext>
-	}
-
-	
-	// buttons step 6
-	const renderButtonsStep6 = () => {
+	// buttons modal step 1
+	const renderButtonsStep1 = () => {
 		return <>
-			<ButtonStep6 primary onPress={() => execChangeIt()}>
-				<TextStep6 primary>CHANGE IT</TextStep6>     
-			</ButtonStep6>
-			<ButtonStep6 onPress={() => toStep(7)}>
-				<TextStep6>CANCEL SPOT</TextStep6>     
-			</ButtonStep6>
+			<ButtonDefault1 onPress={() => toStepModal(2)} 
+				background={generalStyles.colors.colorA3}>
+				<MaterialCommunityIcons name="check" color={generalStyles.colors.colorA1} size={20} />      
+			</ButtonDefault1>
+			<ButtonDefault1 onPress={() => execCloseCancel()} 
+				background={generalStyles.colors.colorA11}>
+				<MaterialCommunityIcons name="close" color={generalStyles.colors.colorA1} size={20} />      
+			</ButtonDefault1>
 		</>
 	}
 
-	// buttons step 7
-	const renderButtonsStep7 = () => {
-		return <>
-			<ButtonStepCancel onPress={() => toStep(8)} 
-				background="#8A56AC">
-				<MaterialCommunityIcons name="check" color="#fff" size={20} />      
-			</ButtonStepCancel>
-			<ButtonStepCancel onPress={() => toStep(6)} 
-				background="#D47FA6">
-				<MaterialCommunityIcons name="close" color="#fff" size={20} />      
-			</ButtonStepCancel>
-		</>
+	// buttons modal step 2
+	const renderButtonsStep2 = () => {
+		return <ButtonDefault1 onPress={() => execInitBookIt()} 
+			background={generalStyles.colors.colorA11}>
+			<MaterialCommunityIcons name="arrow-right" color={generalStyles.colors.colorA1} size={20} />      
+		</ButtonDefault1>
 	}
 
-	// buttons step 8
-	const renderButtonsStep8 = () => {
-		return <ButtonStepCancel onPress={() => execChangeIt(8)} 
-			background="#D47FA6">
-			<MaterialCommunityIcons name="arrow-right" color="#fff" size={20} />      
-		</ButtonStepCancel>
+	const renderConditionalComponents = () => {
+		if (valueBookIt.requestMoment === "normal") {
+			return <ContainerBottom {...props} 
+			execBookIt={execBookIt}/>
+		}
+
+		if (valueBookIt.requestMoment === "pendingConfirmation") {
+			return <ContainerPendingConfirmation {...props} 
+				valuesRequest={valueBookIt}
+				execEvent={execGoBackPendingConfirmation}
+			/>
+		}
+
+		if (valueBookIt.requestMoment === "pendingConfirmed") {
+			return <ContainerPendingConfirmed {...props} 
+				valuesRequest={valueBookIt}
+				execChangeTime={execChangeTime}
+				execCancel={execCancel}
+			/>
+		}
+
+		if (valueBookIt.requestMoment === "notAllowChangeTime") {
+			return <ContainerNotAllowChange {...props} 
+				valuesRequest={valueBookIt}
+				execAcceptedChangeBookIt={execAcceptedChangeBookIt}
+				execCancel={execCancelAcceptedChangeBookIt}
+			/>
+		}
+
+		if (valueBookIt.requestMoment === "notAcceptedChange") {
+			return <ContainerNotAcceptedChange {...props} 
+				valuesRequest={valueBookIt}
+				execEventGoBackNotAcceped={execEventGoBackNotAcceped}
+			/>
+		}
 	}
 
-	// buttons step 9
-	const renderButtonsStep9 = () => {
-		return <>
-			<ButtonStepCancel onPress={() => setWaitTime(true)} 
-				background="#8A56AC">
-				<MaterialCommunityIcons name="check" color="#fff" size={20} />      
-			</ButtonStepCancel>
-			<ButtonStepCancel onPress={() => execChangeIt()} 
-				background="#D47FA6">
-				<MaterialCommunityIcons name="close" color="#fff" size={20} />      
-			</ButtonStepCancel>
-		</>
-	}
+	const renderWaitTimeComponents = () => {
+		if (waitTime === 1) {
+			return <ContainerWaitTime {...props}
+				valuesRequest={valueBookIt}
+				execEvent1={goToContainerSeeYou}
+			/>
+		}
 
-	// buttons step 10
-	const renderButtonsStep10 = () => {
-		return <>
-			<ContainerPhone>
-				<MaterialCommunityIcons style={{ marginRight: 5}} name="phone-outline" color="#5A9638" size={25} />     
-				<Text style={{fontSize: 16}}>{steps.phone}</Text> 
-			</ContainerPhone>
-			<ButtonStep10 onPress={() => execChangeIt()} 
-				background="#FFF" border="1px solid #0007">
-				<MaterialCommunityIcons name="close" color="red" size={20} />      
-			</ButtonStep10>
-			<ButtonStep10 onPress={() => execChangeIt()} 
-				background="#D47FA6">
-				<MaterialCommunityIcons name="arrow-right" color="#fff" size={20} />      
-			</ButtonStep10>
-		</>
+		if (waitTime === 2) {
+			return <ContainerSeeYou {...props}
+				valuesRequest={valueBookIt}
+			/>
+		}
 	}
 
 	return <View style={styles.container}>
@@ -330,20 +342,22 @@ export default props => {
 		</View>
 
 		{/* condition to render components */}
-		<IF condition={!waitTime}>
+		<IF condition={waitTime === 0}>
 			<View style={styles.containerCenter}>
-				<ContainerCenter {...props}/>
+				<ContainerCenter {...props} 
+					valueBookIt={valueBookIt}
+					execEvent1={goToWaitTimeOk} 
+				/>
 			</View>
 			<View style={styles.containerBottom}>
-				<ContainerBottom {...props} 
-					executeBookIt={executeBookIt}/>
+				{renderConditionalComponents()}
 			</View>
-			{showModal > 0 && renderModal()}
 		</IF>
+		{stepModal > 0 && renderModal()}
 
 		{/* condition to render components */}
-		<IF condition={waitTime}>
-			<ContainerWaitTime waitTimeOk={waitTimeOk}/>
+		<IF condition={waitTime > 0}>
+			{ renderWaitTimeComponents() }
 		</IF>
 	</View>
 }
@@ -358,8 +372,7 @@ const styles = StyleSheet.create({
 	containerTop: {
 		width: generalStyles.WIDTH,
 		height: "20%",
-		borderBottomLeftRadius: 85,
-		zIndex: 10000
+		borderBottomLeftRadius: 85
 	},
 
 	containerCenter: {
