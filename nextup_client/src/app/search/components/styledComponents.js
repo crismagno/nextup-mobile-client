@@ -16,8 +16,8 @@ export const Input = styled.TextInput`
     height: ${props => props.height};
     width: ${props => props.width};
     border-bottom-width: 0.6px;
-    border-color: #F5F4F6;
-    color: #F5F4F6;
+    border-color: ${generalStyles.colors.colorA18};
+    color: ${generalStyles.colors.colorA18};
     font-size: 20px;
     font-family: ${generalStyles.fonts.fontFamily1};
     padding-right: 50px;
@@ -49,7 +49,7 @@ export const ContainerBottom = styled.View`
     width: ${props => props.width};
 `
 export const Modal = styled.View`
-    background-color: #FFF;
+    background-color: ${generalStyles.colors.colorA1};
     border-radius: 50px;
     min-height: ${props => props.height};;
     width: ${props => props.width};
@@ -70,7 +70,7 @@ export const ContainerBox = styled.TouchableOpacity`
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    border-bottom-color: #FFF3;
+    border-bottom-color: ${generalStyles.colors.colorA19};
     border-bottom-width: 1px;
     width: ${props => props.width};
     padding-top: 20px;
@@ -86,7 +86,7 @@ export const ImageCompany = styled.Image`
     width: 50px;
     height: 50px;
     border-radius: 1000;
-    border: 1.5px solid #fff
+    border: 1.5px solid ${generalStyles.colors.colorA1}
 `
 export const TextCustom = styled.Text`
     font-size: ${props => props.size || 10}px;
@@ -96,5 +96,5 @@ export const TextCustom = styled.Text`
     margin-left: ${props => props.ml || 0}px;
     font-weight: ${props => props.bold || 'normal'};
     font-family: ${generalStyles.fonts.fontFamily1};
-    color: #FFF;
+    color: ${generalStyles.colors.colorA1};
 `

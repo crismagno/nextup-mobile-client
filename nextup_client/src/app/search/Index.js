@@ -4,6 +4,7 @@ import {
 	Dimensions,
 	View
 } from 'react-native'
+import { useDispatch } from "react-redux"
 import { BlurView } from "@react-native-community/blur";
 import { 
 	Container,
@@ -22,10 +23,8 @@ import {
 } from './components/styledComponents'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import { useDispatch } from "react-redux"
 import * as Animatable from 'react-native-animatable'
-
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
+import generalStyles from './../../assets/styles/general'
 
 export default props => {
 
@@ -120,7 +119,7 @@ export default props => {
 	const renderCompanies = () => {
 
 		const renderCompaniesFilter = searchArrayCompanies.map(company => {
-			return <ContainerBox width={WIDTH}>
+			return <ContainerBox width={generalStyles.WIDTH}>
 				<ImageCompany source={company.image}/>
 				<ContainerBoxTitle>
 					<TextCustom size={20} mb={2} bold="bold">{company.name}</TextCustom>
@@ -138,42 +137,42 @@ export default props => {
 	}
 	
 	return <Animatable.View animation={'slideInRight'} duration={500} style={styles.containerAnimation}>
-		<Container height={HEIGHT} width={WIDTH}>
+		<Container height={generalStyles.HEIGHT} width={generalStyles.WIDTH}>
 			<BlurView style={styles.blurView}
 				reducedTransparencyFallbackColor="gray"
 				blurType="dark"
 				blurAmount={10}
 			/>
 
-			<Container height={HEIGHT} width={WIDTH}>
+			<Container height={generalStyles.HEIGHT} width={generalStyles.WIDTH}>
 
-				<ContainerHeader height={60} width={WIDTH}>
+				<ContainerHeader height={60} width={generalStyles.WIDTH}>
 					<ButtonBack onPress={() => goBackEventSearch()}>
-						<MaterialCommunityIcons name="arrow-left" size={25} color="#FFF" />
+						<MaterialCommunityIcons name="arrow-left" size={25} color={generalStyles.colors.colorA1} />
 					</ButtonBack>
 				</ContainerHeader>
 				
-				<ContainerCenter height={15} width={WIDTH}>
+				<ContainerCenter height={15} width={generalStyles.WIDTH}>
 
 					<Input 
 						onChangeText={v => setValueSearch(v)}
 						onKeyPress={() => getSearch()}
 						value={valueSearch}
-						height={60} width={WIDTH - 50}
+						height={60} width={generalStyles.WIDTH - 50}
 						placeholder="Search"
-						placeholderTextColor="#F5F4F6"
-						selectionColor="#F5F4F6"
+						placeholderTextColor={generalStyles.colors.colorA18}
+						selectionColor={generalStyles.colors.colorA18}
 					/>
 
 					<ButtonSearch onPress={() => getSearch()}>
-						<AntDesign name="search1" size={20} color="#FFF" />
+						<AntDesign name="search1" size={20} color={generalStyles.colors.colorA1} />
 					</ButtonSearch>
 					
 				</ContainerCenter>
 				
-				<ContainerBottom height={50} width={WIDTH}>
+				<ContainerBottom height={50} width={generalStyles.WIDTH}>
 
-					{/* <Modal height={HEIGHT/2} width={WIDTH - 40}> */}
+					{/* <Modal height={generalStyles.HEIGHT/2} width={generalStyles.WIDTH - 40}> */}
 						{renderCompanies()}
 					{/* </Modal> */}
 					
@@ -190,8 +189,8 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		top: 0,
 		left: 0,
-		width: WIDTH,
-		height: HEIGHT,
+		width: generalStyles.WIDTH,
+		height: generalStyles.HEIGHT,
 		zIndex: 10,
 	},
 
@@ -201,8 +200,8 @@ const styles = StyleSheet.create({
 	},
 
 	containerAnimation: {
-		height: HEIGHT,
-		width: WIDTH,
+		height: generalStyles.HEIGHT,
+		width: generalStyles.WIDTH,
 		position: 'absolute',
 		left: 0,
 		top: 0
