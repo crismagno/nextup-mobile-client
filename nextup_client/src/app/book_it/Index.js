@@ -60,10 +60,7 @@ export default props => {
 	// texts modals
 	const textSteps = {
 		cancelNow: "Cancel your spot now?",
-		cancelSuccess: "Your spot has been cancelled",
-		waitConfirmation: company => {
-			return ""
-		} 
+		cancelSuccess: "Your spot has been cancelled"
 	}
 
 	const exampleValueBookIt = {

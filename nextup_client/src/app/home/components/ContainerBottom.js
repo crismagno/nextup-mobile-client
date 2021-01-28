@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from "react-redux";
 import {
     StyleSheet,
     View,
@@ -11,59 +12,11 @@ import moment from 'moment'
 import 'moment/locale/pt-br'
 import generalStyles from './../../../assets/styles/general'
 
-const listLineTest = [
-    {
-        id: Math.random(),
-        title: 'Thai Thai',
-        subtitle: 'rua station red',
-        date: {
-            hours: moment(),
-            time: moment()
-        },
-        stars: 4.6,
-        category: 'Restaurants',
-        media: generalStyles.images.imageA2
-    },
-    {
-        id: Math.random(),
-        title: 'Thai2 Thai2',
-        subtitle: 'rua station red',
-        date: {
-            hours: moment(),
-            time: moment()
-        },
-        stars: 4.6,
-        category: 'Restaurants',
-        media: generalStyles.images.imageA2
-    },
-    {
-        id: Math.random(),
-        title: 'Thai3 Thai4',
-        subtitle: 'rua station red',
-        date: {
-            hours: moment(),
-            time: moment()
-        },
-        stars: 4.6,
-        category: 'Restaurants',
-        media: generalStyles.images.imageA2
-    },
-    {
-        id: Math.random(),
-        title: 'Thai3 Thai4',
-        subtitle: 'rua station red',
-        date: {
-            hours: moment(),
-            time: moment()
-        },
-        stars: 4.6,
-        category: 'Restaurants',
-        media: generalStyles.images.imageA2
-    }
-]
 export default props => {
 
-    const [listLine, setListLine] = useState(listLineTest)
+    const yourLine = useSelector(state => state.yourLine && state.yourLine.items || [])
+
+    const [listLine, setListLine] = useState(yourLine)
 
     const timeCalc = time => {
         let seconds = moment().diff(time, 'seconds')

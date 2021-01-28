@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     StyleSheet,
     View,
@@ -12,7 +12,39 @@ import categoriesExample from './../../../filesExample/categories'
 
 export default props => {
 
-    const [listCategories, setListCategories] = useState(categoriesExample.categories1)
+    const [listCategories, setListCategories] = useState(categoriesExample.categories2)
+
+    const categoriesModifield = (valueCategories = []) => {
+        let categories = valueCategories
+        let newArrayCategories = []
+        for (let key in categories) {
+            let item = categories1[key]
+            if (newArrayCategories.length === 0) {
+                newArrayCategories.push([])
+                newArrayCategories[newArrayCategories.length - 1].push(item)
+            } else {
+                let newArrayLength = newArrayCategories.length - 1
+                if (newArrayCategories[newArrayLength].length < 11) {
+                    newArrayCategories[newArrayLength].push(item)
+                } else {
+                    newArrayCategories.push([])
+                    newArrayCategories[newArrayLength].push(item)
+                }
+            }
+        }
+        
+        return newArrayCategories
+    }
+
+    useEffect(() => {
+
+        // setTimeout(() => {
+        //     let response = categoriesExample.categories1
+        //     let categories = categoriesModifield(response)
+        //     setListCategories(categories)
+        // }, 5000)
+        
+    }, [])
 
     const renderCategory = category => {
         return <TouchableOpacity key={category.id}
@@ -45,7 +77,10 @@ export default props => {
         contentContainerStyle={styles.styleScrollView1}
         horizontal={false}
         showsVerticalScrollIndicator={false}>
-        {listCategories.map(item => renderListCategories(item))}
+        {
+            (listCategories && listCategories.length > 0) && listCategories.map(item => renderListCategories(item)) || 
+            <Text style={styles.textFont(12.5, generalStyles.colors.colorA1, 'bold')}>Empty Categories!</Text>
+        }
     </ScrollView>
 }
 
