@@ -9,84 +9,11 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import generalStyles from './../../../assets/styles/general'
+import companies from "./../../../filesExample/companies";
 
-const listTrendingTest = [
-    {
-        id: Math.random()+"", 
-        miles: '0.2',
-        title: 'THAI THAI',
-        subtitle: 'Thai',
-        address: {
-            district: 'test district',
-            street: 'test street FR, 0003'
-        },
-        media: generalStyles.images.imageA2,
-        background: generalStyles.colors.colorA11
-    },
-    {
-        id: Math.random()+"", 
-        miles: '0.2',
-        title: 'THAI THAI',
-        subtitle: 'Thai',
-        address: {
-            district: 'test district',
-            street: 'test street FR, 0003'
-        },
-        media: generalStyles.images.imageA2,
-        background: generalStyles.colors.colorA4
-    },
-    {
-        id: Math.random()+"", 
-        miles: '0.2',
-        title: 'THAI THAI',
-        subtitle: 'Thai',
-        address: {
-            district: 'test district',
-            street: 'test street FR, 0003'
-        },
-        media: generalStyles.images.imageA2,
-        background: generalStyles.colors.colorA3
-    },
-    {
-        id: Math.random()+"", 
-        miles: '0.2',
-        title: 'THAI THAI',
-        subtitle: 'Thai',
-        address: {
-            district: 'test district',
-            street: 'test street FR, 0003'
-        },
-        media: generalStyles.images.imageA2,
-        background: generalStyles.colors.colorA11
-    },
-    {
-        id: Math.random()+"", 
-        miles: '0.2',
-        title: 'THAI THAI',
-        subtitle: 'Thai',
-        address: {
-            district: 'test district',
-            street: 'test street FR, 0003'
-        },
-        media: generalStyles.images.imageA2,
-        background: generalStyles.colors.colorA4
-    },
-    {
-        id: Math.random()+"", 
-        miles: '0.2',
-        title: 'THAI THAI',
-        subtitle: 'Thai',
-        address: {
-            district: 'test district',
-            street: 'test street FR, 0003'
-        },
-        media: generalStyles.images.imageA2,
-        background: generalStyles.colors.colorA3
-    }
-]
 export default props => {
 
-    const [listTrending, setListCategories] = useState(listTrendingTest)
+    const [listTrending, setListCategories] = useState(companies)
 
     const goToEvent = item => {
         props.navigation.navigate('BookIt')

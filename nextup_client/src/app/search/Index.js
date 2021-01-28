@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
 	StyleSheet,
-	Dimensions,
 	View
 } from 'react-native'
 import { useDispatch } from "react-redux"
@@ -25,65 +24,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import * as Animatable from 'react-native-animatable'
 import generalStyles from './../../assets/styles/general'
+import companies from "./../../filesExample/companies";
 
 export default props => {
-
-	const companies = [
-		{
-			name: "THAI THAI",
-			image: require('./../../assets/images/recomended1.png'),
-			subtitle: "Restaurant",
-			address: "Plantation, FL 33322"
-		},
-		{
-			name: "THAI2 THAI2",
-			image: require('./../../assets/images/recomended1.png'),
-			subtitle: "Restaurant",
-			address: "Plantation, FL 33322"
-		},
-		{
-			name: "THAI3 THAI3",
-			image: require('./../../assets/images/recomended1.png'),
-			subtitle: "Restaurant",
-			address: "Plantation, FL 33322"
-		},
-		{
-			name: "THAI4 THAI4",
-			image: require('./../../assets/images/recomended1.png'),
-			subtitle: "Restaurant",
-			address: "Plantation, FL 33322"
-		},
-		{
-			name: "THALITA'S NAILS",
-			image: require('./../../assets/images/recomended1.png'),
-			subtitle: "NAILS Saloon",
-			address: "Tamano, FL 33309"
-		},
-		{
-			name: "THAI2 THAI2",
-			image: require('./../../assets/images/recomended1.png'),
-			subtitle: "Restaurant",
-			address: "Plantation, FL 33322"
-		},
-		{
-			name: "THAI3 THAI3",
-			image: require('./../../assets/images/recomended1.png'),
-			subtitle: "Restaurant",
-			address: "Plantation, FL 33322"
-		},
-		{
-			name: "THAI4 THAI4",
-			image: require('./../../assets/images/recomended1.png'),
-			subtitle: "Restaurant",
-			address: "Plantation, FL 33322"
-		},
-		{
-			name: "THALITA'S NAILS",
-			image: require('./../../assets/images/recomended1.png'),
-			subtitle: "NAILS Saloon",
-			address: "Tamano, FL 33309"
-		}
-	]
 
 	const dispatch = useDispatch({})
 	const [searchArrayCompanies, setSearchArrayCompanies] = useState(companies)
@@ -102,7 +45,7 @@ export default props => {
 
 		const arrayFilter = companies.filter(company => {
 			
-			return company.name.match(new RegExp(valueSearch, 'ig'))
+			return company.title.match(new RegExp(valueSearch, 'ig'))
 		})
 
 		setSearchArrayCompanies(arrayFilter)
@@ -120,11 +63,12 @@ export default props => {
 
 		const renderCompaniesFilter = searchArrayCompanies.map(company => {
 			return <ContainerBox width={generalStyles.WIDTH}>
-				<ImageCompany source={company.image}/>
+				<ImageCompany source={company.media}/>
 				<ContainerBoxTitle>
-					<TextCustom size={20} mb={2} bold="bold">{company.name}</TextCustom>
+					<TextCustom size={20} mb={2} bold="bold">{company.title}</TextCustom>
 					<TextCustom size={12}>{company.subtitle}</TextCustom>
-					<TextCustom size={11}>{company.address}</TextCustom>
+					<TextCustom size={11}>{company.address.district}</TextCustom>
+					<TextCustom size={11}>{company.address.street}</TextCustom>
 				</ContainerBoxTitle>
 			</ContainerBox>
 		})

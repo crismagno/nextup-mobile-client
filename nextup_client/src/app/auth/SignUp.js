@@ -3,11 +3,9 @@ import {
 	StyleSheet,
 	View,
 	Text,
-	Dimensions,
 	TextInput,
 	TouchableOpacity,
-	ToastAndroid,
-	Image
+	ToastAndroid
 } from 'react-native'
 import generalStyles from './../../assets/styles/general'
 import ButtonB1 from "./../../components/defaults/buttons/ButtonB1";

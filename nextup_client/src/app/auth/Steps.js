@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
-  Text,
-  TouchableOpacity,
-  Dimensions
+  TouchableOpacity
 } from 'react-native';
 import ScreenDefault from './../../components/defaults/ScreenDefault'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'

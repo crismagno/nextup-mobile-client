@@ -8,7 +8,6 @@ import {
     ImageBackground,
     TouchableOpacity
 } from 'react-native'
-
 import { DrawerContentScrollView } from '@react-navigation/drawer'
 import generalStyles from '../assets/styles/general'
 import Feather from 'react-native-vector-icons/Feather'
@@ -38,9 +37,10 @@ export default props => {
     const renderItemsDrawer = () => {
         return menu.map((item, index) => {
             const active = isCurrentRoute(item.route)
+            let colorIcon = active ? generalStyles.colors.colorA1 : generalStyles.colors.colorA20
             return <TouchableOpacity onPress={() => props.navigation.navigate(item.route)} key={`${item.Route}_${index}`}>
                 <View style={[styles.itemMenu, active && styles.colorMenuActive]}>
-                    {item.icon && item.icon(active ? generalStyles.colors.colorA1 : generalStyles.colors.colorA20) || <View/>}
+                    {item.icon && item.icon(colorIcon) || <View/>}
                     <Text style={[styles.textFormat(17, (!active && generalStyles.colors.colorA9), '600', 0, 10), { fontFamily: generalStyles.fonts.fontFamily1}]}>{item.label}</Text>
                 </View>
             </TouchableOpacity>
