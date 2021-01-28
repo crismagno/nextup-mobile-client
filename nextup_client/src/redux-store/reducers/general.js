@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-    modeSearch: true
+    modeSearch: false
 }
 
 export default (state = INITIAL_STATE, action) => {
