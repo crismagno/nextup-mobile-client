@@ -5,7 +5,7 @@ const INITIAL_STATE = {
     email: '@aureliensalomon',
     avatar: generalStyles.images.imageA6,
     online_at: false,
-    mediaBackground: generalStyles.images.imageA7
+    mediaBackground: generalStyles.images.imageA6
 };
 
 export default (state = INITIAL_STATE, action) => {

@@ -41,7 +41,7 @@ export default props => {
             <View style={styles.viewBottom}>
                 <View style={styles.viewLocale}>
                     <MapView
-                        customMapStyle={customMaps}
+                        // customMapStyle={customMaps}
                         mapType="standard"
                         style={{ flex: 1, opacity: 0.999 }}
                         initialRegion={{

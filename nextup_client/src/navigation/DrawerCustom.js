@@ -15,14 +15,7 @@ import menu from './menu/menu'
 
 export default props => {
 
-    // const user1 = useSelector(state => state.user)
-    const user = {
-        name: 'Aurélien Salomon',
-        email: '@aureliensalomon',
-        avatar: generalStyles.images.imageA6,
-        online_at: false,
-        mediaBackground: generalStyles.images.imageA7
-    };
+    const user = useSelector(state => state.user)
 
     const logOut = () => {
         props.navigation.navigate('Open')

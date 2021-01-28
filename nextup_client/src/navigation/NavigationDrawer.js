@@ -10,15 +10,14 @@ import BookIt from './../app/book_it/Index'
 import TestDefault from './../app/test/testDefault'
 
 const Drawer = createDrawerNavigator()
-export default props => (
+export default props =>
     <Drawer.Navigator initialRouteName="Home"
         drawerStyle={{ width: '80%', borderTopRightRadius: 100 }}
         openByDefault={false}
-        drawerContent ={props => DrawerCustom(props)}>
+        drawerContent ={props => <DrawerCustom {...props}/>}>
         <Drawer.Screen {...props} name="Home" component={Home} />
         <Drawer.Screen {...props} name="Category" component={Category} />
         <Drawer.Screen {...props} name="Trending" component={Trending} />
         <Drawer.Screen {...props} name="BookIt" component={BookIt} />
         <Drawer.Screen {...props} name="TestDefault" component={TestDefault} />
     </Drawer.Navigator>
-)
