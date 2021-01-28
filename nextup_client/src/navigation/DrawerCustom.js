@@ -8,10 +8,11 @@ import {
     ImageBackground,
     TouchableOpacity
 } from 'react-native'
-import generalStyles from '../assets/styles/general'
 
 import { DrawerContentScrollView } from '@react-navigation/drawer'
+import generalStyles from '../assets/styles/general'
 import Feather from 'react-native-vector-icons/Feather'
+import menu from './menu/menu'
 
 export default props => {
 
@@ -24,52 +25,27 @@ export default props => {
         mediaBackground: generalStyles.images.imageA7
     };
 
+    const logOut = () => {
+        props.navigation.navigate('Open')
+    }
+
     const isCurrentRoute = nameRoute => {
-        const {index, routes} = props.navigation.dangerouslyGetState();
+        const { index, routes } = props.navigation.dangerouslyGetState();
         const currentRoute = routes[index].name;
         return nameRoute == currentRoute
     }
 
-    const arrayListDrawer = [
-        {
-            icon: <Feather name="home" size={18} color={isCurrentRoute('Home') ? generalStyles.colors.colorA1 : generalStyles.colors.colorA20} />,
-            route: 'Home',
-            label: 'Home'
-        },
-        {
-            icon: <Feather name="users" size={18} color={isCurrentRoute('Category') ? generalStyles.colors.colorA1 : generalStyles.colors.colorA20} />,
-            route: 'Category',
-            label: 'Categories'
-        },
-        {
-            icon: <Feather name="calendar" size={18} color={isCurrentRoute('Trending') ? generalStyles.colors.colorA1 : generalStyles.colors.colorA20} />,
-            route: 'Trending',
-            label: 'My queue'
-        },
-        {
-            icon: <Feather name="user" size={18} color={isCurrentRoute('Contact') ? generalStyles.colors.colorA1 : generalStyles.colors.colorA20} />,
-            route: 'Contact',
-            label: 'Contact Us'
-        },
-        {
-            icon: <Feather name="info" size={18} color={isCurrentRoute('About') ? generalStyles.colors.colorA1 : generalStyles.colors.colorA20} />,
-            route: 'About',
-            label: 'About Us'
-        }
-    ]
-
     const renderItemsDrawer = () => {
-        return arrayListDrawer.map((item, index) => {
+        return menu.map((item, index) => {
             const active = isCurrentRoute(item.route)
             return <TouchableOpacity onPress={() => props.navigation.navigate(item.route)} key={`${item.Route}_${index}`}>
                 <View style={[styles.itemMenu, active && styles.colorMenuActive]}>
-                    {item.icon}
+                    {item.icon && item.icon(active ? generalStyles.colors.colorA1 : generalStyles.colors.colorA20) || <View/>}
                     <Text style={[styles.textFormat(17, (!active && generalStyles.colors.colorA9), '600', 0, 10), { fontFamily: generalStyles.fonts.fontFamily1}]}>{item.label}</Text>
                 </View>
             </TouchableOpacity>
         })
     }
-
 
     return <View style={styles.container}>
         <View style={styles.containerTop}>
@@ -99,14 +75,13 @@ export default props => {
         </DrawerContentScrollView>
 
         <View style={{paddingHorizontal: 20, marginTop: 5}}>
-            <TouchableOpacity onPress={() => props.navigation.navigate('Open')}>
+            <TouchableOpacity onPress={() => logOut()}>
                 <View style={styles.itemMenu}>
                     <Feather name="log-out" size={18} color={generalStyles.colors.colorA20} />
                     <Text style={[styles.textFormat(17, generalStyles.colors.colorA9, '600', 0, 10), { fontFamily: generalStyles.fonts.fontFamily1}]}>Log Out</Text>
                 </View>
             </TouchableOpacity>
         </View>
-
 
     </View>
 }
@@ -162,18 +137,6 @@ const styles = StyleSheet.create({
             marginLeft: ml || 0,
             fontFamily: generalStyles.fonts.fontFamily1
         }
-    },
-    
-    itemDrawer: {
-        // flexDirection: 'row',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        borderRadius: 50,
-        // width: 160,
-        // height: 42,
-        borderBottomWidth: 0,
-        padding: 0,
-        paddingLeft: 7
     },
 
     itemMenu: {
